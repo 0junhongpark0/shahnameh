@@ -1,0 +1,4204 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>샤나메 타이핑 체험 | 로스탐과 소흐랍</title>
+        <style>
+:root {
+    --navy: #0b2a4a;
+    --navy2: #143c58;
+    --gold: #b99558;
+    --cream: #f7f2e9;
+    --red: #e55252;
+    --ink: #233346;
+    --muted: #69788a;
+    --panel: #fff;
+    --bg: #f2f5f8;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Noto Sans KR',sans-serif;
+    color: var(--ink);
+    background: var(--bg)
+}
+
+button {
+    font: inherit;
+    cursor: pointer
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .47
+}
+
+button:focus-visible,a:focus-visible {
+    outline: 3px solid #54a4e5;
+    outline-offset: 3px
+}
+
+a {
+    color: #1c6393
+}
+
+.app-shell {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 18px 20px 50px
+}
+
+.masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: var(--navy);
+    padding: 16px 25px;
+    color: #fff;
+    border-radius: 14px;
+    margin-bottom: 16px
+}
+
+.masthead h1 {
+    font-size: 23px;
+    margin: 0
+}
+
+.masthead p {
+    opacity: .8;
+    margin: 5px 0 0;
+    font-size: 13px
+}
+
+.mast-actions {
+    display: flex;
+    gap: 8px
+}
+
+.mast-actions button {
+    border: 1px solid #55748c;
+    border-radius: 9px;
+    padding: 9px 14px;
+    background: #234864;
+    color: #fff
+}
+
+.screen {
+    display: none;
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 35px rgba(9,39,65,.08)
+}
+
+.screen.active {
+    display: block
+}
+
+.section-title {
+    font-size: 21px;
+    color: var(--navy);
+    margin: 0 0 12px
+}
+
+.subtext {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: .13em;
+    color: var(--gold);
+    font-weight: 800
+}
+
+.intro-title {
+    font-size: clamp(29px,4vw,44px);
+    color: var(--navy);
+    margin: 9px 0 10px
+}
+
+.intro-lead {
+    font-size: 18px;
+    font-weight: 700;
+    color: #283e53
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 18px;
+    margin-top: 23px
+}
+
+.panel {
+    padding: 20px;
+    border: 1px solid #e1e7ee;
+    border-radius: 13px;
+    background: #f9fbfd
+}
+
+.panel h3 {
+    margin: 0 0 9px;
+    color: var(--navy);
+    font-size: 16px
+}
+
+.panel p,.panel li {
+    font-size: 14px;
+    line-height: 1.8
+}
+
+.panel ul {
+    padding-left: 22px;
+    margin: 7px 0
+}
+
+.btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px
+}
+
+.btn {
+    border: 0;
+    background: var(--navy);
+    color: #fff;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700
+}
+
+.btn:hover:not(:disabled) {
+    filter: brightness(1.14)
+}
+
+.btn.secondary {
+    background: #e9eef3;
+    color: #233b50
+}
+
+.btn.outline {
+    border: 1px solid #b7c8d4;
+    background: white;
+    color: var(--navy)
+}
+
+.btn.gold {
+    background: #a47737
+}
+
+.info-note {
+    font-size: 13px;
+    color: #657588;
+    line-height: 1.7
+}
+
+.error {
+    color: #b73131;
+    font-weight: 700
+}
+
+.hidden {
+    display: none!important
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px;
+    margin: 20px 0
+}
+
+.stat {
+    background: #f5f8fb;
+    border: 1px solid #e3ebf2;
+    padding: 12px 8px;
+    border-radius: 10px;
+    text-align: center
+}
+
+.stat-label {
+    color: #6d7b88;
+    font-size: 12px
+}
+
+.stat-value {
+    font-size: 23px;
+    color: var(--navy);
+    font-weight: 800;
+    white-space: nowrap
+}
+
+.story-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.story-name {
+    font-weight: 700;
+    color: #63758a;
+    font-size: 13px
+}
+
+.progress-track {
+    height: 8px;
+    background: #edf1f4;
+    border-radius: 99px;
+    margin: 14px 0 16px;
+    overflow: hidden
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0;
+    transition: width .2s
+}
+
+.paper {
+    border: 1px solid #e5e9ed;
+    border-radius: 15px;
+    background: #fff;
+    padding: 20px;
+    min-height: 185px
+}
+
+.paper h3 {
+    margin: 0 0 12px;
+    color: #7990a4;
+    font-size: 12px
+}
+
+.text-top,.text-bottom {
+    font-family: Sahel,Vazirmatn,sans-serif;
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: plaintext;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: clamp(25px,3vw,37px);
+    line-height: 1.7;
+    min-height: 65px
+}
+
+.text-top {
+    color: #85919d;
+    margin-bottom: 7px
+}
+
+.text-bottom {
+    border-bottom: 2px solid #e3e9ee;
+    color: var(--navy);
+    padding-bottom: 5px
+}
+
+.user-wrong {
+    background: #ffe2e2;
+    color: #d32635
+}
+
+.input-cursor {
+    display: inline-block;
+    width: 12px;
+    height: 4px;
+    background: #d7a72e;
+    vertical-align: baseline;
+    animation: blink 1s infinite
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0
+    }
+}
+
+.translation {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2f6c96;
+    margin: 11px 2px 0;
+    line-height: 1.6
+}
+
+.instruction {
+    margin: 11px 0 8px;
+    color: #607288;
+    font-size: 14px;
+    min-height: 22px
+}
+
+.instruction.done {
+    color: #216848;
+    font-weight: 700
+}
+
+.keyboard-wrap {
+    max-width: 1120px;
+    margin: 14px auto 10px;
+    overflow-x: auto;
+    padding: 4px 0 10px
+}
+
+.keyboard-inner {
+    width: max-content;
+    min-width: 770px;
+    margin: 0 auto;
+    zoom: 1.10
+}
+
+.keyboard-area {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #e8edf2;
+    padding: 8px;
+    border-radius: 11px
+}
+
+.key-row {
+    display: flex;
+    justify-content: center;
+    gap: 4px
+}
+
+.key {
+    width: 40px;
+    height: 39px;
+    flex: none;
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px #a9b6c1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 18px Vazirmatn,sans-serif;
+    transition: background .1s,transform .1s
+}
+
+.key .kor {
+    font: 700 9px 'Noto Sans KR',sans-serif;
+    color: #9aa4b0;
+    position: absolute;
+    top: 1px;
+    left: 4px
+}
+
+.key.special {
+    font: 700 12px sans-serif;
+    background: #d5dce3;
+    color: #576474
+}
+
+.key.backspace-key {
+    width: 82px
+}
+
+.key.tab-key {
+    width: 60px
+}
+
+.key.caps-key {
+    width: 75px
+}
+
+.key.enter-key {
+    width: 88px
+}
+
+.key.shift-l-key,.key.shift-r-key {
+    width: 93px
+}
+
+.key.space-key {
+    width: 300px
+}
+
+.key.target-led {
+    background: #fff;
+    outline: 3px solid #228be6;
+    outline-offset: -2px;
+    box-shadow: 0 0 10px #98c5f5;
+    z-index: 2
+}
+
+.key.error-led {
+    background: #ffe1e1;
+    outline: 3px solid #ed4646;
+    outline-offset: -2px
+}
+
+.key.pressed {
+    transform: translateY(2px);
+    box-shadow: none
+}
+
+.zone-l-pinky {
+    background: #ffe6e6
+}
+
+.zone-l-ring {
+    background: #fff0d9
+}
+
+.zone-l-mid {
+    background: #f4fce3
+}
+
+.zone-l-index {
+    background: #dcf9fa
+}
+
+.zone-r-index {
+    background: #e2f1ff
+}
+
+.zone-r-mid {
+    background: #e9eaff
+}
+
+.zone-r-ring {
+    background: #f3eaff
+}
+
+.zone-r-pinky {
+    background: #f9edff
+}
+
+.hands-container {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    height: 87px;
+    align-items: flex-end;
+    padding-bottom: 2px
+}
+
+.hand {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end
+}
+
+.finger {
+    width: 24px;
+    height: 58px;
+    border-radius: 12px 12px 3px 3px;
+    border: 1px solid #a9b8c5;
+    background: linear-gradient(#edf1f5,#cbd4de);
+    transition: .15s
+}
+
+.f-pinky {
+    height: 45px
+}
+
+.f-ring {
+    height: 58px
+}
+
+.f-mid {
+    height: 72px
+}
+
+.f-index {
+    height: 61px
+}
+
+.f-thumb {
+    height: 34px;
+    width: 27px
+}
+
+.finger.active {
+    background: linear-gradient(#ffe886,#f6b625);
+    box-shadow: 0 0 13px #f5c35c;
+    transform: translateY(-5px)
+}
+
+.status-banner {
+    padding: 13px 15px;
+    background: #e9f4ee;
+    color: #236042;
+    border-radius: 10px;
+    margin: 10px 0 0;
+    line-height: 1.7;
+    font-size: 14px
+}
+
+.status-banner.warn {
+    background: #fff5dd;
+    color: #82550a
+}
+
+#mobile-blocker {
+    display: none;
+    min-height: 100dvh;
+    background: #f5f7f9;
+    padding: 35px 25px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px
+}
+
+#mobile-blocker h2 {
+    color: var(--navy)
+}
+
+#mobile-blocker p {
+    line-height: 1.8
+}
+
+#mobile-blocker a {
+    font-weight: 700
+}
+
+/* 공유 모달 및 모바일 QR 전용 결과 뷰 */
+.modal-cover {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    overflow-y: auto;
+    background: rgba(7,21,33,.88);
+    padding: 18px
+}
+
+.modal-cover.open {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center
+}
+
+.modal-inner {
+    width: min(980px,100%);
+    background: white;
+    border-radius: 16px;
+    padding: 22px;
+    margin: auto
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--navy);
+    font-size: 20px
+}
+
+.share-layout {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) 230px;
+    align-items: start;
+    gap: 22px;
+    margin-top: 15px
+}
+
+.preview-img {
+    width: 100%;
+    max-width: 370px;
+    aspect-ratio: 4/5;
+    object-fit: contain;
+    background: #f7f2e9;
+    display: block;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 18px #1d2b3e1a;
+    margin: 0 auto
+}
+
+.share-side {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.qr-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 214px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 9px;
+    padding: 8px
+}
+
+.qr-square img,.qr-square canvas {
+    max-width: 100%;
+    height: auto
+}
+
+.btn.block {
+    width: 100%
+}
+
+.toast {
+    min-height: 22px;
+    color: #35566b;
+    font-size: 13px;
+    line-height: 1.6
+}
+
+.mobile-result {
+    display: none;
+    padding: 16px 18px 38px;
+    max-width: 520px;
+    margin: 0 auto
+}
+
+.mobile-result h2 {
+    color: var(--navy);
+    font-size: 19px;
+    margin: 2px 0 9px
+}
+
+.mobile-result .preview-img {
+    max-width: 430px
+}
+
+.mobile-result .btn-row {
+    justify-content: center
+}
+
+/* 이미지 생성용 실제 DOM: 캡처 때는 transform/반응형 스케일이 없어야 1080x1350을 보장함 */
+#captureHost {
+    position: fixed;
+    left: -10000px;
+    top: 0;
+    width: 540px;
+    height: 675px;
+    pointer-events: none;
+    z-index: -1
+}
+
+#shareCard {
+    width: 540px;
+    height: 675px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: #f7f2e9;
+    color: #173b4a;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 43px 30px;
+    font-family: 'Noto Sans KR',sans-serif;
+}
+
+.card-kicker {
+    font: 700 12px 'Noto Sans KR',sans-serif;
+    letter-spacing: .09em;
+    color: #93794e;
+    text-align: center
+}
+
+.card-title {
+    font-size: 25px;
+    font-weight: 800;
+    color: #173b4a;
+    margin-top: 10px;
+    text-align: center
+}
+
+.card-rule {
+    height: 2px;
+    background: #b99558;
+    width: 75px;
+    margin: 14px auto 0
+}
+
+.card-middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+    gap: 13px
+}
+
+.card-eyebrow {
+    text-align: center;
+    font-size: 13px;
+    color: #9a7950;
+    font-weight: 700
+}
+
+.card-persian {
+    height: 205px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 700 42px/1.65 Sahel,Vazirmatn,sans-serif;
+    direction: rtl;
+    unicode-bidi: plaintext;
+    text-align: center;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow: hidden;
+    color: #173b4a;
+    padding: 7px 4px;
+    border-bottom: 1px solid #d8c8ae
+}
+
+.card-translation {
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #615850;
+    overflow: hidden;
+    overflow-wrap: anywhere
+}
+
+.card-stat-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 9px
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px
+}
+
+.card-cell {
+    padding: 9px 13px;
+    background: #ede5d7;
+    border-radius: 7px;
+    min-height: 56px
+}
+
+.card-cell label {
+    display: block;
+    font-size: 10px;
+    color: #796a58;
+    margin-bottom: 5px
+}
+
+.card-cell strong {
+    display: block;
+    font-size: 17px;
+    color: #173b4a
+}
+
+.card-footer {
+    padding-top: 15px;
+    margin-top: 17px;
+    text-align: center;
+    border-top: 1px solid #d8c8ae
+}
+
+.card-footer div {
+    font-size: 11px;
+    color: #806d55;
+    line-height: 1.5
+}
+
+.card-date {
+    font-size: 10px;
+    color: #989189;
+    margin-top: 5px
+}
+
+@media(max-width:850px) {
+    .intro-grid {
+        grid-template-columns: 1fr
+    }
+
+    .share-layout {
+        grid-template-columns: 1fr
+    }
+
+    .share-side {
+        align-items: stretch
+    }
+
+    .qr-square {
+        min-height: 190px
+    }
+
+    .screen {
+        padding: 20px 14px
+    }
+
+    .stats {
+        gap: 5px
+    }
+
+    .stat-value {
+        font-size: 17px
+    }
+}
+
+@media(max-width:620px) {
+    html:not(.share-mode) #mobile-blocker {
+        display: flex
+    }
+
+    html:not(.share-mode) .app-shell {
+        display: none
+    }
+
+    .modal-inner {
+        padding: 12px
+    }
+
+    .modal-cover {
+        padding: 5px
+    }
+}
+
+html.share-mode .app-shell,html.share-mode #mobile-blocker {
+    display: none!important
+}
+
+html.share-mode .mobile-result {
+    display: block
+}
+
+html.share-mode .modal-cover {
+    display: none!important
+}
+
+/* ===== 2026-10 샤나메 UI 개선 ===== */
+.intro-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+    margin-top: 16px
+}
+
+.intro-grid .panel {
+    padding: 16px 22px
+}
+
+.intro-grid .panel h3 {
+    font-size: 20px;
+    margin-bottom: 7px
+}
+
+.intro-grid .panel p {
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 5px 0
+}
+
+.direction-panel {
+    background: #edf5fa;
+    border-color: #d0e2ee
+}
+
+.direction-example {
+    font: 700 46px/1.3 Sahel,Vazirmatn,sans-serif;
+    color: var(--navy);
+    text-align: center
+}
+
+.intro-grid .panel .direction-caption {
+    text-align: center;
+    color: #436c86;
+    font-size: 15px;
+    font-weight: 700
+}
+
+.howto-panel {
+    background: #fbfcfe
+}
+
+.howto-panel ol {
+    margin: 5px 0 0;
+    padding-left: 25px
+}
+
+.howto-panel li {
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 5px 0
+}
+
+.paper {
+    min-height: 0;
+    padding: 15px 20px
+}
+
+.paper h3 {
+    margin-bottom: 7px
+}
+
+.text-top,.text-bottom {
+    font-size: clamp(32px,3.2vw,42px);
+    line-height: 1.42;
+    min-height: 0
+}
+
+.translation {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 9px
+}
+
+.stats {
+    margin: 12px 0;
+    gap: 9px
+}
+
+.stat {
+    padding: 9px 8px
+}
+
+.progress-track {
+    margin: 8px 0 12px
+}
+
+.instruction {
+    margin: 7px 0 5px;
+    min-height: 0
+}
+
+.keyboard-wrap {
+    margin: 6px auto 2px;
+    padding: 2px 0 3px
+}
+
+.hands-container {
+    height: 75px
+}
+
+#tutorialScreen .btn-row,#practiceScreen .btn-row {
+    margin-top: 10px
+}
+
+#practiceScreen>.info-note {
+    font-size: 12px;
+    margin-top: 7px
+}
+
+.preview-img {
+    background: #f8fafc
+}
+
+/* 인스타 인증 카드: 화이트 + 네이비 + 연한 블루 */
+#shareCard {
+    background: #f8fafc;
+    color: #0b2a4a
+}
+
+.card-kicker {
+    color: #577590
+}
+
+.card-title,.card-persian,.card-cell strong {
+    color: #0b2a4a
+}
+
+.card-rule {
+    background: #1f6794
+}
+
+.card-eyebrow {
+    color: #40749a
+}
+
+.card-persian {
+    border-color: #cfdee8
+}
+
+.card-translation {
+    color: #344c61
+}
+
+.card-cell {
+    background: #e9f1f7
+}
+
+.card-cell label {
+    color: #58728a
+}
+
+.card-footer {
+    border-color: #cfdee8
+}
+
+.card-footer div {
+    color: #466780
+}
+
+.card-date {
+    color: #7b91a5
+}
+
+/* 노트북에서 콘텐츠 크기는 유지하고 여백·키보드를 단계적으로 압축 */
+@media (min-width:621px) and (max-height:900px) {
+    .app-shell {
+        padding: 8px 12px 3px
+    }
+
+    .masthead {
+        padding: 10px 18px;
+        margin-bottom: 8px
+    }
+
+    .masthead h1 {
+        font-size: 20px
+    }
+
+    .masthead p {
+        margin-top: 2px
+    }
+
+    .screen {
+        padding: 12px 19px
+    }
+
+    .section-title {
+        font-size: 19px;
+        margin-bottom: 5px
+    }
+
+    #tutorialScreen .subtext {
+        font-size: 14px;
+        line-height: 1.55;
+        margin: 5px 0 9px
+    }
+
+    .stats {
+        margin: 7px 0;
+        gap: 7px
+    }
+
+    .stat {
+        padding: 5px 7px
+    }
+
+    .stat-value {
+        font-size: 19px
+    }
+
+    .story-bar {
+        font-size: 13px
+    }
+
+    .progress-track {
+        height: 6px;
+        margin: 6px 0 8px
+    }
+
+    .paper {
+        padding: 9px 15px
+    }
+
+    .paper h3 {
+        margin-bottom: 3px
+    }
+
+    .text-top,.text-bottom {
+        font-size: clamp(32px,3vw,40px);
+        line-height: 1.34
+    }
+
+    .translation {
+        font-size: 18px;
+        margin-top: 5px
+    }
+
+    .instruction {
+        font-size: 13px;
+        margin: 5px 0 2px
+    }
+
+    .keyboard-wrap {
+        margin: 2px auto 0;
+        padding: 0
+    }
+
+    .keyboard-inner {
+        zoom: .99
+    }
+
+    #tutorialScreen .btn-row,#practiceScreen .btn-row {
+        margin-top: 5px
+    }
+
+    #tutorialScreen .btn,#practiceScreen .btn {
+        padding: 9px 14px;
+        font-size: 14px
+    }
+
+    #practiceScreen>.info-note {
+        margin: 6px 0 0
+    }
+
+    .status-banner {
+        padding: 8px 12px;
+        margin: 5px 0 0
+    }
+}
+
+@media (min-width:621px) and (max-height:820px) and (min-height:761px) {
+    .keyboard-inner {
+        zoom: .92
+    }
+}
+
+@media (min-width:621px) and (max-height:760px) {
+    .keyboard-inner {
+        zoom: .88
+    }
+
+    .text-top,.text-bottom {
+        line-height: 1.25
+    }
+
+    .hands-container {
+        height: 72px
+    }
+
+    .paper {
+        padding: 7px 12px
+    }
+
+    .translation {
+        font-size: 17px
+    }
+
+    #practiceScreen>.info-note {
+        display: none
+    }
+}
+
+@media (min-width:621px) and (max-width:980px) {
+    .keyboard-inner {
+        zoom: .86
+    }
+}
+
+@media (min-width:621px) and (max-width:980px) and (max-height:760px) {
+    .keyboard-inner {
+        zoom: .82
+    }
+}
+
+/* ============================================================
+   샤나메 체험 학습 보조 UI
+   - 타이핑 중: 로마자 발음 + 1·3·6·9번째 구절의 상황 설명
+   - 완료 후: 기존 입력 안내 영역에 핵심 단어 표시
+   ============================================================ */
+#practiceScreen .passage-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+}
+
+#practiceScreen .passage-heading h3 {
+    flex: none;
+}
+
+#practiceScreen .scene-note {
+    min-width: 0;
+    margin: 0;
+    padding-left: 9px;
+    border-left: 3px solid #3c81a7;
+    color: #31576f;
+    font-size: 12px;
+    line-height: 1.45;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#practiceScreen .romanization {
+    margin: 0 0 5px;
+    color: #607992;
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: right;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+#practiceScreen .instruction.lesson-complete {
+    color: #1b604b;
+    font-weight: 600;
+}
+
+/* 완료 상태와 핵심 단어는 위 안내 영역에서 함께 알려 중복 배너를 숨깁니다. */
+#practiceScreen #completionBanner {
+    display: none;
+}
+
+#practiceScreen .lesson-word-fa {
+    font-family: Sahel, Vazirmatn, sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #0b2a4a;
+    margin: 0 3px;
+    unicode-bidi: isolate;
+}
+
+@media (min-width: 621px) and (max-height: 900px) {
+    #practiceScreen .paper {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    #practiceScreen .scene-note {
+        font-size: 12px;
+    }
+
+    #practiceScreen .romanization {
+        margin-bottom: 1px;
+        font-size: 13px;
+        line-height: 1.18;
+    }
+}
+
+/* ============================================================
+   이야기 상황 설명 팝업
+   - 첫 번째·세 번째·여섯 번째·아홉 번째 구절 진입 시 표시
+   - 기존 핵심 단어 / 키보드 / 공유 기능에는 영향을 주지 않음
+   ============================================================ */
+#practiceScreen #practiceContext {
+    display: none;
+}
+
+.scene-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 11000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(7, 21, 33, 0.78);
+}
+
+.scene-dialog {
+    width: min(540px, 100%);
+    padding: 34px 30px;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.scene-count {
+    margin: 0 0 13px;
+    color: #47708c;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.scene-dialog h2 {
+    margin: 0 0 18px;
+    color: var(--navy);
+    font-size: clamp(24px, 3vw, 30px);
+    line-height: 1.35;
+}
+
+.scene-description {
+    margin: 0 0 26px;
+    color: #304b61;
+    font-size: clamp(17px, 2vw, 19px);
+    line-height: 1.85;
+    word-break: keep-all;
+}
+
+.scene-dialog .btn {
+    width: 100%;
+    max-width: 390px;
+}
+
+@media (max-width: 620px) {
+    .scene-dialog {
+        padding: 28px 20px;
+    }
+}
+
+/* 신규 도입 화면. 원래 index의 네이비/화이트 톤과 물리 자판 디자인은 유지. */
+.intro-title{margin-bottom:5px}
+.intro-lead{margin:7px 0;font-size:17px}
+.choice-heading{font-weight:800;color:var(--navy);margin:19px 0 12px;font-size:18px}
+.lesson-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.lesson-choice{border:2px solid #d4e0ea;background:#f9fbfd;border-radius:13px;min-height:168px;padding:16px 13px;text-align:left;display:flex;flex-direction:column;gap:7px;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+.lesson-choice:hover,.lesson-choice:focus-visible{border-color:#1f6794;box-shadow:0 6px 18px #143c581c}
+.lesson-choice .mini-label{font-weight:700;color:#627990;font-size:12px}
+.lesson-choice .word-ko{font-size:27px;font-weight:800;color:var(--navy)}
+.lesson-choice .word-fa{font-family:Sahel,Vazirmatn,Tahoma,'Segoe UI',sans-serif;font-size:42px;direction:rtl;align-self:flex-end;color:#234a6a;line-height:1.3}
+.lesson-choice .word-roman{font-size:13px;color:#596e7e}
+.free-play{margin-top:16px;border:1px solid #d4e0ea;background:#f7fafc;border-radius:13px;padding:15px 18px}
+.free-play-head{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.free-play-head h3{font-size:18px;margin:0 0 4px;color:var(--navy)}
+.free-play-head p{margin:0;font-size:14px;color:#62758a;line-height:1.5}
+.free-play-body{margin-top:15px}
+.free-play-output{min-height:86px;background:#fff;border:2px solid #b6cfdd;border-radius:11px;font:42px/1.7 Sahel,Vazirmatn,Tahoma,'Segoe UI',sans-serif;padding:8px 20px;white-space:pre-wrap;overflow-wrap:anywhere;direction:rtl;text-align:right;color:var(--navy)}
+.free-play-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px}
+.free-play-controls small{font-size:13px;color:#5f7180}
+.free-play .keyboard-wrap{margin-top:11px}
+.free-play .hands-container{height:75px}
+#introScreen>.btn-row{margin-top:15px}
+.qr-setting-link{border:1px solid #55748c;border-radius:9px;padding:9px 14px;background:#234864;color:#fff;font-size:14px}
+#qrSettingsModal .modal-inner{max-width:650px}
+#qrSettingsModal label{display:block;font-weight:700;color:var(--navy);margin-top:15px}
+#qrSettingsModal input{width:100%;box-sizing:border-box;border:1px solid #a9bacb;border-radius:9px;padding:13px 12px;margin-top:6px;font:15px system-ui,sans-serif}
+#qrSettingsModal .info-note{font-size:14px}
+#qrSettingStatus{margin-top:10px}
+
+/* 탐색할 때에는 노트북 화면 안에 키보드가 한 번에 보이도록 별도 작업영역으로 확장. */
+.free-play.expanded{position:fixed;z-index:9998;top:5vh;bottom:5vh;left:max(24px,6vw);right:max(24px,6vw);margin:0;background:#fff;border:2px solid #9ab5c7;box-shadow:0 0 0 100vmax #0b243f99,0 20px 60px #142e4560;padding:20px 24px;overflow-y:auto}
+.free-play.expanded .free-play-body{margin-top:12px}
+.free-play.expanded .free-play-output{min-height:78px}
+@media(max-height:720px){.free-play.expanded{top:12px;bottom:12px;padding:12px 15px}}
+
+/* 화면 하단 본문 영역은 그대로 유지. */
+@media(max-width:850px){.lesson-choices{grid-template-columns:1fr}.lesson-choice{min-height:110px}.lesson-choice .word-fa{font-size:33px}.free-play-head{flex-wrap:wrap}}
+@media(min-width:621px) and (max-height:820px){.lesson-choice{min-height:125px;padding:10px 12px;gap:2px}.lesson-choice .word-ko{font-size:23px}.lesson-choice .word-fa{font-size:34px}.choice-heading{margin:11px 0 7px}.free-play{padding:9px 14px;margin-top:10px}.free-play-head h3{font-size:16px}.free-play-head p{font-size:13px}}
+
+</style>
+    </head>
+    <body>
+        <div id="mobile-blocker">
+            <h2>물리 키보드로 체험해 주세요</h2>
+            <p>페르시아어 타이핑은 PC 또는 물리 키보드가 연결된 기기에서 가능합니다.<br>QR코드로 연 공유 결과 페이지는 휴대폰에서도 볼 수 있습니다.</p><a href="index.html">메인 페이지</a></div>
+        <div class="app-shell" id="appShell">
+            <header class="masthead">
+                <div>
+                    <h1>샤나메 타이핑 체험</h1>
+                    <p>로스탐과 소흐랍 · Rostam & Sohrab</p>
+                </div>
+                <div class="mast-actions"><button id="qrSetupBtn" type="button">QR 설정</button><button id="homeBtn" type="button">처음으로</button></div></header>
+            <main>
+                <section id="introScreen" class="screen active">
+                    <div class="eyebrow">SHAHNAMEH · PERSIAN LETTERS</div>
+                    <h2 class="intro-title">낯선 글자, 익숙한 말</h2>
+                    <p class="intro-lead">페르시아어를 처음 만나는 세 가지 일상 표현</p>
+                    <p class="subtext" style="margin:6px 0">한글·영문 키보드 그대로 사용해도 됩니다. 페르시아어 글자를 입력하고, 그 단어가 등장하는 『샤나메』의 시구에도 도전해 보세요.</p>
+                    <h3 class="choice-heading">어떤 말을 써볼까요?</h3>
+                    <div class="lesson-choices">
+                        <button class="lesson-choice" data-lesson="greeting" type="button"><span class="mini-label">01 · 인사할 때</span><span class="word-ko">안녕</span><span class="word-fa" lang="fa" dir="rtl">درود</span><span class="word-roman">도루드 · 인사와 축원</span></button>
+                        <button class="lesson-choice" data-lesson="thanks" type="button"><span class="mini-label">02 · 감사할 때</span><span class="word-ko">고마워</span><span class="word-fa" lang="fa" dir="rtl">سپاس</span><span class="word-roman">세파스 · 감사</span></button>
+                        <button class="lesson-choice" data-lesson="friend" type="button"><span class="mini-label">03 · 소중한 사람</span><span class="word-ko">친구</span><span class="word-fa" lang="fa" dir="rtl">دوست</span><span class="word-roman">두스트 · 친구</span></button>
+                    </div>
+                    <div class="free-play">
+                        <div class="free-play-head"><div><h3>글자 자유 탐색</h3><p>정답 없이 자판을 눌러보며 페르시아어가 오른쪽에서 왼쪽으로 이어지는 모습을 관찰해 보세요.</p></div><button class="btn outline" id="exploreToggle" type="button" aria-expanded="false">자유 탐색 시작</button></div>
+                        <div id="explorePanel" class="free-play-body" hidden>
+                            <div id="exploreOutput" class="free-play-output" lang="fa" dir="rtl" aria-label="탐색 중인 페르시아어 글자"> </div>
+                            <div class="free-play-controls"><small>물리 키보드 또는 화면 자판 이용 · Backspace로 지우기 · Space로 띄어쓰기</small><button class="btn secondary" id="exploreClear" type="button">모두 지우기</button></div>
+                            <div id="introKeyboardMount"></div>
+                        </div>
+                    </div>
+                    <div class="btn-row"><button class="btn secondary" id="skipBtn" type="button">로스탐과 소흐랍 본문 체험</button></div>
+                    <p id="dataStatus" class="info-note">세 가지 일상 단어와 기존 로스탐·소흐랍 본문을 선택해 체험할 수 있습니다.</p>
+                </section>
+                <section id="practiceScreen" class="screen">
+                    <div class="story-bar">
+                        <div class="story-name" id="storyName">『샤나메』 · 로스탐과 소흐랍</div><strong id="progressLabel">0 / 0 구절 완료</strong></div><div class="progress-track">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-label">완료 구절</div>
+                            <div class="stat-value" id="sCount">0</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">타수</div>
+                            <div class="stat-value" id="sCpm">0</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">정확도</div>
+                            <div class="stat-value" id="sAcc">100%</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">연습 시간</div>
+                            <div class="stat-value" id="sTime">0:00</div>
+                        </div>
+                    </div>
+                    <div class="paper">
+                        <div class="passage-heading">
+                            <h3 id="passageLabel">현재 구절</h3>
+                            <div id="practiceContext" class="scene-note hidden"></div>
+                        </div>
+                        <div class="text-top" id="practiceOriginal" lang="fa" dir="rtl"></div>
+                        <p id="practiceRomanization" class="romanization" dir="ltr"></p>
+                        <div class="text-bottom" id="practiceInput" lang="fa" dir="rtl"></div>
+                        <p class="translation" id="practiceTranslation"></p>
+                    </div>
+                    <p class="instruction" id="practiceHint">파란색으로 표시된 키를 누르세요.</p>
+                    <div id="practiceKeyboardMount"></div>
+                    <div id="completionBanner" class="status-banner hidden"></div>
+                    <div class="btn-row"><button class="btn gold" id="openShareBtn" disabled>공유 카드 만들기</button><button class="btn" id="nextBtn" disabled>다음 구절</button><button class="btn outline" id="resetBtn">처음부터 다시 하기</button></div><p class="info-note">공유 카드는 완료된 구절만 집계합니다. 현재 입력 중인 구절과 키보드 안내 화면은 그대로 유지됩니다.</p>
+                </section>
+            </main>
+        </div>
+        <!-- 이야기 상황 설명 전용 팝업: 학습용 4개 구절에서만 표시 -->
+        <div
+            id="sceneModal"
+            class="scene-modal hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="sceneModalTitle"
+            aria-describedby="sceneModalText"
+        >
+            <div class="scene-dialog">
+                <p class="scene-count" id="sceneModalCount"></p>
+                <h2 id="sceneModalTitle">이야기의 흐름</h2>
+                <p class="scene-description" id="sceneModalText"></p>
+                <button class="btn" id="sceneStartBtn" type="button">
+                    이야기 읽고 타이핑 시작하기
+                </button>
+            </div>
+        </div>
+
+        <div class="modal-cover" id="qrSettingsModal" role="dialog" aria-modal="true" aria-labelledby="qrSettingsTitle">
+          <div class="modal-inner">
+            <div class="modal-header"><h2 id="qrSettingsTitle">QR 결과 페이지 설정</h2><button class="btn secondary" id="qrSettingsClose" type="button">닫기</button></div>
+            <p class="info-note">GitHub Pages의 공개 <strong>result.html</strong> 주소를 등록하면 전시 노트북이 오프라인이어도 QR을 생성합니다. 스마트폰은 인터넷을 사용해 결과 페이지를 엽니다.</p>
+            <label for="qrResultURL">스마트폰 결과 페이지 HTTPS 주소</label><input id="qrResultURL" type="url" spellcheck="false" autocomplete="off" placeholder="https://계정명.github.io/shahnameh/result.html">
+            <p id="qrSettingStatus" class="info-note" role="status"></p>
+            <div class="btn-row"><button class="btn" id="qrSettingsSave" type="button">주소 저장</button></div>
+          </div>
+        </div>
+        <div class="modal-cover" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+            <div class="modal-inner">
+                <div class="modal-header">
+                    <h2 id="shareModalTitle">오늘의 샤나메 한 구절 · 공유 미리보기</h2><button class="btn secondary" id="shareCloseBtn">닫기</button></div><div class="share-layout">
+                    <div><img class="preview-img" id="sharePreview" alt="페르시아어 구절과 타이핑 기록이 담긴 카드" /><p class="info-note" id="shareMessage">이미지를 만드는 중...</p>
+                    </div>
+                    <div class="share-side"><button class="btn block" id="downloadBtn" disabled>PNG 저장 (1080 × 1350)</button><button class="btn secondary block" id="nativeShareBtn" hidden>이미지 공유</button><div><strong>휴대폰으로 가져가기</strong><p class="info-note">PC는 인터넷 연결 없이 QR을 생성합니다. 스마트폰은 인터넷을 사용해 결과 이미지를 저장합니다.</p>
+                        </div>
+                        <div class="qr-square" id="qrSquare"><span class="info-note">QR 생성 대기 중...</span></div><p id="qrInfo" class="info-note"></p></div>
+                </div>
+            </div>
+        </div>
+        <script>
+'use strict';
+const QRLocal=(()=>{const modules={"./QR8bitByte":function(module,exports,require){
+var QRMode = require('./QRMode');
+
+function QR8bitByte(data) {
+	this.mode = QRMode.MODE_8BIT_BYTE;
+	this.data = data;
+}
+
+QR8bitByte.prototype = {
+
+	getLength : function() {
+		return this.data.length;
+	},
+	
+	write : function(buffer) {
+		for (var i = 0; i < this.data.length; i++) {
+			// not JIS ...
+			buffer.put(this.data.charCodeAt(i), 8);
+		}
+	}
+};
+
+module.exports = QR8bitByte;
+
+},"./QRBitBuffer":function(module,exports,require){
+function QRBitBuffer() {
+	this.buffer = [];
+	this.length = 0;
+}
+
+QRBitBuffer.prototype = {
+
+	get : function(index) {
+		var bufIndex = Math.floor(index / 8);
+		return ( (this.buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+	},
+	
+	put : function(num, length) {
+		for (var i = 0; i < length; i++) {
+			this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+		}
+	},
+	
+	getLengthInBits : function() {
+		return this.length;
+	},
+	
+	putBit : function(bit) {
+	
+		var bufIndex = Math.floor(this.length / 8);
+		if (this.buffer.length <= bufIndex) {
+			this.buffer.push(0);
+		}
+	
+		if (bit) {
+			this.buffer[bufIndex] |= (0x80 >>> (this.length % 8) );
+		}
+	
+		this.length++;
+	}
+};
+
+module.exports = QRBitBuffer;
+
+},"./QRErrorCorrectLevel":function(module,exports,require){
+module.exports = {
+	L : 1,
+	M : 0,
+	Q : 3,
+	H : 2
+};
+
+
+},"./QRMaskPattern":function(module,exports,require){
+module.exports = {
+	PATTERN000 : 0,
+	PATTERN001 : 1,
+	PATTERN010 : 2,
+	PATTERN011 : 3,
+	PATTERN100 : 4,
+	PATTERN101 : 5,
+	PATTERN110 : 6,
+	PATTERN111 : 7
+};
+
+},"./QRMath":function(module,exports,require){
+var QRMath = {
+
+	glog : function(n) {
+	
+		if (n < 1) {
+			throw new Error("glog(" + n + ")");
+		}
+		
+		return QRMath.LOG_TABLE[n];
+	},
+	
+	gexp : function(n) {
+	
+		while (n < 0) {
+			n += 255;
+		}
+	
+		while (n >= 256) {
+			n -= 255;
+		}
+	
+		return QRMath.EXP_TABLE[n];
+	},
+	
+	EXP_TABLE : new Array(256),
+	
+	LOG_TABLE : new Array(256)
+
+};
+	
+for (var i = 0; i < 8; i++) {
+	QRMath.EXP_TABLE[i] = 1 << i;
+}
+for (var i = 8; i < 256; i++) {
+	QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4]
+		^ QRMath.EXP_TABLE[i - 5]
+		^ QRMath.EXP_TABLE[i - 6]
+		^ QRMath.EXP_TABLE[i - 8];
+}
+for (var i = 0; i < 255; i++) {
+	QRMath.LOG_TABLE[QRMath.EXP_TABLE[i] ] = i;
+}
+
+module.exports = QRMath;
+
+},"./QRMode":function(module,exports,require){
+module.exports = {
+    MODE_NUMBER :       1 << 0,
+    MODE_ALPHA_NUM :    1 << 1,
+    MODE_8BIT_BYTE :    1 << 2,
+    MODE_KANJI :        1 << 3
+};
+
+},"./QRPolynomial":function(module,exports,require){
+var QRMath = require('./QRMath');
+
+function QRPolynomial(num, shift) {
+	if (num.length === undefined) {
+		throw new Error(num.length + "/" + shift);
+	}
+
+	var offset = 0;
+
+	while (offset < num.length && num[offset] === 0) {
+		offset++;
+	}
+
+	this.num = new Array(num.length - offset + shift);
+	for (var i = 0; i < num.length - offset; i++) {
+		this.num[i] = num[i + offset];
+	}
+}
+
+QRPolynomial.prototype = {
+
+	get : function(index) {
+		return this.num[index];
+	},
+	
+	getLength : function() {
+		return this.num.length;
+	},
+	
+	multiply : function(e) {
+	
+		var num = new Array(this.getLength() + e.getLength() - 1);
+	
+		for (var i = 0; i < this.getLength(); i++) {
+			for (var j = 0; j < e.getLength(); j++) {
+				num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i) ) + QRMath.glog(e.get(j) ) );
+			}
+		}
+	
+		return new QRPolynomial(num, 0);
+	},
+	
+	mod : function(e) {
+	
+		if (this.getLength() - e.getLength() < 0) {
+			return this;
+		}
+	
+		var ratio = QRMath.glog(this.get(0) ) - QRMath.glog(e.get(0) );
+	
+		var num = new Array(this.getLength() );
+		
+		for (var i = 0; i < this.getLength(); i++) {
+			num[i] = this.get(i);
+		}
+		
+		for (var x = 0; x < e.getLength(); x++) {
+			num[x] ^= QRMath.gexp(QRMath.glog(e.get(x) ) + ratio);
+		}
+	
+		// recursive call
+		return new QRPolynomial(num, 0).mod(e);
+	}
+};
+
+module.exports = QRPolynomial;
+
+},"./QRRSBlock":function(module,exports,require){
+var QRErrorCorrectLevel = require('./QRErrorCorrectLevel');
+
+function QRRSBlock(totalCount, dataCount) {
+	this.totalCount = totalCount;
+	this.dataCount  = dataCount;
+}
+
+QRRSBlock.RS_BLOCK_TABLE = [
+
+	// L
+	// M
+	// Q
+	// H
+
+	// 1
+	[1, 26, 19],
+	[1, 26, 16],
+	[1, 26, 13],
+	[1, 26, 9],
+	
+	// 2
+	[1, 44, 34],
+	[1, 44, 28],
+	[1, 44, 22],
+	[1, 44, 16],
+
+	// 3
+	[1, 70, 55],
+	[1, 70, 44],
+	[2, 35, 17],
+	[2, 35, 13],
+
+	// 4		
+	[1, 100, 80],
+	[2, 50, 32],
+	[2, 50, 24],
+	[4, 25, 9],
+	
+	// 5
+	[1, 134, 108],
+	[2, 67, 43],
+	[2, 33, 15, 2, 34, 16],
+	[2, 33, 11, 2, 34, 12],
+	
+	// 6
+	[2, 86, 68],
+	[4, 43, 27],
+	[4, 43, 19],
+	[4, 43, 15],
+	
+	// 7		
+	[2, 98, 78],
+	[4, 49, 31],
+	[2, 32, 14, 4, 33, 15],
+	[4, 39, 13, 1, 40, 14],
+	
+	// 8
+	[2, 121, 97],
+	[2, 60, 38, 2, 61, 39],
+	[4, 40, 18, 2, 41, 19],
+	[4, 40, 14, 2, 41, 15],
+	
+	// 9
+	[2, 146, 116],
+	[3, 58, 36, 2, 59, 37],
+	[4, 36, 16, 4, 37, 17],
+	[4, 36, 12, 4, 37, 13],
+	
+	// 10		
+	[2, 86, 68, 2, 87, 69],
+	[4, 69, 43, 1, 70, 44],
+	[6, 43, 19, 2, 44, 20],
+	[6, 43, 15, 2, 44, 16],
+
+	// 11
+	[4, 101, 81],
+	[1, 80, 50, 4, 81, 51],
+	[4, 50, 22, 4, 51, 23],
+	[3, 36, 12, 8, 37, 13],
+
+	// 12
+	[2, 116, 92, 2, 117, 93],
+	[6, 58, 36, 2, 59, 37],
+	[4, 46, 20, 6, 47, 21],
+	[7, 42, 14, 4, 43, 15],
+
+	// 13
+	[4, 133, 107],
+	[8, 59, 37, 1, 60, 38],
+	[8, 44, 20, 4, 45, 21],
+	[12, 33, 11, 4, 34, 12],
+
+	// 14
+	[3, 145, 115, 1, 146, 116],
+	[4, 64, 40, 5, 65, 41],
+	[11, 36, 16, 5, 37, 17],
+	[11, 36, 12, 5, 37, 13],
+
+	// 15
+	[5, 109, 87, 1, 110, 88],
+	[5, 65, 41, 5, 66, 42],
+	[5, 54, 24, 7, 55, 25],
+	[11, 36, 12],
+
+	// 16
+	[5, 122, 98, 1, 123, 99],
+	[7, 73, 45, 3, 74, 46],
+	[15, 43, 19, 2, 44, 20],
+	[3, 45, 15, 13, 46, 16],
+
+	// 17
+	[1, 135, 107, 5, 136, 108],
+	[10, 74, 46, 1, 75, 47],
+	[1, 50, 22, 15, 51, 23],
+	[2, 42, 14, 17, 43, 15],
+
+	// 18
+	[5, 150, 120, 1, 151, 121],
+	[9, 69, 43, 4, 70, 44],
+	[17, 50, 22, 1, 51, 23],
+	[2, 42, 14, 19, 43, 15],
+
+	// 19
+	[3, 141, 113, 4, 142, 114],
+	[3, 70, 44, 11, 71, 45],
+	[17, 47, 21, 4, 48, 22],
+	[9, 39, 13, 16, 40, 14],
+
+	// 20
+	[3, 135, 107, 5, 136, 108],
+	[3, 67, 41, 13, 68, 42],
+	[15, 54, 24, 5, 55, 25],
+	[15, 43, 15, 10, 44, 16],
+
+	// 21
+	[4, 144, 116, 4, 145, 117],
+	[17, 68, 42],
+	[17, 50, 22, 6, 51, 23],
+	[19, 46, 16, 6, 47, 17],
+
+	// 22
+	[2, 139, 111, 7, 140, 112],
+	[17, 74, 46],
+	[7, 54, 24, 16, 55, 25],
+	[34, 37, 13],
+
+	// 23
+	[4, 151, 121, 5, 152, 122],
+	[4, 75, 47, 14, 76, 48],
+	[11, 54, 24, 14, 55, 25],
+	[16, 45, 15, 14, 46, 16],
+
+	// 24
+	[6, 147, 117, 4, 148, 118],
+	[6, 73, 45, 14, 74, 46],
+	[11, 54, 24, 16, 55, 25],
+	[30, 46, 16, 2, 47, 17],
+
+	// 25
+	[8, 132, 106, 4, 133, 107],
+	[8, 75, 47, 13, 76, 48],
+	[7, 54, 24, 22, 55, 25],
+	[22, 45, 15, 13, 46, 16],
+
+	// 26
+	[10, 142, 114, 2, 143, 115],
+	[19, 74, 46, 4, 75, 47],
+	[28, 50, 22, 6, 51, 23],
+	[33, 46, 16, 4, 47, 17],
+
+	// 27
+	[8, 152, 122, 4, 153, 123],
+	[22, 73, 45, 3, 74, 46],
+	[8, 53, 23, 26, 54, 24],
+	[12, 45, 15, 28, 46, 16],
+
+	// 28
+	[3, 147, 117, 10, 148, 118],
+	[3, 73, 45, 23, 74, 46],
+	[4, 54, 24, 31, 55, 25],
+	[11, 45, 15, 31, 46, 16],
+
+	// 29
+	[7, 146, 116, 7, 147, 117],
+	[21, 73, 45, 7, 74, 46],
+	[1, 53, 23, 37, 54, 24],
+	[19, 45, 15, 26, 46, 16],
+
+	// 30
+	[5, 145, 115, 10, 146, 116],
+	[19, 75, 47, 10, 76, 48],
+	[15, 54, 24, 25, 55, 25],
+	[23, 45, 15, 25, 46, 16],
+
+	// 31
+	[13, 145, 115, 3, 146, 116],
+	[2, 74, 46, 29, 75, 47],
+	[42, 54, 24, 1, 55, 25],
+	[23, 45, 15, 28, 46, 16],
+
+	// 32
+	[17, 145, 115],
+	[10, 74, 46, 23, 75, 47],
+	[10, 54, 24, 35, 55, 25],
+	[19, 45, 15, 35, 46, 16],
+
+	// 33
+	[17, 145, 115, 1, 146, 116],
+	[14, 74, 46, 21, 75, 47],
+	[29, 54, 24, 19, 55, 25],
+	[11, 45, 15, 46, 46, 16],
+
+	// 34
+	[13, 145, 115, 6, 146, 116],
+	[14, 74, 46, 23, 75, 47],
+	[44, 54, 24, 7, 55, 25],
+	[59, 46, 16, 1, 47, 17],
+
+	// 35
+	[12, 151, 121, 7, 152, 122],
+	[12, 75, 47, 26, 76, 48],
+	[39, 54, 24, 14, 55, 25],
+	[22, 45, 15, 41, 46, 16],
+
+	// 36
+	[6, 151, 121, 14, 152, 122],
+	[6, 75, 47, 34, 76, 48],
+	[46, 54, 24, 10, 55, 25],
+	[2, 45, 15, 64, 46, 16],
+
+	// 37
+	[17, 152, 122, 4, 153, 123],
+	[29, 74, 46, 14, 75, 47],
+	[49, 54, 24, 10, 55, 25],
+	[24, 45, 15, 46, 46, 16],
+
+	// 38
+	[4, 152, 122, 18, 153, 123],
+	[13, 74, 46, 32, 75, 47],
+	[48, 54, 24, 14, 55, 25],
+	[42, 45, 15, 32, 46, 16],
+
+	// 39
+	[20, 147, 117, 4, 148, 118],
+	[40, 75, 47, 7, 76, 48],
+	[43, 54, 24, 22, 55, 25],
+	[10, 45, 15, 67, 46, 16],
+
+	// 40
+	[19, 148, 118, 6, 149, 119],
+	[18, 75, 47, 31, 76, 48],
+	[34, 54, 24, 34, 55, 25],
+	[20, 45, 15, 61, 46, 16]
+];
+
+QRRSBlock.getRSBlocks = function(typeNumber, errorCorrectLevel) {
+	
+	var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+	
+	if (rsBlock === undefined) {
+		throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+	}
+
+	var length = rsBlock.length / 3;
+	
+	var list = [];
+	
+	for (var i = 0; i < length; i++) {
+
+		var count = rsBlock[i * 3 + 0];
+		var totalCount = rsBlock[i * 3 + 1];
+		var dataCount  = rsBlock[i * 3 + 2];
+
+		for (var j = 0; j < count; j++) {
+			list.push(new QRRSBlock(totalCount, dataCount) );	
+		}
+	}
+	
+	return list;
+};
+
+QRRSBlock.getRsBlockTable = function(typeNumber, errorCorrectLevel) {
+
+	switch(errorCorrectLevel) {
+	case QRErrorCorrectLevel.L :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+	case QRErrorCorrectLevel.M :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+	case QRErrorCorrectLevel.Q :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+	case QRErrorCorrectLevel.H :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+	default :
+		return undefined;
+	}
+};
+
+module.exports = QRRSBlock;
+
+},"./QRUtil":function(module,exports,require){
+var QRMode = require('./QRMode');
+var QRPolynomial = require('./QRPolynomial');
+var QRMath = require('./QRMath');
+var QRMaskPattern = require('./QRMaskPattern');
+
+var QRUtil = {
+
+    PATTERN_POSITION_TABLE : [
+        [],
+        [6, 18],
+        [6, 22],
+        [6, 26],
+        [6, 30],
+        [6, 34],
+        [6, 22, 38],
+        [6, 24, 42],
+        [6, 26, 46],
+        [6, 28, 50],
+        [6, 30, 54],        
+        [6, 32, 58],
+        [6, 34, 62],
+        [6, 26, 46, 66],
+        [6, 26, 48, 70],
+        [6, 26, 50, 74],
+        [6, 30, 54, 78],
+        [6, 30, 56, 82],
+        [6, 30, 58, 86],
+        [6, 34, 62, 90],
+        [6, 28, 50, 72, 94],
+        [6, 26, 50, 74, 98],
+        [6, 30, 54, 78, 102],
+        [6, 28, 54, 80, 106],
+        [6, 32, 58, 84, 110],
+        [6, 30, 58, 86, 114],
+        [6, 34, 62, 90, 118],
+        [6, 26, 50, 74, 98, 122],
+        [6, 30, 54, 78, 102, 126],
+        [6, 26, 52, 78, 104, 130],
+        [6, 30, 56, 82, 108, 134],
+        [6, 34, 60, 86, 112, 138],
+        [6, 30, 58, 86, 114, 142],
+        [6, 34, 62, 90, 118, 146],
+        [6, 30, 54, 78, 102, 126, 150],
+        [6, 24, 50, 76, 102, 128, 154],
+        [6, 28, 54, 80, 106, 132, 158],
+        [6, 32, 58, 84, 110, 136, 162],
+        [6, 26, 54, 82, 110, 138, 166],
+        [6, 30, 58, 86, 114, 142, 170]
+    ],
+
+    G15 : (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+    G18 : (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+    G15_MASK : (1 << 14) | (1 << 12) | (1 << 10)    | (1 << 4) | (1 << 1),
+
+    getBCHTypeInfo : function(data) {
+        var d = data << 10;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+            d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) ) );    
+        }
+        return ( (data << 10) | d) ^ QRUtil.G15_MASK;
+    },
+
+    getBCHTypeNumber : function(data) {
+        var d = data << 12;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+            d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) ) );    
+        }
+        return (data << 12) | d;
+    },
+
+    getBCHDigit : function(data) {
+
+        var digit = 0;
+
+        while (data !== 0) {
+            digit++;
+            data >>>= 1;
+        }
+
+        return digit;
+    },
+
+    getPatternPosition : function(typeNumber) {
+        return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+    },
+
+    getMask : function(maskPattern, i, j) {
+        
+        switch (maskPattern) {
+            
+        case QRMaskPattern.PATTERN000 : return (i + j) % 2 === 0;
+        case QRMaskPattern.PATTERN001 : return i % 2 === 0;
+        case QRMaskPattern.PATTERN010 : return j % 3 === 0;
+        case QRMaskPattern.PATTERN011 : return (i + j) % 3 === 0;
+        case QRMaskPattern.PATTERN100 : return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 === 0;
+        case QRMaskPattern.PATTERN101 : return (i * j) % 2 + (i * j) % 3 === 0;
+        case QRMaskPattern.PATTERN110 : return ( (i * j) % 2 + (i * j) % 3) % 2 === 0;
+        case QRMaskPattern.PATTERN111 : return ( (i * j) % 3 + (i + j) % 2) % 2 === 0;
+
+        default :
+            throw new Error("bad maskPattern:" + maskPattern);
+        }
+    },
+
+    getErrorCorrectPolynomial : function(errorCorrectLength) {
+
+        var a = new QRPolynomial([1], 0);
+
+        for (var i = 0; i < errorCorrectLength; i++) {
+            a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0) );
+        }
+
+        return a;
+    },
+
+    getLengthInBits : function(mode, type) {
+
+        if (1 <= type && type < 10) {
+
+            // 1 - 9
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 10;
+            case QRMode.MODE_ALPHA_NUM  : return 9;
+            case QRMode.MODE_8BIT_BYTE  : return 8;
+            case QRMode.MODE_KANJI      : return 8;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 27) {
+
+            // 10 - 26
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 12;
+            case QRMode.MODE_ALPHA_NUM  : return 11;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 10;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 41) {
+
+            // 27 - 40
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 14;
+            case QRMode.MODE_ALPHA_NUM  : return 13;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 12;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else {
+            throw new Error("type:" + type);
+        }
+    },
+
+    getLostPoint : function(qrCode) {
+        
+        var moduleCount = qrCode.getModuleCount();
+        var lostPoint = 0;
+        var row = 0; 
+        var col = 0;
+
+        
+        // LEVEL1
+        
+        for (row = 0; row < moduleCount; row++) {
+
+            for (col = 0; col < moduleCount; col++) {
+
+                var sameCount = 0;
+                var dark = qrCode.isDark(row, col);
+
+                for (var r = -1; r <= 1; r++) {
+
+                    if (row + r < 0 || moduleCount <= row + r) {
+                        continue;
+                    }
+
+                    for (var c = -1; c <= 1; c++) {
+
+                        if (col + c < 0 || moduleCount <= col + c) {
+                            continue;
+                        }
+
+                        if (r === 0 && c === 0) {
+                            continue;
+                        }
+
+                        if (dark === qrCode.isDark(row + r, col + c) ) {
+                            sameCount++;
+                        }
+                    }
+                }
+
+                if (sameCount > 5) {
+                    lostPoint += (3 + sameCount - 5);
+                }
+            }
+        }
+
+        // LEVEL2
+
+        for (row = 0; row < moduleCount - 1; row++) {
+            for (col = 0; col < moduleCount - 1; col++) {
+                var count = 0;
+                if (qrCode.isDark(row,     col    ) ) count++;
+                if (qrCode.isDark(row + 1, col    ) ) count++;
+                if (qrCode.isDark(row,     col + 1) ) count++;
+                if (qrCode.isDark(row + 1, col + 1) ) count++;
+                if (count === 0 || count === 4) {
+                    lostPoint += 3;
+                }
+            }
+        }
+
+        // LEVEL3
+
+        for (row = 0; row < moduleCount; row++) {
+            for (col = 0; col < moduleCount - 6; col++) {
+                if (qrCode.isDark(row, col) && 
+                        !qrCode.isDark(row, col + 1) && 
+                         qrCode.isDark(row, col + 2) && 
+                         qrCode.isDark(row, col + 3) && 
+                         qrCode.isDark(row, col + 4) && 
+                        !qrCode.isDark(row, col + 5) && 
+                         qrCode.isDark(row, col + 6) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount - 6; row++) {
+                if (qrCode.isDark(row, col) &&
+                        !qrCode.isDark(row + 1, col) &&
+                         qrCode.isDark(row + 2, col) &&
+                         qrCode.isDark(row + 3, col) &&
+                         qrCode.isDark(row + 4, col) &&
+                        !qrCode.isDark(row + 5, col) &&
+                         qrCode.isDark(row + 6, col) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        // LEVEL4
+        
+        var darkCount = 0;
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount; row++) {
+                if (qrCode.isDark(row, col) ) {
+                    darkCount++;
+                }
+            }
+        }
+        
+        var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+        lostPoint += ratio * 10;
+
+        return lostPoint;       
+    }
+
+};
+
+module.exports = QRUtil;
+
+},"./index":function(module,exports,require){
+//---------------------------------------------------------------------
+// QRCode for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//   http://www.opensource.org/licenses/mit-license.php
+//
+// The word "QR Code" is registered trademark of 
+// DENSO WAVE INCORPORATED
+//   http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+// Modified to work in node for this project (and some refactoring)
+//---------------------------------------------------------------------
+
+var QR8bitByte = require('./QR8bitByte');
+var QRUtil = require('./QRUtil');
+var QRPolynomial = require('./QRPolynomial');
+var QRRSBlock = require('./QRRSBlock');
+var QRBitBuffer = require('./QRBitBuffer');
+
+function QRCode(typeNumber, errorCorrectLevel) {
+	this.typeNumber = typeNumber;
+	this.errorCorrectLevel = errorCorrectLevel;
+	this.modules = null;
+	this.moduleCount = 0;
+	this.dataCache = null;
+	this.dataList = [];
+}
+
+QRCode.prototype = {
+	
+	addData : function(data) {
+		var newData = new QR8bitByte(data);
+		this.dataList.push(newData);
+		this.dataCache = null;
+	},
+	
+	isDark : function(row, col) {
+		if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+			throw new Error(row + "," + col);
+		}
+		return this.modules[row][col];
+	},
+
+	getModuleCount : function() {
+		return this.moduleCount;
+	},
+	
+	make : function() {
+		// Calculate automatically typeNumber if provided is < 1
+		if (this.typeNumber < 1 ){
+			var typeNumber = 1;
+			for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+				var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+
+				var buffer = new QRBitBuffer();
+				var totalDataCount = 0;
+				for (var i = 0; i < rsBlocks.length; i++) {
+					totalDataCount += rsBlocks[i].dataCount;
+				}
+
+				for (var x = 0; x < this.dataList.length; x++) {
+					var data = this.dataList[x];
+					buffer.put(data.mode, 4);
+					buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+					data.write(buffer);
+				}
+				if (buffer.getLengthInBits() <= totalDataCount * 8)
+					break;
+			}
+			this.typeNumber = typeNumber;
+		}
+		this.makeImpl(false, this.getBestMaskPattern() );
+	},
+	
+	makeImpl : function(test, maskPattern) {
+		
+		this.moduleCount = this.typeNumber * 4 + 17;
+		this.modules = new Array(this.moduleCount);
+		
+		for (var row = 0; row < this.moduleCount; row++) {
+			
+			this.modules[row] = new Array(this.moduleCount);
+			
+			for (var col = 0; col < this.moduleCount; col++) {
+				this.modules[row][col] = null;//(col + row) % 3;
+			}
+		}
+	
+		this.setupPositionProbePattern(0, 0);
+		this.setupPositionProbePattern(this.moduleCount - 7, 0);
+		this.setupPositionProbePattern(0, this.moduleCount - 7);
+		this.setupPositionAdjustPattern();
+		this.setupTimingPattern();
+		this.setupTypeInfo(test, maskPattern);
+		
+		if (this.typeNumber >= 7) {
+			this.setupTypeNumber(test);
+		}
+	
+		if (this.dataCache === null) {
+			this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+		}
+	
+		this.mapData(this.dataCache, maskPattern);
+	},
+
+	setupPositionProbePattern : function(row, col)  {
+		
+		for (var r = -1; r <= 7; r++) {
+			
+			if (row + r <= -1 || this.moduleCount <= row + r) continue;
+			
+			for (var c = -1; c <= 7; c++) {
+				
+				if (col + c <= -1 || this.moduleCount <= col + c) continue;
+				
+				if ( (0 <= r && r <= 6 && (c === 0 || c === 6) ) || 
+                     (0 <= c && c <= 6 && (r === 0 || r === 6) ) || 
+                     (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+					this.modules[row + r][col + c] = true;
+				} else {
+					this.modules[row + r][col + c] = false;
+				}
+			}		
+		}		
+	},
+	
+	getBestMaskPattern : function() {
+	
+		var minLostPoint = 0;
+		var pattern = 0;
+	
+		for (var i = 0; i < 8; i++) {
+			
+			this.makeImpl(true, i);
+	
+			var lostPoint = QRUtil.getLostPoint(this);
+	
+			if (i === 0 || minLostPoint >  lostPoint) {
+				minLostPoint = lostPoint;
+				pattern = i;
+			}
+		}
+	
+		return pattern;
+	},
+	
+	createMovieClip : function(target_mc, instance_name, depth) {
+	
+		var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
+		var cs = 1;
+	
+		this.make();
+
+		for (var row = 0; row < this.modules.length; row++) {
+			
+			var y = row * cs;
+			
+			for (var col = 0; col < this.modules[row].length; col++) {
+	
+				var x = col * cs;
+				var dark = this.modules[row][col];
+			
+				if (dark) {
+					qr_mc.beginFill(0, 100);
+					qr_mc.moveTo(x, y);
+					qr_mc.lineTo(x + cs, y);
+					qr_mc.lineTo(x + cs, y + cs);
+					qr_mc.lineTo(x, y + cs);
+					qr_mc.endFill();
+				}
+			}
+		}
+		
+		return qr_mc;
+	},
+
+	setupTimingPattern : function() {
+		
+		for (var r = 8; r < this.moduleCount - 8; r++) {
+			if (this.modules[r][6] !== null) {
+				continue;
+			}
+			this.modules[r][6] = (r % 2 === 0);
+		}
+	
+		for (var c = 8; c < this.moduleCount - 8; c++) {
+			if (this.modules[6][c] !== null) {
+				continue;
+			}
+			this.modules[6][c] = (c % 2 === 0);
+		}
+	},
+	
+	setupPositionAdjustPattern : function() {
+	
+		var pos = QRUtil.getPatternPosition(this.typeNumber);
+		
+		for (var i = 0; i < pos.length; i++) {
+		
+			for (var j = 0; j < pos.length; j++) {
+			
+				var row = pos[i];
+				var col = pos[j];
+				
+				if (this.modules[row][col] !== null) {
+					continue;
+				}
+				
+				for (var r = -2; r <= 2; r++) {
+				
+					for (var c = -2; c <= 2; c++) {
+					
+						if (Math.abs(r) === 2 || 
+                            Math.abs(c) === 2 ||
+                            (r === 0 && c === 0) ) {
+							this.modules[row + r][col + c] = true;
+						} else {
+							this.modules[row + r][col + c] = false;
+						}
+					}
+				}
+			}
+		}
+	},
+	
+	setupTypeNumber : function(test) {
+	
+		var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+        var mod;
+	
+		for (var i = 0; i < 18; i++) {
+			mod = (!test && ( (bits >> i) & 1) === 1);
+			this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+		}
+	
+		for (var x = 0; x < 18; x++) {
+			mod = (!test && ( (bits >> x) & 1) === 1);
+			this.modules[x % 3 + this.moduleCount - 8 - 3][Math.floor(x / 3)] = mod;
+		}
+	},
+	
+	setupTypeInfo : function(test, maskPattern) {
+	
+		var data = (this.errorCorrectLevel << 3) | maskPattern;
+		var bits = QRUtil.getBCHTypeInfo(data);
+        var mod;
+	
+		// vertical		
+		for (var v = 0; v < 15; v++) {
+	
+			mod = (!test && ( (bits >> v) & 1) === 1);
+	
+			if (v < 6) {
+				this.modules[v][8] = mod;
+			} else if (v < 8) {
+				this.modules[v + 1][8] = mod;
+			} else {
+				this.modules[this.moduleCount - 15 + v][8] = mod;
+			}
+		}
+	
+		// horizontal
+		for (var h = 0; h < 15; h++) {
+	
+			mod = (!test && ( (bits >> h) & 1) === 1);
+			
+			if (h < 8) {
+				this.modules[8][this.moduleCount - h - 1] = mod;
+			} else if (h < 9) {
+				this.modules[8][15 - h - 1 + 1] = mod;
+			} else {
+				this.modules[8][15 - h - 1] = mod;
+			}
+		}
+	
+		// fixed module
+		this.modules[this.moduleCount - 8][8] = (!test);
+	
+	},
+	
+	mapData : function(data, maskPattern) {
+		
+		var inc = -1;
+		var row = this.moduleCount - 1;
+		var bitIndex = 7;
+		var byteIndex = 0;
+		
+		for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+	
+			if (col === 6) col--;
+	
+			while (true) {
+	
+				for (var c = 0; c < 2; c++) {
+					
+					if (this.modules[row][col - c] === null) {
+						
+						var dark = false;
+	
+						if (byteIndex < data.length) {
+							dark = ( ( (data[byteIndex] >>> bitIndex) & 1) === 1);
+						}
+	
+						var mask = QRUtil.getMask(maskPattern, row, col - c);
+	
+						if (mask) {
+							dark = !dark;
+						}
+						
+						this.modules[row][col - c] = dark;
+						bitIndex--;
+	
+						if (bitIndex === -1) {
+							byteIndex++;
+							bitIndex = 7;
+						}
+					}
+				}
+								
+				row += inc;
+	
+				if (row < 0 || this.moduleCount <= row) {
+					row -= inc;
+					inc = -inc;
+					break;
+				}
+			}
+		}
+		
+	}
+
+};
+
+QRCode.PAD0 = 0xEC;
+QRCode.PAD1 = 0x11;
+
+QRCode.createData = function(typeNumber, errorCorrectLevel, dataList) {
+	
+	var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+	
+	var buffer = new QRBitBuffer();
+	
+	for (var i = 0; i < dataList.length; i++) {
+		var data = dataList[i];
+		buffer.put(data.mode, 4);
+		buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+		data.write(buffer);
+	}
+
+	// calc num max data.
+	var totalDataCount = 0;
+	for (var x = 0; x < rsBlocks.length; x++) {
+		totalDataCount += rsBlocks[x].dataCount;
+	}
+
+	if (buffer.getLengthInBits() > totalDataCount * 8) {
+		throw new Error("code length overflow. (" + 
+            buffer.getLengthInBits() + 
+            ">" +  
+            totalDataCount * 8 + 
+            ")");
+	}
+
+	// end code
+	if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+		buffer.put(0, 4);
+	}
+
+	// padding
+	while (buffer.getLengthInBits() % 8 !== 0) {
+		buffer.putBit(false);
+	}
+
+	// padding
+	while (true) {
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD0, 8);
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD1, 8);
+	}
+
+	return QRCode.createBytes(buffer, rsBlocks);
+};
+
+QRCode.createBytes = function(buffer, rsBlocks) {
+
+	var offset = 0;
+	
+	var maxDcCount = 0;
+	var maxEcCount = 0;
+	
+	var dcdata = new Array(rsBlocks.length);
+	var ecdata = new Array(rsBlocks.length);
+	
+	for (var r = 0; r < rsBlocks.length; r++) {
+
+		var dcCount = rsBlocks[r].dataCount;
+		var ecCount = rsBlocks[r].totalCount - dcCount;
+
+		maxDcCount = Math.max(maxDcCount, dcCount);
+		maxEcCount = Math.max(maxEcCount, ecCount);
+		
+		dcdata[r] = new Array(dcCount);
+		
+		for (var i = 0; i < dcdata[r].length; i++) {
+			dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+		}
+		offset += dcCount;
+		
+		var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+		var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+		var modPoly = rawPoly.mod(rsPoly);
+		ecdata[r] = new Array(rsPoly.getLength() - 1);
+		for (var x = 0; x < ecdata[r].length; x++) {
+            var modIndex = x + modPoly.getLength() - ecdata[r].length;
+			ecdata[r][x] = (modIndex >= 0)? modPoly.get(modIndex) : 0;
+		}
+
+	}
+	
+	var totalCodeCount = 0;
+	for (var y = 0; y < rsBlocks.length; y++) {
+		totalCodeCount += rsBlocks[y].totalCount;
+	}
+
+	var data = new Array(totalCodeCount);
+	var index = 0;
+
+	for (var z = 0; z < maxDcCount; z++) {
+		for (var s = 0; s < rsBlocks.length; s++) {
+			if (z < dcdata[s].length) {
+				data[index++] = dcdata[s][z];
+			}
+		}
+	}
+
+	for (var xx = 0; xx < maxEcCount; xx++) {
+		for (var t = 0; t < rsBlocks.length; t++) {
+			if (xx < ecdata[t].length) {
+				data[index++] = ecdata[t][xx];
+			}
+		}
+	}
+
+	return data;
+
+};
+
+module.exports = QRCode;
+
+}};const cache={};function load(id){if(cache[id])return cache[id].exports;const module={exports:{}};cache[id]=module;modules[id](module,module.exports,load);return module.exports;}return load("./index");})();
+// ========================================================================
+// 첫 행은 헤더. 시트에 '로스탐과 소흐랍' 구절이 들어 있어야 합니다.
+// STORY_CATEGORY가 빈 문자열이면 CSV의 모든 구절을 원래 순서대로 사용합니다.
+// 다른 콘텐츠가 같은 시트에 있으면 STORY_CATEGORY에 정확한 카테고리명을 입력하세요.
+// ========================================================================
+// ============================================================
+// 샤나메: 로스탐과 소흐랍
+// 타이핑에 사용할 구절을 순서대로 입력합니다.
+// ============================================================
+
+const STORY_DATA = [
+    {
+        id: 'rs-174',
+        c: '로스탐과 소흐랍',
+        p: 'خنجر رستم برق زد',
+        k: '로스탐의 단검이 번뜩였다.'
+    },
+    {
+        id: 'rs-175',
+        c: '로스탐과 소흐랍',
+        p: 'رستم به پهلوی سهراب خنجر زد',
+        k: '로스탐은 소흐랍의 옆구리에 단검을 찔러 넣었다.'
+    },
+    {
+        id: 'rs-185',
+        c: '로스탐과 소흐랍',
+        p: 'اگه پدرم بفهمه، تو رو زنده نمی ذاره!',
+        k: '"내 아버지가 이 사실을 알면 널 살려두지 않을 거다!"'
+    },
+    {
+        id: 'rs-187',
+        c: '로스탐과 소흐랍',
+        p: 'کسی هم برد سوی رستم نشان',
+        k: '"누군가는 로스탐에게 이 일을 전하겠지."'
+    },
+    {
+        id: 'rs-188',
+        c: '로스탐과 소흐랍',
+        p: 'چو بشنید رستم سرش خیره گشت',
+        k: '그 말을 들은 로스탐은 정신이 아득해졌다.'
+    },
+    {
+        id: 'rs-194',
+        c: '로스탐과 소흐랍',
+        p: 'رستم منم!',
+        k: '"내가 바로 로스탐이다!"'
+    },
+    {
+        id: 'rs-195',
+        c: '로스탐과 소흐랍',
+        p: 'سهراب گفت، پدر تویی؟',
+        k: '소흐랍이 물었다. "아버지... 당신이 제 아버지인가요?"'
+    },
+    {
+        id: 'rs-199',
+        c: '로스탐과 소흐랍',
+        p: 'به بازوم بر مهره خود نگر',
+        k: '"제 팔에 있는, 당신이 남겨 주신 징표를 보십시오."'
+    },
+    {
+        id: 'rs-201',
+        c: '로스탐과 소흐랍',
+        p: 'رستم فریاد زد، سهرابم! با دست خودم کشتمت!',
+        k: '로스탐이 울부짖었다. "소흐랍아! 내가 내 손으로 너를 죽였구나!"'
+    },
+    {
+        id: 'rs-214',
+        c: '로스탐과 소흐랍',
+        p: 'رستم پیکر سهراب را در آغوش گرفت',
+        k: '로스탐은 소흐랍의 시신을 품에 끌어안았다.'
+    }
+];
+
+
+// 신규 입문 문구: 기존 STORY_DATA와 입력 로직은 유지하고 문구 목록만 전환합니다.
+// 각 원문 한 행은 『샤나메』에서 그대로 발췌한 문장입니다.
+const INTRO_LESSONS = {
+    greeting: {label:'안녕 · درود', entries:[
+        {id:'intro-greeting-word',c:'일상 페르시아어',p:'درود',k:'안녕 · 인사와 축원'},
+        {id:'intro-greeting-phrase',c:'『샤나메』',p:'درود فریدون',k:'페레이둔의 인사'},
+        {id:'intro-greeting-line',c:'『샤나메』',p:'درود فریدون فرخ دهم',k:'복된 페레이둔의 인사를 전합니다.'}
+    ]},
+    thanks: {label:'고마워 · سپاس', entries:[
+        {id:'intro-thanks-word',c:'일상 페르시아어',p:'سپاس',k:'고마워 · 감사'},
+        {id:'intro-thanks-phrase',c:'『샤나메』',p:'به بخشش سپاس',k:'베푼 은혜에 감사'},
+        {id:'intro-thanks-line',c:'『샤나메』',p:'ز بهرام دارم به بخشش سپاس',k:'바흐람이 베푼 은혜에 감사드립니다.'}
+    ]},
+    friend: {label:'친구 · دوست', entries:[
+        {id:'intro-friend-word',c:'일상 페르시아어',p:'دوست',k:'친구'},
+        {id:'intro-friend-phrase',c:'『샤나메』',p:'مهربان دوست',k:'다정한 친구'},
+        {id:'intro-friend-line',c:'『샤나메』',p:'به شهرم یکی مهربان دوست بود',k:'내가 사는 고장에는 다정한 친구가 있었습니다.'}
+    ]}
+};
+const INTRO_NOTES = {
+    'intro-greeting-word':{roman:'dorud',keyword:{fa:'درود',roman:'dorud',meaning:'인사'}},
+    'intro-greeting-phrase':{roman:'dorud-e Fereydun',keyword:{fa:'درود',roman:'dorud',meaning:'인사'}},
+    'intro-greeting-line':{roman:'dorud-e Fereydun-e farrokh daham',keyword:{fa:'درود',roman:'dorud',meaning:'인사'}},
+    'intro-thanks-word':{roman:'sepâs',keyword:{fa:'سپاس',roman:'sepâs',meaning:'감사'}},
+    'intro-thanks-phrase':{roman:'be bakhshesh sepâs',keyword:{fa:'سپاس',roman:'sepâs',meaning:'감사'}},
+    'intro-thanks-line':{roman:'ze Bahrâm dâram be bakhshesh sepâs',keyword:{fa:'سپاس',roman:'sepâs',meaning:'감사'}},
+    'intro-friend-word':{roman:'dust',keyword:{fa:'دوست',roman:'dust',meaning:'친구'}},
+    'intro-friend-phrase':{roman:'mehrabân dust',keyword:{fa:'دوست',roman:'dust',meaning:'친구'}},
+    'intro-friend-line':{roman:'be shahr-am yeki mehrabân dust bud',keyword:{fa:'دوست',roman:'dust',meaning:'친구'}}
+};
+// ============================================================
+// 학습용 보조 데이터: 원문(STORY_DATA)과 완전히 분리되어 있습니다.
+// roman   : 쉬운 로마자 발음 표기 (학술적 전사 아님)
+// keyword : 구절 완료 후 표시할 핵심 단어 하나
+// scene   : 이야기 전환점(1, 3, 6, 9번째)에서만 표시
+// ============================================================
+const LESSON_NOTES = {
+    'rs-174': {
+        roman: 'khanjar-e Rostam barq zad',
+        keyword: {
+            fa: 'خنجر',
+            roman: 'khanjar',
+            meaning: '단검'
+        },
+        scene: '로스탐과 소흐랍은 사실 아버지와 아들입니다. 그러나 서로를 알아보지 못한 채 전장에서 적으로 마주합니다.'
+    },
+    'rs-175': {
+        roman: 'Rostam be pahlu-ye Sohrab khanjar zad',
+        keyword: {
+            fa: 'پهلوی',
+            roman: 'pahlu-ye',
+            meaning: '옆구리(의)'
+        }
+    },
+    'rs-185': {
+        roman: 'age pedaram befahme, to ro zende nemizare!',
+        keyword: {
+            fa: 'پدرم',
+            roman: 'pedaram',
+            meaning: '내 아버지'
+        },
+        scene: '치명상을 입은 소흐랍이, 자신을 찌른 전사에게 아버지의 복수를 경고합니다.'
+    },
+    'rs-187': {
+        roman: 'kasi ham bord su-ye Rostam neshan',
+        keyword: {
+            fa: 'نشان',
+            roman: 'neshan',
+            meaning: '징표, 소식'
+        }
+    },
+    'rs-188': {
+        roman: 'cho beshnid Rostam sarash khire gasht',
+        keyword: {
+            fa: 'بشنید',
+            roman: 'beshnid',
+            meaning: '들었다'
+        }
+    },
+    'rs-194': {
+        roman: 'Rostam manam!',
+        keyword: {
+            fa: 'منم',
+            roman: 'manam',
+            meaning: '내가 ~이다'
+        },
+        scene: '아버지의 이름을 들은 로스탐이 충격에 빠지고, 마침내 자신의 정체를 밝힙니다.'
+    },
+    'rs-195': {
+        roman: 'Sohrab goft, pedar toyi?',
+        keyword: {
+            fa: 'پدر',
+            roman: 'pedar',
+            meaning: '아버지'
+        }
+    },
+    'rs-199': {
+        roman: 'be bazum bar mohre-ye khod negar',
+        keyword: {
+            fa: 'مهره',
+            roman: 'mohre',
+            meaning: '징표'
+        }
+    },
+    'rs-201': {
+        roman: 'Rostam faryad zad, Sohrabam! ba dast-e khodam koshtamet!',
+        keyword: {
+            fa: 'فریاد',
+            roman: 'faryad',
+            meaning: '외침, 고함'
+        },
+        scene: '팔의 징표로 진실을 깨달은 로스탐. 자신의 손으로 아들을 찔렀다는 사실에 절규합니다.'
+    },
+    'rs-214': {
+        roman: 'Rostam peykar-e Sohrab ra dar aghush gereft',
+        keyword: {
+            fa: 'آغوش',
+            roman: 'aghush',
+            meaning: '품, 포옹'
+        }
+    }
+};
+
+Object.assign(LESSON_NOTES, INTRO_NOTES);
+const TUTORIAL_TEXT = 'سلام';
+// ========================================================================
+
+const kbLayout = [
+    [
+        {
+            id: 'Backquote',
+            p: '÷',
+            s: '~',
+            e: '`',
+            z: 'l-pinky'
+        },
+        {
+            id: 'Digit1',
+            p: '۱',
+            s: '!',
+            e: '1',
+            z: 'l-pinky'
+        },
+        {
+            id: 'Digit2',
+            p: '۲',
+            s: '٫',
+            e: '2',
+            z: 'l-ring'
+        },
+        {
+            id: 'Digit3',
+            p: '۳',
+            s: '٬',
+            e: '3',
+            z: 'l-mid'
+        },
+        {
+            id: 'Digit4',
+            p: '۴',
+            s: '﷼',
+            e: '4',
+            z: 'l-index'
+        },
+        {
+            id: 'Digit5',
+            p: '۵',
+            s: '٪',
+            e: '5',
+            z: 'l-index'
+        },
+        {
+            id: 'Digit6',
+            p: '۶',
+            s: '×',
+            e: '6',
+            z: 'r-index'
+        },
+        {
+            id: 'Digit7',
+            p: '۷',
+            s: '،',
+            e: '7',
+            z: 'r-index'
+        },
+        {
+            id: 'Digit8',
+            p: '۸',
+            s: '*',
+            e: '8',
+            z: 'r-mid'
+        },
+        {
+            id: 'Digit9',
+            p: '۹',
+            s: ')',
+            e: '9',
+            z: 'r-ring'
+        },
+        {
+            id: 'Digit0',
+            p: '۰',
+            s: '(',
+            e: '0',
+            z: 'r-pinky'
+        },
+        {
+            id: 'Minus',
+            p: '-',
+            s: 'ـ',
+            e: '-',
+            z: 'r-pinky'
+        },
+        {
+            id: 'Equal',
+            p: '=',
+            s: '+',
+            e: '=',
+            z: 'r-pinky'
+        },
+        {
+            id: 'Backspace',
+            p: 'Back',
+            e: '',
+            z: 'special',
+            cls: 'backspace-key'
+        }
+    ],
+    [
+        {
+            id: 'Tab',
+            p: 'Tab',
+            e: '',
+            z: 'special',
+            cls: 'tab-key'
+        },
+        {
+            id: 'KeyQ',
+            p: 'ض',
+            s: 'ْ',
+            e: 'ㅂ',
+            z: 'l-pinky'
+        },
+        {
+            id: 'KeyW',
+            p: 'ص',
+            s: 'ٌ',
+            e: 'ㅈ',
+            z: 'l-ring'
+        },
+        {
+            id: 'KeyE',
+            p: 'ث',
+            s: 'ٍ',
+            e: 'ㄷ',
+            z: 'l-mid'
+        },
+        {
+            id: 'KeyR',
+            p: 'ق',
+            s: 'ً',
+            e: 'ㄱ',
+            z: 'l-index'
+        },
+        {
+            id: 'KeyT',
+            p: 'ف',
+            s: 'ُ',
+            e: 'ㅅ',
+            z: 'l-index'
+        },
+        {
+            id: 'KeyY',
+            p: 'غ',
+            s: 'ِ',
+            e: 'ㅛ',
+            z: 'r-index'
+        },
+        {
+            id: 'KeyU',
+            p: 'ع',
+            s: 'َ',
+            e: 'ㅕ',
+            z: 'r-index'
+        },
+        {
+            id: 'KeyI',
+            p: 'ه',
+            s: 'ّ',
+            e: 'ㅑ',
+            z: 'r-mid'
+        },
+        {
+            id: 'KeyO',
+            p: 'خ',
+            s: ']',
+            e: 'ㅐ',
+            z: 'r-ring'
+        },
+        {
+            id: 'KeyP',
+            p: 'ح',
+            s: '[',
+            e: 'ㅔ',
+            z: 'r-pinky'
+        },
+        {
+            id: 'BracketLeft',
+            p: 'ج',
+            s: '}',
+            e: '[',
+            z: 'r-pinky'
+        },
+        {
+            id: 'BracketRight',
+            p: 'چ',
+            s: '{',
+            e: ']',
+            z: 'r-pinky'
+        },
+        {
+            id: 'Backslash',
+            p: '\\',
+            s: '|',
+            e: '₩',
+            z: 'r-pinky'
+        }
+    ],
+    [
+        {
+            id: 'CapsLock',
+            p: 'Caps',
+            e: '',
+            z: 'special',
+            cls: 'caps-key'
+        },
+        {
+            id: 'KeyA',
+            p: 'ش',
+            s: 'ؤ',
+            e: 'ㅁ',
+            z: 'l-pinky'
+        },
+        {
+            id: 'KeyS',
+            p: 'س',
+            s: 'ئ',
+            e: 'ㄴ',
+            z: 'l-ring'
+        },
+        {
+            id: 'KeyD',
+            p: 'ی',
+            s: 'ي',
+            e: 'ㅇ',
+            z: 'l-mid'
+        },
+        {
+            id: 'KeyF',
+            p: 'ب',
+            s: 'إ',
+            e: 'ㄹ',
+            z: 'l-index'
+        },
+        {
+            id: 'KeyG',
+            p: 'ل',
+            s: 'أ',
+            e: 'ㅎ',
+            z: 'l-index'
+        },
+        {
+            id: 'KeyH',
+            p: 'ا',
+            s: 'آ',
+            e: 'ㅗ',
+            z: 'r-index'
+        },
+        {
+            id: 'KeyJ',
+            p: 'ت',
+            s: 'ة',
+            e: 'ㅓ',
+            z: 'r-index'
+        },
+        {
+            id: 'KeyK',
+            p: 'ن',
+            s: '»',
+            e: 'ㅏ',
+            z: 'r-mid'
+        },
+        {
+            id: 'KeyL',
+            p: 'م',
+            s: '«',
+            e: 'ㅣ',
+            z: 'r-ring'
+        },
+        {
+            id: 'Semicolon',
+            p: 'ک',
+            s: ':',
+            e: ';',
+            z: 'r-pinky'
+        },
+        {
+            id: 'Quote',
+            p: 'گ',
+            s: '"',
+            e: '\'',
+            z: 'r-pinky'
+        },
+        {
+            id: 'Enter',
+            p: 'Enter',
+            e: '',
+            z: 'special',
+            cls: 'enter-key'
+        }
+    ],
+    [
+        {
+            id: 'ShiftLeft',
+            p: 'Shift',
+            e: '',
+            z: 'special',
+            cls: 'shift-l-key'
+        },
+        {
+            id: 'KeyZ',
+            p: 'ظ',
+            s: 'ك',
+            e: 'ㅋ',
+            z: 'l-pinky'
+        },
+        {
+            id: 'KeyX',
+            p: 'ط',
+            s: 'ٓ',
+            e: 'ㅌ',
+            z: 'l-ring'
+        },
+        {
+            id: 'KeyC',
+            p: 'ز',
+            s: 'ژ',
+            e: 'ㅊ',
+            z: 'l-mid'
+        },
+        {
+            id: 'KeyV',
+            p: 'ر',
+            s: 'ٰ',
+            e: 'ㅍ',
+            z: 'l-index'
+        },
+        {
+            id: 'KeyB',
+            p: 'ذ',
+            s: '‌',
+            e: 'ㅠ',
+            z: 'l-index'
+        },
+        {
+            id: 'KeyN',
+            p: 'د',
+            s: 'ٔ',
+            e: 'ㅜ',
+            z: 'r-index'
+        },
+        {
+            id: 'KeyM',
+            p: 'پ',
+            s: 'ء',
+            e: 'ㅡ',
+            z: 'r-index'
+        },
+        {
+            id: 'Comma',
+            p: 'و',
+            s: '<',
+            e: ',',
+            z: 'r-mid'
+        },
+        {
+            id: 'Period',
+            p: '.',
+            s: '>',
+            e: '.',
+            z: 'r-ring'
+        },
+        {
+            id: 'Slash',
+            p: '/',
+            s: '؟',
+            e: '/',
+            z: 'r-pinky'
+        },
+        {
+            id: 'ShiftRight',
+            p: 'Shift',
+            e: '',
+            z: 'special',
+            cls: 'shift-r-key'
+        }
+    ]
+];
+const charToKeyId = Object.create(null), isShiftCharMap = Object.create(null);
+let story = [], screen = 'intro', mode = 'intro', input = [], charList = [], currentIndex = 0, completed = [], totalAt = 0, correctAt = 0;
+let currentAttempts = 0, currentCorrect = 0, elapsedMs = 0, activeStartedAt = null, everStarted = false;
+let hasCompletedCurrent = false, shareSnapshot = null, shareImageUrl = null, shareBlob = null;
+let isShiftDown = false, isRendering = false;
+let currentLesson = null, explorationOpen = false, explorationChars = [];
+const DEFAULT_RESULT_URL = ''; // GitHub Pages /shahnameh/result.html 주소로 바꿔도 됩니다.
+let resultURL = DEFAULT_RESULT_URL;
+try { resultURL = localStorage.getItem('shahnameh-mobile-result-url') || DEFAULT_RESULT_URL; } catch (_) {}
+const el = id => document.getElementById(id);
+const fmtMs = ms => {
+    const sec = ms > 0 ? Math.max(1, Math.floor(ms / 1000)) : 0;
+    return `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
+};
+const normalizeChar = s => {
+    if (!s) return s;
+    const map = {
+        'ي': 'ی',
+        'ك': 'ک',
+        '٠': '۰',
+        '١': '۱',
+        '٢': '۲',
+        '٣': '۳',
+        '٤': '۴',
+        '٥': '۵',
+        '٦': '۶',
+        '٧': '۷',
+        '٨': '۸',
+        '٩': '۹',
+        '0': '۰',
+        '1': '۱',
+        '2': '۲',
+        '3': '۳',
+        '4': '۴',
+        '5': '۵',
+        '6': '۶',
+        '7': '۷',
+        '8': '۸',
+        '9': '۹'
+    };
+    return Array.from(s).map(c => map[c] || c).join('').normalize('NFC');
+};
+function parseCsv(s) {
+    let rows = [], row = [], cell = '', quoted = false;
+    for (let i = 0; i < s.length; i++) {
+        const c = s[i];
+        if (quoted) {
+            if (c === '"' && s[i + 1] === '"') {
+                cell += '"';
+                i++;
+            } else if (c === '"') quoted = false; else cell += c;
+        } else if (c === '"') {
+            quoted = true;
+        } else if (c === ',') {
+            row.push(cell);
+            cell = '';
+        } else if (c === '\n' || c === '\r') {
+            row.push(cell);
+            cell = '';
+            if (row.some(v => v.trim())) rows.push(row);
+            row = [];
+            if (c === '\r' && s[i + 1] === '\n') i++;
+        } else cell += c;
+    }
+    row.push(cell);
+    if (row.some(v => v.trim())) rows.push(row);
+    return rows;
+}
+function hashText(s) {
+    let h = 2166136261;
+    for (let i = 0; i < s.length; i++) {
+        h ^= s.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+    }
+    return (h >>> 0).toString(36);
+}
+async function loadStory() {
+    if (STORY_DATA.length === 0) {
+        throw new Error('등록된 샤나메 구절이 없습니다.');
+    }
+
+    return STORY_DATA;
+}
+function show(screenName) {
+    screen = screenName;
+    el('introScreen').classList.toggle('active', screenName === 'intro');
+    el('practiceScreen').classList.toggle('active', screenName === 'practice');
+}
+function mountKeyboard() {
+    const area = document.createElement('div');
+    area.className = 'keyboard-wrap';
+    const inner = document.createElement('div');
+    inner.className = 'keyboard-inner';
+    const kb = document.createElement('div');
+    kb.className = 'keyboard-area';
+    kb.id = 'keyboard';
+    for (const row of kbLayout) {
+        const r = document.createElement('div');
+        r.className = 'key-row';
+        for (const k of row) {
+            const key = document.createElement('div');
+            key.id = 'key-' + k.id;
+            key.className = `key zone-${k.z} ${k.cls || ''}`;
+            if (k.z === 'special') key.textContent = k.p; else {
+                const kor = document.createElement('span');
+                kor.className = 'kor';
+                kor.textContent = k.e || '';
+                const ch = document.createElement('span');
+                ch.className = 'p-char';
+                ch.textContent = k.p;
+                key.append(kor, ch);
+                charToKeyId[k.p] = k.id;
+                isShiftCharMap[k.p] = false;
+                if (k.s) {
+                    charToKeyId[k.s] = k.id;
+                    isShiftCharMap[k.s] = true;
+                }
+            }
+            r.appendChild(key);
+        }
+        kb.appendChild(r);
+    }
+    const sr = document.createElement('div');
+    sr.className = 'key-row';
+    const sp = document.createElement('div');
+    sp.className = 'key zone-space space-key';
+    sp.textContent = 'Space';
+    sp.id = 'key-Space';
+    sr.appendChild(sp);
+    kb.appendChild(sr);
+    charToKeyId[' '] = 'Space';
+    const hands = document.createElement('div');
+    hands.className = 'hands-container';
+    for (const side of ['left', 'right']) {
+        const hand = document.createElement('div');
+        hand.className = 'hand';
+        const order = side === 'left' ? [
+            'pinky',
+            'ring',
+            'mid',
+            'index',
+            'thumb'
+        ] : [
+            'thumb',
+            'index',
+            'mid',
+            'ring',
+            'pinky'
+        ];
+        for (const f of order) {
+            const div = document.createElement('div');
+            div.className = `finger f-${f}`;
+            div.id = `f-${side === 'left' ? 'l' : 'r'}-${f}`;
+            hand.appendChild(div);
+        }
+        hands.appendChild(hand);
+    }
+    inner.append(kb, hands);
+    area.appendChild(inner);
+    el('introKeyboardMount').appendChild(area);
+}
+// 키보드와 손가락 가이드는 같은 DOM을 두 화면 사이에서 이동해 재활용.
+function moveKeyboard(target) {
+    const node = document.querySelector('.keyboard-wrap');
+    if (node && node.parentElement !== el(target)) el(target).appendChild(node);
+}
+function clearGuides() {
+    document.querySelectorAll('.key').forEach(x => x.classList.remove('target-led', 'error-led'));
+    document.querySelectorAll('.finger').forEach(x => x.classList.remove('active'));
+}
+function fingerFor(key) {
+    document.querySelectorAll('.finger').forEach(x => x.classList.remove('active'));
+    if (key === 'Enter' || key === 'Backspace') {
+        el('f-r-pinky')?.classList.add('active');
+        return;
+    }
+    if (key === 'Space') {
+        el('f-l-thumb')?.classList.add('active');
+        el('f-r-thumb')?.classList.add('active');
+        return;
+    }
+    const k = el('key-' + key);
+    const z = k && [...k.classList].find(c => c.startsWith('zone-'));
+    if (z) el('f-' + z.substring(5))?.classList.add('active');
+}
+function guideNext() {
+    clearGuides();
+    if (hasCompletedCurrent && mode === 'practice') return;
+    const bad = input.some((c, i) => normalizeChar(c) !== normalizeChar(charList[i]));
+    let next = bad ? 'Backspace' : input.length === charList.length ? 'Enter' : charToKeyId[charList[input.length]];
+    if (!next) return;
+    el('key-' + next)?.classList.add(bad ? 'error-led' : 'target-led');
+    fingerFor(next);
+    if (!bad && input.length !== charList.length && isShiftCharMap[charList[input.length]]) {
+        const z = el('key-' + next)?.className || '';
+        const sid = z.includes('zone-r-') ? 'ShiftLeft' : 'ShiftRight';
+        el('key-' + sid)?.classList.add('target-led');
+        el(sid === 'ShiftLeft' ? 'f-l-pinky' : 'f-r-pinky')?.classList.add('active');
+    }
+}
+function setShift(pressed) {
+    isShiftDown = pressed;
+    for (const row of kbLayout) for (const k of row) {
+        if (k.s) {
+            const node = el('key-' + k.id)?.querySelector('.p-char');
+            if (node) node.textContent = pressed ? k.s : k.p;
+        }
+    }
+}
+// 구절을 완성한 뒤에는 기존 안내문 자리에 핵심 단어 한 개를 표시합니다.
+function renderPracticeHint() {
+    const hint = el('practiceHint');
+    hint.classList.toggle('done', hasCompletedCurrent);
+    hint.classList.toggle('lesson-complete', hasCompletedCurrent);
+
+    if (!hasCompletedCurrent) {
+        hint.textContent = input.length === charList.length
+            ? 'Enter를 눌러 이 구절을 완료하세요.'
+            : '가상 키보드와 손가락 가이드의 파란색 표시를 따라 입력하세요.';
+        return;
+    }
+
+    const note = LESSON_NOTES[story[currentIndex]?.id];
+    const word = note?.keyword;
+
+    if (!word) {
+        hint.textContent = '한 구절을 완성했습니다. 다음 구절로 넘어가거나 공유 카드를 만들어 보세요.';
+        return;
+    }
+
+    const persian = document.createElement('span');
+    persian.className = 'lesson-word-fa';
+    persian.lang = 'fa';
+    persian.dir = 'rtl';
+    persian.textContent = word.fa;
+
+    const doneText = currentIndex === story.length - 1
+        ? '전체 연습 완료! 오늘의 단어 · '
+        : '완성! 오늘의 단어 · ';
+
+    hint.replaceChildren(
+        document.createTextNode(doneText),
+        persian,
+        document.createTextNode(` (${word.roman}) = ${word.meaning}`)
+    );
+}
+
+function renderInput() {
+    const id = mode === 'tutorial' ? 'tutorialInput' : 'practiceInput';
+    const display = el(id);
+    display.replaceChildren();
+    input.forEach((c, i) => {
+        const sp = document.createElement('span');
+        sp.textContent = c;
+        sp.className = normalizeChar(c) === normalizeChar(charList[i]) ? 'user-correct' : 'user-wrong';
+        display.appendChild(sp);
+    });
+    if (!(mode === 'tutorial' && hasCompletedCurrent) && !(mode === 'practice' && hasCompletedCurrent)) {
+        const sp = document.createElement('span');
+        sp.className = 'input-cursor';
+        display.appendChild(sp);
+    }
+    guideNext();
+    if (mode === 'tutorial') {
+        el('tutorialHint').textContent = hasCompletedCurrent ? '튜토리얼 완료! 본문 시작하기를 누르세요.' : input.length === charList.length ? 'Enter를 눌러 완성하세요.' : '파란색 키를 따라 타이핑하세요. 잘못 입력했다면 Backspace를 누르세요.';
+        el('tutorialFinish').disabled = !hasCompletedCurrent;
+    } else if (mode === 'practice') {
+        updateStats();
+        renderPracticeHint();
+    }
+}
+function startTutorial() {
+    document.activeElement?.blur?.();
+    mode = 'tutorial';
+    input = [];
+    charList = Array.from(TUTORIAL_TEXT);
+    hasCompletedCurrent = false;
+    show('tutorial');
+    moveKeyboard('tutorialKeyboardMount');
+    renderInput();
+}
+// 원래 keyboard layout/typingKey는 변경하지 않는다. 탐색 중에만 별도 keydown을 사용한다.
+function startWordLesson(lessonId){
+    const item = INTRO_LESSONS[lessonId]; if(!item) return;
+    if(explorationOpen)toggleExploration();
+    currentLesson = lessonId;
+    story = item.entries;
+    el('storyName').textContent = `『샤나메』 속 일상 표현 · ${item.label}`;
+    beginPractice();
+}
+function startOriginalStory(){
+    if(explorationOpen)toggleExploration();
+    currentLesson = null;
+    story = STORY_DATA;
+    el('storyName').textContent = '『샤나메』 · 로스탐과 소흐랍';
+    beginPractice();
+}
+function toggleExploration(){
+    explorationOpen = !explorationOpen;
+    el('explorePanel').hidden = !explorationOpen;
+    el('explorePanel').closest('.free-play').classList.toggle('expanded',explorationOpen);
+    el('exploreToggle').textContent = explorationOpen ? '자유 탐색 닫기' : '자유 탐색 시작';
+    el('exploreToggle').setAttribute('aria-expanded', String(explorationOpen));
+    if(explorationOpen){moveKeyboard('introKeyboardMount');renderExploration();}
+    document.activeElement?.blur?.();
+}
+function renderExploration(){
+    const out=el('exploreOutput');
+    out.textContent = explorationChars.join('') || ' ';  // 오른쪽에서 왼쪽으로 조판
+}
+function explorationInput(code,shift=false){
+    if(code==='Backspace'){ explorationChars.pop();renderExploration();return; }
+    if(code==='Space'){ if(explorationChars.length<60) explorationChars.push(' ');renderExploration();return; }
+    const key=kbLayout.flat().find(k=>k.id===code);
+    if(!key||key.z==='special'||!key.p)return;
+    if(explorationChars.length>=60)return;
+    explorationChars.push(shift&&key.s?key.s:key.p);
+    const keyEl=el('key-'+code);
+    if(keyEl){keyEl.classList.add('pressed');setTimeout(()=>keyEl.classList.remove('pressed'),130);}
+    renderExploration();
+}
+function explorationKeydown(e){
+    if(screen!=='intro'||!explorationOpen)return;
+    if(e.key==='Escape'){e.preventDefault();toggleExploration();return;}
+    if(e.ctrlKey||e.altKey||e.metaKey)return;
+    if(e.target instanceof HTMLElement&&e.target.closest('button,a,input,textarea,select'))return;
+    if(e.code==='Backspace'||e.code==='Space'||kbLayout.flat().some(k=>k.id===e.code)){
+       if(e.code.startsWith('Shift'))return;
+       e.preventDefault();explorationInput(e.code,e.shiftKey);
+    }
+}
+function openQRSetup(){
+    el('qrResultURL').value=resultURL||'';
+    el('qrSettingStatus').textContent='이 주소는 전시 PC에서 접속하지 않습니다. QR에만 사용됩니다.';
+    el('qrSettingsModal').classList.add('open');
+}
+function closeQRSetup(){el('qrSettingsModal').classList.remove('open');document.activeElement?.blur?.();}
+function saveQRSetup(){
+    const entered=el('qrResultURL').value.trim();
+    if(entered){
+        let parsed;
+        try{parsed=new URL(entered);}catch(_){el('qrSettingStatus').textContent='올바른 HTTPS 주소를 입력하세요.';return;}
+        if(parsed.protocol!=='https:'||!parsed.pathname.endsWith('/result.html')){el('qrSettingStatus').textContent='https://.../result.html 주소를 입력하세요.';return;}
+        if(parsed.hash){el('qrSettingStatus').textContent='주소 끝의 # 부분은 제거해 주세요.';return;}
+    }
+    resultURL=entered;
+    try{localStorage.setItem('shahnameh-mobile-result-url',resultURL);}catch(_){el('qrSettingStatus').textContent='저장소가 제한되어 있습니다. index.html의 DEFAULT_RESULT_URL에 주소를 직접 입력하세요.';return;}
+    el('qrSettingStatus').textContent= entered?'주소를 저장했습니다. 스마트폰으로 실제 QR을 시험해 보세요.':'주소를 비웠습니다. QR은 주소 설정 후 이용할 수 있습니다.';
+}
+function beginPractice() {
+    document.activeElement?.blur?.();
+    if (!story.length) {
+        alert('구절 데이터가 아직 준비되지 않았습니다. CSV 로딩 상태를 확인하세요.');
+        return;
+    }
+    mode = 'practice';
+    completed = [];
+    currentIndex = 0;
+    show('practice');
+    moveKeyboard('practiceKeyboardMount');
+    loadPassage();
+}
+// 상황 설명은 타이핑 전에 딱 한 번 표시합니다.
+function openSceneModal(sceneText, passageNumber) {
+    if (!sceneText) return;
+
+    el('sceneModalCount').textContent = `샤나메 이야기 · ${passageNumber} / ${story.length}`;
+    el('sceneModalText').textContent = sceneText;
+    el('sceneModal').classList.remove('hidden');
+    el('sceneStartBtn').focus();
+}
+
+function closeSceneModal() {
+    el('sceneModal').classList.add('hidden');
+    el('sceneStartBtn').blur();
+}
+
+// 캡처 단계에서 키 입력을 가로채 기존 타이핑 기능에 전달하지 않습니다.
+function handleSceneModalKeydown(e) {
+    if (el('sceneModal').classList.contains('hidden')) return;
+
+    // 다음 구절 진입에 쓰인 Enter 키를 계속 누르고 있더라도 팝업이 자동으로 닫히지 않도록 합니다.
+    if (e.repeat) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return;
+    }
+
+    const isConfirmKey = e.key === 'Enter' || e.key === 'Escape';
+    const isButtonSpace = e.key === ' ' && document.activeElement === el('sceneStartBtn');
+
+    if (isConfirmKey || isButtonSpace) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        closeSceneModal();
+        return;
+    }
+
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        el('sceneStartBtn').focus();
+    } else if (!e.ctrlKey && !e.altKey && !e.metaKey) {
+        e.preventDefault();
+    }
+
+    e.stopImmediatePropagation();
+}
+
+function loadPassage() {
+    document.activeElement?.blur?.();
+    pauseTimer();
+    elapsedMs = 0;
+    activeStartedAt = null;
+    everStarted = false;
+    currentAttempts = 0;
+    currentCorrect = 0;
+    input = [];
+    hasCompletedCurrent = false;
+    if (currentIndex >= story.length) {
+        showFinalState();
+        return;
+    }
+    const p = story[currentIndex];
+    charList = Array.from(p.p);
+    el('practiceOriginal').textContent = p.p;
+
+    const note = LESSON_NOTES[p.id];
+    el('practiceRomanization').textContent = note?.roman || '';
+
+    const context = el('practiceContext');
+    context.textContent = note?.scene || '';
+    context.title = note?.scene || '';
+    context.classList.toggle('hidden', !note?.scene);
+
+    el('practiceTranslation').textContent = p.k || '한국어 번역이 제공되지 않았습니다.';
+    el('passageLabel').textContent = currentLesson ? `체험 단계 · ${['단어','짧은 구절','원문 한 행'][currentIndex]} · ${currentIndex + 1} / ${story.length}` : `현재 구절 · ${currentIndex + 1} / ${story.length}`;
+    el('completionBanner').classList.add('hidden');
+    el('nextBtn').disabled = true;
+    el('nextBtn').textContent = '다음 구절';
+    renderInput();
+    updateStats();
+
+    // 상황 설명이 지정된 1·3·6·9번째 구절에만 팝업 표시
+    if (note?.scene) {
+        openSceneModal(note.scene, currentIndex + 1);
+    }
+}
+function pauseTimer() {
+    if (activeStartedAt !== null) {
+        elapsedMs += performance.now() - activeStartedAt;
+        activeStartedAt = null;
+    }
+}
+function resumeTimer() {
+    if (everStarted && activeStartedAt === null && !document.hidden && screen === 'practice' && !hasCompletedCurrent && !el('shareModal').classList.contains('open')) activeStartedAt = performance.now();
+}
+function activeMs() {
+    return elapsedMs + (activeStartedAt === null ? 0 : performance.now() - activeStartedAt);
+}
+function totalStats(includePartial = true) {
+    const cnt = completed.length, sum = completed.reduce((s, r) => ({
+        correct: s.correct + r.correct,
+        attempts: s.attempts + r.attempts,
+        chars: s.chars + r.chars,
+        ms: s.ms + r.ms
+    }), {
+        correct: 0,
+        attempts: 0,
+        chars: 0,
+        ms: 0
+    });
+    if (includePartial && screen === 'practice' && !hasCompletedCurrent && currentIndex < story.length) {
+        sum.correct += currentCorrect;
+        sum.attempts += currentAttempts;
+        sum.chars += input.filter((c, i) => normalizeChar(c) === normalizeChar(charList[i])).length;
+        sum.ms += activeMs();
+    }
+    return {
+        count: cnt,
+        correct: sum.correct,
+        attempts: sum.attempts,
+        chars: sum.chars,
+        ms: sum.ms,
+        acc: sum.attempts ? Math.floor(100 * sum.correct / sum.attempts) : 100,
+        cpm: sum.ms > 0 ? Math.floor(sum.chars / (Math.max(sum.ms, 1000) / 60000)) : 0
+    };
+}
+function updateStats() {
+    const s = totalStats();
+    el('progressLabel').textContent = `${completed.length} / ${story.length} 구절 완료`;
+    el('progressFill').style.width = `${story.length ? (completed.length / story.length) * 100 : 0}%`;
+    el('sCount').textContent = completed.length;
+    el('sCpm').textContent = s.cpm;
+    el('sAcc').textContent = s.acc + '%';
+    el('sTime').textContent = fmtMs(s.ms);
+    el('openShareBtn').disabled = completed.length === 0;
+}
+function completePassage() {
+    pauseTimer();
+    hasCompletedCurrent = true;
+    const p = story[currentIndex];
+    completed.push({
+        id: p.id,
+        correct: currentCorrect,
+        attempts: currentAttempts,
+        chars: charList.length,
+        ms: activeMs()
+    });
+    const last = currentIndex === story.length - 1;
+    const banner = el('completionBanner');
+    banner.classList.remove('hidden');
+    banner.classList.toggle('warn', false);
+    banner.textContent = last ? '모든 구절을 완성했습니다! 마지막 기록을 공유할 수 있습니다.' : '한 구절을 완성했습니다. 완성된 문장을 확인하고 다음 구절로 넘어가세요.';
+    el('nextBtn').disabled = last;
+    el('nextBtn').textContent = last ? '전체 연습 완료' : '다음 구절';
+    renderInput();
+}
+function showFinalState() {
+    hasCompletedCurrent = true;
+    el('nextBtn').disabled = true;
+    el('practiceHint').textContent = '전체 연습 완료';
+    updateStats();
+}
+function nextPassage() {
+    if (!hasCompletedCurrent || currentIndex >= story.length - 1) return;
+    currentIndex++;
+    loadPassage();
+}
+function isValidKey(k) {
+    return typeof k === 'string' && Array.from(k).length === 1;
+}
+function typingKey(e) {
+    if (screen !== 'tutorial' && screen !== 'practice') return;
+    if (el('shareModal').classList.contains('open')) return;
+    if (e.target instanceof HTMLElement && e.target.closest('button,a,input,textarea,select')) return;
+    if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+    if (e.key === 'Shift') {
+        setShift(true);
+        return;
+    }
+    if ([
+        'Tab',
+        'CapsLock',
+        'Alt',
+        'Control',
+        'Meta'
+    ].includes(e.key)) return;
+
+    const keyEl = el('key-' + e.code);
+    if (e.code === 'Space' || e.code === 'Backspace' || e.code === 'Enter' || keyEl) e.preventDefault();
+    if (keyEl) {
+        keyEl.classList.add('pressed');
+        setTimeout(() => keyEl.classList.remove('pressed'), 120);
+    }
+    if (hasCompletedCurrent) {
+        if (e.key === 'Enter' && mode === 'practice') nextPassage();
+        return;
+    }
+    if (e.key === 'Backspace') {
+        if (input.length) input.pop();
+        renderInput();
+        return;
+    }
+    if (e.key === 'Enter') {
+        const valid = input.length === charList.length &&
+            input.every((c, i) => normalizeChar(c) === normalizeChar(charList[i]));
+        if (!valid) {
+            (mode === 'tutorial' ? el('tutorialHint') : el('practiceHint')).textContent =
+                '아직 맞지 않는 글자가 있습니다. 빨간 글자는 Backspace로 수정하세요.';
+            return;
+        }
+        if (mode === 'tutorial') {
+            hasCompletedCurrent = true;
+            renderInput();
+        } else completePassage();
+        return;
+    }
+    if (input.length >= charList.length) return;
+
+    // 실제 입력 언어에 상관없이 KeyboardEvent.code로 물리적 키 위치를 확인한다.
+    // 한국어 IME에서 e.key가 "Process"여도 e.code가 정상적이면 판정할 수 있다.
+    const expectedRaw = charList[input.length];
+    const expected = normalizeChar(expectedRaw);
+    const expectedCode = charToKeyId[expectedRaw] || charToKeyId[expected];
+    const needsShift = Boolean(isShiftCharMap[expectedRaw] ?? isShiftCharMap[expected]);
+    const characterMatch = isValidKey(e.key) && normalizeChar(e.key) === expected;
+    const physicalMatch = Boolean(expectedCode) && e.code === expectedCode &&
+        (expectedCode === 'Space' || e.shiftKey === needsShift);
+    const isPhysicalTypingKey = Boolean(keyEl) && ![
+        'Backspace',
+        'Enter',
+        'Tab',
+        'CapsLock',
+        'ShiftLeft',
+        'ShiftRight'
+    ].includes(e.code);
+
+    // 미지원 코드/IME 중간 이벤트를 오답으로 집계하지 않는다.
+    if (!characterMatch && !isPhysicalTypingKey && !isValidKey(e.key)) return;
+    if (mode === 'practice') {
+        everStarted = true;
+        resumeTimer();
+        currentAttempts++;
+    }
+    if (characterMatch || physicalMatch) {
+        if (mode === 'practice') currentCorrect++;
+        input.push(expectedRaw);
+    } else {
+        // IME가 조합 상태여서 e.key가 "Process"인 경우엔 한 글자 오답 표시.
+        input.push(isValidKey(e.key) ? e.key : '×');
+    }
+    renderInput();
+}
+function goIntro() {
+    if (mode === 'practice' && completed.length) {
+        if (!confirm('처음 화면으로 돌아가면 현재 연습 기록이 초기화됩니다. 계속할까요?')) return;
+    }
+    pauseTimer();
+    mode = 'intro';
+    show('intro');
+    clearGuides();
+    if(explorationOpen)moveKeyboard('introKeyboardMount');
+}
+function prepareSnapshot() {
+    if (!completed.length) throw Error('한 구절 이상 완성해야 공유할 수 있습니다.');
+    const s = totalStats(false);
+    const last = completed[completed.length - 1];
+    return {
+        v: 1,
+        id: last.id,
+        n: s.count,
+        g: s.correct,
+        t: s.attempts,
+        c: s.chars,
+        s: Math.max(10, Math.round(s.ms / 100)),
+        d: story.length,
+        at: new Date().toISOString()
+    };
+}
+function b64urlEncode(value) {
+    const b = new TextEncoder().encode(JSON.stringify(value));
+    let binary = '';
+    for (const n of b) binary += String.fromCharCode(n);
+    return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+function b64urlDecode(value) {
+    const binary = atob(value.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - value.length % 4) % 4));
+    return JSON.parse(new TextDecoder().decode(Uint8Array.from(binary, c => c.charCodeAt(0))));
+}
+function sanitizeSnapshot(s) {
+    if (!s || s.v !== 1 || typeof s.id !== 'string' || s.id.length > 128) throw Error('지원되지 않는 공유 데이터입니다.');
+    for (const key of [
+        'n',
+        'g',
+        't',
+        'c',
+        's',
+        'd'
+    ]) if (!Number.isSafeInteger(s[key]) || s[key] < 0 || s[key] > 1e8) throw Error('공유 기록이 올바르지 않습니다.');
+    if (s.n < 1 || s.g > s.t || s.d < s.n || !Number.isFinite(Date.parse(s.at))) throw Error('공유 기록의 값이 잘못되었습니다.');
+    return s;
+}
+function cardStats(s) {
+    const ms = s.s * 100;
+    return {
+        count: s.n,
+        acc: s.t ? Math.floor(s.g / s.t * 100) : 100,
+        cpm: ms > 0 ? Math.floor(s.c / (Math.max(ms, 1000) / 60000)) : 0,
+        ms
+    };
+}
+function fitCardText(element, startSize, minSize) {
+    element.style.fontSize = startSize + 'px';
+    while (element.scrollHeight > element.clientHeight + 2 && startSize > minSize) {
+        startSize -= 1;
+        element.style.fontSize = startSize + 'px';
+    }
+    if (element.scrollHeight > element.clientHeight + 2) throw Error('공유 구절이 카드 한 장에 담기에는 너무 깁니다. 구절을 나누어 주세요.');
+}
+const ALL_CARD_DATA=[...STORY_DATA,...Object.values(INTRO_LESSONS).flatMap(l=>l.entries)];
+function drawShareCard(canvas,s){
+    sanitizeSnapshot(s);
+    const p=ALL_CARD_DATA.find(x=>x.id===s.id);
+    if(!p)throw Error('공유 데이터에 해당하는 문구가 없습니다.');
+    const x=cardStats(s);
+    canvas.width=1080;canvas.height=1350;
+    const g=canvas.getContext('2d');
+    g.fillStyle='#f8fafc';g.fillRect(0,0,1080,1350);
+    g.strokeStyle='#cfdee8';g.lineWidth=3;g.strokeRect(35,35,1010,1280);
+    g.textAlign='center';g.direction='ltr';
+    g.fillStyle='#577590';g.font='bold 22px Arial, sans-serif';g.fillText('SHAHNAMEH · PERSIAN TYPING',540,124);
+    g.fillStyle='#0b2a4a';g.font='bold 49px "Malgun Gothic",sans-serif';g.fillText('오늘의 샤나메 한 구절',540,207);
+    g.fillStyle='#1f6794';g.fillRect(452,248,176,4);
+    const isIntro=s.id.startsWith('intro-');
+    g.fillStyle='#40749a';g.font='bold 25px "Malgun Gothic",sans-serif';
+    g.fillText(isIntro?'일상 페르시아어에서 발견한 고전의 한 줄':'로스탐과 소흐랍 · 내가 입력한 구절',540,334);
+    const persian=p.p;
+    const faFont='"Noto Naskh Arabic",Tahoma,"Segoe UI",sans-serif';
+    const koFont='"Malgun Gothic","Apple SD Gothic Neo",sans-serif';
+    function wrapped(text,width,font,maxLines){
+        const words=text.trim().split(/\s+/),lines=[];let line='';
+        g.font=font;
+        for(const word of words){const test=line?line+' '+word:word;
+          if(g.measureText(test).width>width && line){lines.push(line);line=word;}
+          else{line=test;}
+        }
+        if(line)lines.push(line);
+        return lines.slice(0,maxLines);
+    }
+    // Right-to-left rendering is handled by Canvas itself, not reversed manually.
+    let fontSize=70,faLines=[];
+    do{g.font=`bold ${fontSize}px ${faFont}`;faLines=wrapped(persian,910,g.font,4);if(faLines.every(t=>g.measureText(t).width<=910)&&faLines.length<=3)break;fontSize-=2;}while(fontSize>34);
+    g.fillStyle='#173b4a';g.direction='rtl';g.textAlign='center';g.font=`bold ${fontSize}px ${faFont}`;
+    const lineHeight=Math.round(fontSize*1.55),poemTop=480-(faLines.length-1)*lineHeight/2;
+    faLines.forEach((t,i)=>g.fillText(t,540,poemTop+i*lineHeight));
+    g.direction='ltr';g.fillStyle='#cfdee8';g.fillRect(100,705,880,2);
+    let koSize=36,koLines=[];
+    do{g.font=`${koSize}px ${koFont}`;koLines=wrapped(p.k||' ',850,g.font,3);if(koLines.every(t=>g.measureText(t).width<=850)&&koLines.length<=2)break;koSize-=1;}while(koSize>23);
+    g.textAlign='center';g.fillStyle='#344c61';g.font=`${koSize}px ${koFont}`;
+    koLines.forEach((t,i)=>g.fillText(t,540,775+i*51));
+    g.fillStyle='#0b2a4a';g.font=`bold 27px ${koFont}`;g.fillText('오늘의 타이핑 기록',150,953);
+    const metrics=[['완료 구절',`${x.count}개`],['평균 타수',`${x.cpm} 타/분`],['정확도',`${x.acc}%`],['연습 시간',fmtMs(x.ms)]];
+    metrics.forEach(([label,value],i)=>{
+      const col=i%2,row=Math.floor(i/2),rx=95+col*452,ry=978+row*104;
+      g.fillStyle='#e9f1f7';g.fillRect(rx,ry,430,88);
+      g.textAlign='left';g.fillStyle='#58728a';g.font=`20px ${koFont}`;g.fillText(label,rx+21,ry+30);
+      g.fillStyle='#0b2a4a';g.font=`bold 29px ${koFont}`;g.fillText(value,rx+21,ry+69);
+    });
+    g.fillStyle='#cfdee8';g.fillRect(97,1202,886,2);
+    g.textAlign='center';g.fillStyle='#466780';g.font=`22px ${koFont}`;
+    g.fillText('낯선 글자, 익숙한 말 · 샤나메 타이핑 체험',540,1255);
+    g.font=`17px ${koFont}`;
+    g.fillText(new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(s.at)),540,1290);
+}
+async function renderShareCard(s) {
+    sanitizeSnapshot(s);
+    const canvas=document.createElement('canvas');
+    drawShareCard(canvas,s);
+    const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+    if(!blob)throw Error('이미지 생성에 실패했습니다.');
+    if(shareImageUrl)URL.revokeObjectURL(shareImageUrl);
+    shareBlob=blob;shareImageUrl=URL.createObjectURL(blob);
+    return shareImageUrl;
+}
+function currentShareLink(s){
+    const configured=(resultURL||'').trim();
+    const link=configured||(location.protocol==='https:'?new URL('result.html',location.href).href:'');
+    if(!link)return null;
+    const url=new URL(link);
+    if(url.protocol!=='https:')throw Error('HTTPS 공개 결과 페이지 주소가 필요합니다.');
+    url.hash='share='+b64urlEncode(s);
+    return url.href;
+}
+function updateQR(s){
+    const q=el('qrSquare');q.replaceChildren();
+    try{
+       const url=currentShareLink(s);
+       if(!url){q.textContent='QR 주소 미설정';el('qrInfo').textContent='상단 QR 설정에서 GitHub Pages의 result.html HTTPS 주소를 등록하세요. PC 이미지 저장은 지금도 가능합니다.';return;}
+       if(url.length>650)throw Error('결과 페이지 주소가 너무 깁니다.');
+       const qr=new QRLocal(0,0);qr.addData(url);qr.make();
+       const n=qr.getModuleCount(),scale=5,border=4;
+       const canvas=document.createElement('canvas');canvas.width=canvas.height=(n+2*border)*scale;
+       const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#000';
+       for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(qr.isDark(r,c))ctx.fillRect((c+border)*scale,(r+border)*scale,scale,scale);
+       q.appendChild(canvas);el('qrInfo').textContent='스마트폰 카메라로 스캔하세요. 관람객 스마트폰의 인터넷 연결이 필요합니다.';
+    }catch(e){q.textContent='QR 생성 실패';el('qrInfo').textContent=e.message;}
+}
+function setShareStatus(msg) {
+    el('shareMessage').textContent = msg;
+}
+async function openShare() {
+    if (isRendering || !completed.length) return;
+    pauseTimer();
+    shareSnapshot = prepareSnapshot();
+    el('shareModal').classList.add('open');
+    el('downloadBtn').disabled = true;
+    el('nativeShareBtn').hidden = true;
+    setShareStatus('이미지를 생성하는 중...');
+    isRendering = true;
+    try {
+        const src = await renderShareCard(shareSnapshot);
+        el('sharePreview').src = src;
+        el('downloadBtn').disabled = false;
+        el('nativeShareBtn').hidden = !(navigator.canShare && navigator.canShare({ files: [new File([shareBlob], '오늘의 샤나메 한 구절.png', { type: 'image/png' })] }));
+        updateQR(shareSnapshot);
+        setShareStatus('완료한 구절만 집계한 공유 카드입니다. 입력 중인 구절은 제외됩니다.');
+    } catch (e) {
+        setShareStatus('이미지 생성 오류: ' + e.message);
+        el('qrSquare').textContent = '미리보기를 만들지 못했습니다.';
+    } finally {
+        isRendering = false;
+    }
+}
+function closeShare() {
+    el('shareModal').classList.remove('open');
+    document.activeElement?.blur?.();
+    resumeTimer();
+    updateStats();
+}
+function downloadImage() {
+    if (!shareBlob || !shareImageUrl) return;
+    const a = document.createElement('a');
+    a.href = shareImageUrl;
+    a.download = '오늘의 샤나메 한 구절.png';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+async function shareFile() {
+    if (!shareBlob) return;
+    try {
+        const file = new File([shareBlob], '오늘의 샤나메 한 구절.png', { type: 'image/png' });
+        if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: '오늘의 샤나메 한 구절' }); else downloadImage();
+    } catch (e) {
+        if (e.name !== 'AbortError') alert('공유를 열 수 없습니다. 이미지 저장 버튼을 이용하세요.');
+    }
+}
+function initEvents() {
+    el('skipBtn').onclick = startOriginalStory;
+    document.querySelectorAll('[data-lesson]').forEach(node=>node.onclick=()=>startWordLesson(node.dataset.lesson));
+    el('exploreToggle').onclick = toggleExploration;
+    el('exploreClear').onclick = ()=>{explorationChars=[];renderExploration();};
+    el('introKeyboardMount').addEventListener('click',e=>{
+       if(!explorationOpen||screen!=='intro')return;
+       const key=e.target.closest('.key');if(!key)return;
+       const code=key.id.replace(/^key-/,'');
+       explorationInput(code,false);
+    });
+    el('qrSetupBtn').onclick=openQRSetup;
+    el('qrSettingsClose').onclick=closeQRSetup;
+    el('qrSettingsSave').onclick=saveQRSetup;
+    el('qrSettingsModal').addEventListener('click',e=>{if(e.target===el('qrSettingsModal'))closeQRSetup();});
+    el('nextBtn').onclick = nextPassage;
+    el('openShareBtn').onclick = openShare;
+    el('shareCloseBtn').onclick = closeShare;
+    el('downloadBtn').onclick = downloadImage;
+    el('nativeShareBtn').onclick = shareFile;
+    el('homeBtn').onclick = goIntro;
+    el('resetBtn').onclick = () => {
+        if (confirm('현재 기록을 지우고 첫 단계부터 다시 시작할까요?')) beginPractice();
+    };
+    el('sceneStartBtn').onclick = closeSceneModal;
+    window.addEventListener('keydown', handleSceneModalKeydown, true);
+    window.addEventListener('keydown', explorationKeydown);
+    window.addEventListener('keydown', typingKey);
+    window.addEventListener('keyup', e => {
+        if (e.key === 'Shift') setShift(false);
+    });
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) pauseTimer(); else resumeTimer();
+    });
+    setInterval(() => {
+        if (screen === 'practice') updateStats();
+    }, 500);
+    el('shareModal').addEventListener('click', e => {
+        if (e.target === el('shareModal')) closeShare();
+    });
+}
+async function boot() {
+    initEvents();
+    mountKeyboard();
+    try {
+        story = await loadStory();
+        el('dataStatus').textContent = `일상 단어 세 가지 또는 ${story.length}개의 로스탐·소흐랍 본문 구절을 선택할 수 있습니다.`;
+    } catch (e) {
+        el('dataStatus').className = 'error';
+        el('dataStatus').textContent = '구절 데이터 로딩 실패: '+e.message;
+        el('skipBtn').disabled = true;
+    }
+}
+boot();
+</script>
+    </body>
+</html>
