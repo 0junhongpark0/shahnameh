@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>샤나메 타이핑 체험 | 로스탐과 소흐랍</title>
+        <title>샤나메 타이핑 체험 | 낯선 글자, 익숙한 말</title>
         <!-- ★★★★★ 관리자 QR 주소 설정은 바로 아래 1줄만 수정 ★★★★★ -->
         <script>
 // ============================================================================
@@ -1394,6 +1394,124 @@ html.share-mode .modal-cover {
 @media(max-width:850px){.lesson-choices{grid-template-columns:1fr}.lesson-choice{min-height:110px}.lesson-choice .word-fa{font-size:33px}.free-play-head{flex-wrap:wrap}}
 @media(min-width:621px) and (max-height:820px){.lesson-choice{min-height:125px;padding:10px 12px;gap:2px}.lesson-choice .word-ko{font-size:23px}.lesson-choice .word-fa{font-size:34px}.choice-heading{margin:11px 0 7px}.free-play{padding:9px 14px;margin-top:10px}.free-play-head h3{font-size:16px}.free-play-head p{font-size:13px}}
 
+
+/* ========================================================================
+   V4 전시 안내 UI (원본 키보드 크기·색상·손가락·키 입력 코드는 변경하지 않음)
+   ======================================================================== */
+.masthead{min-height:60px}
+.masthead h1{line-height:1.35}
+#introScreen{padding-bottom:27px}
+#introScreen .intro-title{margin:10px 0 10px}
+#introScreen>.subtext{margin-bottom:9px!important;line-height:1.62}
+#introScreen .choice-heading{margin-top:18px;margin-bottom:12px}
+#introScreen .lesson-choices{gap:16px}
+#introScreen .lesson-choice{min-height:174px;padding:18px 19px}
+.story-cta{display:flex;gap:18px;align-items:center;justify-content:space-between;background:#edf4f9;border:1px solid #c9d9e6;padding:21px 24px;margin-top:24px;border-radius:15px}
+.story-cta h3{margin:0 0 7px;color:var(--navy);font-size:21px}
+.story-cta p{margin:0;color:#526a80;font-size:15px;line-height:1.6}
+.story-cta .btn{white-space:nowrap;flex:none}
+#introScreen #dataStatus{font-size:12px;margin:12px 0 0}
+.story-caption{font-size:15px;color:#476980;font-weight:700;margin:0 0 10px}
+.selection-lead{line-height:1.65;font-size:15px;margin:6px 0 9px;color:#496177}
+.selection-accuracy{padding:8px 12px;margin:7px 0 16px;border-radius:8px;background:#eef4f8;color:#456277;font-size:12px;line-height:1.5}
+.story-selection-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;align-items:stretch}
+.story-pick{display:block;width:100%;min-height:112px;padding:13px 16px;border-radius:12px;border:1px solid #cfdae4;background:#fbfcfd;color:#233346;text-align:left;font:inherit;cursor:pointer;transition:.15s}
+.story-pick:hover,.story-pick:focus-visible{border-color:#1e6795;box-shadow:0 2px 10px rgba(32,92,133,.16);background:#f1f7fa}
+.story-pick .story-pick-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;color:#6b8193;font-size:11px;font-weight:700}
+.story-pick .story-pick-fa{font:25px/1.45 Sahel,Vazirmatn,Tahoma,'Segoe UI',sans-serif;direction:rtl;text-align:right;color:#103c60;unicode-bidi:plaintext;white-space:normal;overflow-wrap:anywhere}
+.story-pick .story-pick-ko{font-size:14px;font-weight:600;color:#32485c;line-height:1.45;word-break:keep-all;margin-top:4px}
+.story-pick .story-pick-note{font-size:11px;color:#55718a;margin-top:5px;line-height:1.4}
+.selection-actions{margin-top:12px}
+#practiceScreen .paper{padding-bottom:12px}
+#practiceScreen .text-top{font-size:clamp(29px,3.1vw,42px)}
+#practiceScreen .translation{font-size:clamp(18px,1.75vw,23px);color:#1d597e;font-weight:700;line-height:1.45}
+#practiceScreen .romanization{margin:4px 0 0;font-size:clamp(20px,2vw,27px);font-weight:700;line-height:1.5;text-align:left;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+.pronunciation-panel{background:#f0f5f9;border:1px solid #d1e0e9;border-radius:10px;padding:10px 15px;margin:8px 0 11px}
+.pronunciation-head{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;font-weight:800;color:#315b79}
+.pronunciation-desc{font-weight:500;color:#70899b}
+.pronunciation-note{font-size:12px;margin-top:2px;color:#526c81;min-height:17px;line-height:1.45}
+.roman-done{color:#0b4974}
+.roman-current{color:#9b6018;background:#fff1c8;border-radius:4px;padding:0 2px}
+.roman-pending{color:#a0b2c0}
+.roman-space{white-space:pre}
+#practiceScreen .instruction{margin:7px 0 6px}
+#practiceScreen .btn-row{margin-top:10px}
+@media (min-width:621px) and (max-height:820px){
+  #introScreen .lesson-choice{min-height:122px;padding:10px 13px}
+  #introScreen .story-cta{padding:13px 17px;margin-top:14px}
+  #introScreen .story-cta h3{font-size:18px}
+  #introScreen .story-cta p{font-size:13px}
+  .story-pick{min-height:96px;padding:8px 12px}
+  .story-pick .story-pick-fa{font-size:22px}
+  .story-pick .story-pick-ko{font-size:13px}
+  .story-selection-grid{gap:8px}
+  .selection-accuracy{margin:5px 0 7px}
+  #selectionScreen .story-pick{min-height:84px;padding:6px 11px}
+  #selectionScreen .story-pick .story-pick-fa{font-size:23px;line-height:1.25}
+  #selectionScreen .story-pick .story-pick-ko{font-size:12px;line-height:1.25}
+  #selectionScreen .story-pick .story-pick-top{margin-bottom:2px}
+  #selectionScreen .story-pick .story-pick-note{display:none}
+  #selectionScreen .selection-lead{line-height:1.45;margin:3px 0 6px}
+  #selectionScreen .selection-actions{margin-top:8px}
+  #practiceScreen>.info-note{display:none}
+  #practiceScreen .pronunciation-panel{padding:5px 11px;margin:5px 0 7px}
+  #practiceScreen .romanization{font-size:22px;line-height:1.28}
+  #practiceScreen .translation{font-size:19px}
+}
+@media (max-width:850px){
+  .story-selection-grid{grid-template-columns:1fr}
+  .story-cta{flex-wrap:wrap}
+}
+/* 720px급 노트북에서는 키 크기 자체보다 상하 여백을 먼저 줄입니다. */
+@media (min-width:621px) and (max-height:750px){
+  .app-shell{padding-top:4px}
+  .masthead{padding:6px 15px;margin-bottom:6px;min-height:50px}
+  #practiceScreen .paper{padding:5px 12px}
+  #practiceScreen .text-top,#practiceScreen .text-bottom{line-height:1.17}
+  #practiceScreen .pronunciation-panel{padding:4px 10px;margin:3px 0 5px}
+  #practiceScreen .btn-row{margin-top:6px}
+  #practiceScreen .hands-container{height:67px}
+}
+
+
+/* ============================================================
+   V4 발음 표시 UI 개선
+   - 불필요한 패널 장식 제거
+   - 페르시아어 원문 바로 아래에 배치
+   - 발음과 설명 모두 오른쪽 정렬
+   ============================================================ */
+
+/* 원문과 발음 사이의 불필요한 간격 제거 */
+#practiceScreen .text-top {
+    margin-bottom: 0;
+}
+
+/* 발음 패널을 원문 아래에 자연스럽게 연결 */
+#practiceScreen .pronunciation-panel {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 0 8px;
+}
+
+/* 로마자 발음을 오른쪽 정렬 */
+#practiceScreen .romanization {
+    text-align: right;
+    direction: ltr;
+    unicode-bidi: isolate;
+    margin: 0;
+    font-size: clamp(20px, 2vw, 27px);
+    line-height: 1.5;
+}
+
+/* 발음 설명도 오른쪽 정렬 */
+#practiceScreen .pronunciation-note {
+    text-align: right;
+    direction: ltr;
+    margin-top: 2px;
+    line-height: 1.45;
+}
 </style>
     </head>
     <body>
@@ -1404,69 +1522,58 @@ html.share-mode .modal-cover {
             <header class="masthead">
                 <div>
                     <h1>샤나메 타이핑 체험</h1>
-                    <p>로스탐과 소흐랍 · Rostam & Sohrab</p>
                 </div>
                 <div class="mast-actions"><button id="homeBtn" type="button">처음으로</button></div></header>
             <main>
                 <section id="introScreen" class="screen active">
                     <div class="eyebrow">SHAHNAMEH · PERSIAN LETTERS</div>
                     <h2 class="intro-title">낯선 글자, 익숙한 말</h2>
-                    <p class="intro-lead">페르시아어를 처음 만나는 세 가지 일상 표현</p>
-                    <p class="subtext" style="margin:6px 0">한글·영문 키보드 그대로 사용해도 됩니다. 페르시아어 글자를 입력하고, 그 단어가 등장하는 『샤나메』의 시구에도 도전해 보세요.</p>
+                    <p class="subtext" style="margin:6px 0">페르시아어 글자를 입력하고, 그 단어가 등장하는 『샤나메』의 시구에도 도전해 보세요.</p>
                     <h3 class="choice-heading">어떤 말을 써볼까요?</h3>
                     <div class="lesson-choices">
                         <button class="lesson-choice" data-lesson="greeting" type="button"><span class="mini-label">01 · 인사할 때</span><span class="word-ko">안녕</span><span class="word-fa" lang="fa" dir="rtl">درود</span><span class="word-roman">도루드 · 인사와 축원</span></button>
-                        <button class="lesson-choice" data-lesson="thanks" type="button"><span class="mini-label">02 · 감사할 때</span><span class="word-ko">고마워</span><span class="word-fa" lang="fa" dir="rtl">سپاس</span><span class="word-roman">세파스 · 감사</span></button>
+                        <button class="lesson-choice" data-lesson="thanks" type="button"><span class="mini-label">02 · 감사할 때</span><span class="word-ko">고마워</span><span class="word-fa" lang="fa" dir="rtl">سپاس</span><span class="word-roman">세퍼스 · 감사</span></button>
                         <button class="lesson-choice" data-lesson="friend" type="button"><span class="mini-label">03 · 소중한 사람</span><span class="word-ko">친구</span><span class="word-fa" lang="fa" dir="rtl">دوست</span><span class="word-roman">두스트 · 친구</span></button>
                     </div>
-                    <div class="free-play">
-                        <div class="free-play-head"><div><h3>글자 자유 탐색</h3><p>정답 없이 자판을 눌러보며 페르시아어가 오른쪽에서 왼쪽으로 이어지는 모습을 관찰해 보세요.</p></div><button class="btn outline" id="exploreToggle" type="button" aria-expanded="false">자유 탐색 시작</button></div>
-                        <div id="explorePanel" class="free-play-body" hidden>
-                            <div id="exploreOutput" class="free-play-output" lang="fa" dir="rtl" aria-label="탐색 중인 페르시아어 글자"> </div>
-                            <div class="free-play-controls"><small>물리 키보드 또는 화면 자판 이용 · Backspace로 지우기 · Space로 띄어쓰기</small><button class="btn secondary" id="exploreClear" type="button">모두 지우기</button></div>
-                            <div id="introKeyboardMount"></div>
+                    <!-- 키보드 생성은 원본 index의 mountKeyboard()를 그대로 사용합니다.
+                         입력용 키보드는 체험 시작 시 practiceKeyboardMount로 이동합니다. -->
+                    <div id="introKeyboardMount" hidden></div>
+                    <div class="story-cta">
+                        <div>
+                            <h3>로스탐과 소흐랍 이야기 체험</h3>
+                            <p>열 개의 이야기 구절과 뜻을 살펴보고, 마음에 드는 한 문장을 직접 골라 써보세요.</p>
                         </div>
+                        <button class="btn" id="skipBtn" type="button">이야기 구절 고르기</button>
                     </div>
-                    <div class="btn-row"><button class="btn secondary" id="skipBtn" type="button">로스탐과 소흐랍 본문 체험</button></div>
                     <p id="dataStatus" class="info-note">세 가지 일상 단어와 기존 로스탐·소흐랍 본문을 선택해 체험할 수 있습니다.</p>
                 </section>
+                <section id="selectionScreen" class="screen" aria-labelledby="selectionHeading">
+                    <div class="eyebrow">ROSTAM & SOHRAB · STORY EXPERIENCE</div>
+                    <h2 id="selectionHeading" class="section-title">어떤 문장을 써보고 싶나요?</h2>
+                    <p class="selection-lead">아버지 로스탐과 아들 소흐랍의 이야기를 읽고, 마음에 드는 문장을 하나 골라보세요. 문장을 누르면 타이핑을 시작합니다.</p>
+                    <p class="selection-accuracy">아래 문장에는 『샤나메』의 구절과, 이야기를 현대 페르시아어로 재구성한 표현이 함께 포함되어 있습니다.</p>
+                    <div id="storySelectionGrid" class="story-selection-grid" aria-label="로스탐과 소흐랍 이야기 구절 선택"></div>
+                    <div class="selection-actions"><button class="btn outline" id="selectionBackBtn" type="button">첫 화면으로 돌아가기</button></div>
+                </section>
                 <section id="practiceScreen" class="screen">
-                    <div class="story-bar">
-                        <div class="story-name" id="storyName">『샤나메』 · 로스탐과 소흐랍</div><strong id="progressLabel">0 / 0 구절 완료</strong></div><div class="progress-track">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="stats">
-                        <div class="stat">
-                            <div class="stat-label">완료 구절</div>
-                            <div class="stat-value" id="sCount">0</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-label">타수</div>
-                            <div class="stat-value" id="sCpm">0</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-label">정확도</div>
-                            <div class="stat-value" id="sAcc">100%</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-label">연습 시간</div>
-                            <div class="stat-value" id="sTime">0:00</div>
-                        </div>
-                    </div>
+                    <div class="story-caption" id="storyName">『샤나메』 · 로스탐과 소흐랍</div>
                     <div class="paper">
                         <div class="passage-heading">
                             <h3 id="passageLabel">현재 구절</h3>
                             <div id="practiceContext" class="scene-note hidden"></div>
                         </div>
                         <div class="text-top" id="practiceOriginal" lang="fa" dir="rtl"></div>
-                        <p id="practiceRomanization" class="romanization" dir="ltr"></p>
+<div class="pronunciation-panel" aria-live="polite" aria-atomic="true">
+    <div id="practiceRomanization" class="romanization" dir="ltr" lang="en"></div>
+    <div id="pronunciationNote" class="pronunciation-note">글자를 누르면 대응하는 발음이 강조됩니다. 음성은 재생되지 않습니다.</div>
+</div>
                         <div class="text-bottom" id="practiceInput" lang="fa" dir="rtl"></div>
                         <p class="translation" id="practiceTranslation"></p>
                     </div>
                     <p class="instruction" id="practiceHint">파란색으로 표시된 키를 누르세요.</p>
                     <div id="practiceKeyboardMount"></div>
                     <div id="completionBanner" class="status-banner hidden"></div>
-                    <div class="btn-row"><button class="btn gold" id="openShareBtn" disabled>기념 카드 만들기</button><button class="btn" id="nextBtn" disabled>다음 구절</button><button class="btn outline" id="resetBtn">처음부터 다시 하기</button></div><p class="info-note">결과 카드는 마지막으로 완성한 표현과 문학적 발견을 담습니다. 현재 입력 중인 표현은 포함되지 않습니다.</p>
+                    <div class="btn-row"><button class="btn gold" id="openShareBtn" disabled>기념 카드 만들기</button><button class="btn" id="nextBtn" disabled>다음 단계</button><button class="btn outline" id="resetBtn">다시 시작하기</button></div><p class="info-note">결과 카드는 마지막으로 완성한 표현과 문학적 발견을 담습니다. 현재 입력 중인 표현은 포함되지 않습니다.</p>
                 </section>
             </main>
         </div>
@@ -2847,12 +2954,12 @@ const INTRO_NOTES = {
     'intro-greeting-word':{roman:'dorud',keyword:{fa:'درود',roman:'dorud',meaning:'인사'}},
     'intro-greeting-phrase':{roman:'dorud-e Fereydun',keyword:{fa:'درود',roman:'dorud',meaning:'인사'}},
     'intro-greeting-line':{roman:'dorud-e Fereydun-e farrokh daham',keyword:{fa:'درود',roman:'dorud',meaning:'인사'}},
-    'intro-thanks-word':{roman:'sepâs',keyword:{fa:'سپاس',roman:'sepâs',meaning:'감사'}},
-    'intro-thanks-phrase':{roman:'be bakhshesh sepâs',keyword:{fa:'سپاس',roman:'sepâs',meaning:'감사'}},
-    'intro-thanks-line':{roman:'ze Bahrâm dâram be bakhshesh sepâs',keyword:{fa:'سپاس',roman:'sepâs',meaning:'감사'}},
+    'intro-thanks-word':{roman:'sepās',keyword:{fa:'سپاس',roman:'sepās',meaning:'감사'}},
+    'intro-thanks-phrase':{roman:'be bakhshesh sepās',keyword:{fa:'سپاس',roman:'sepās',meaning:'감사'}},
+    'intro-thanks-line':{roman:'ze Bahrām dāram be bakhshesh sepās',keyword:{fa:'سپاس',roman:'sepās',meaning:'감사'}},
     'intro-friend-word':{roman:'dust',keyword:{fa:'دوست',roman:'dust',meaning:'친구'}},
-    'intro-friend-phrase':{roman:'mehrabân dust',keyword:{fa:'دوست',roman:'dust',meaning:'친구'}},
-    'intro-friend-line':{roman:'be shahr-am yeki mehrabân dust bud',keyword:{fa:'دوست',roman:'dust',meaning:'친구'}}
+    'intro-friend-phrase':{roman:'mehrabān dust',keyword:{fa:'دوست',roman:'dust',meaning:'친구'}},
+    'intro-friend-line':{roman:'be shahr-am yeki mehrabān dust bud',keyword:{fa:'دوست',roman:'dust',meaning:'친구'}}
 };
 // ============================================================
 // 학습용 보조 데이터: 원문(STORY_DATA)과 완전히 분리되어 있습니다.
@@ -3337,7 +3444,7 @@ let story = [], screen = 'intro', mode = 'intro', input = [], charList = [], cur
 let currentAttempts = 0, currentCorrect = 0, elapsedMs = 0, activeStartedAt = null, everStarted = false;
 let hasCompletedCurrent = false, shareSnapshot = null, shareImageUrl = null, shareBlob = null;
 let isShiftDown = false, isRendering = false;
-let currentLesson = null, explorationOpen = false, explorationChars = [];
+let currentLesson = null, selectedStoryIndex = null;
 const resultURL = DEFAULT_RESULT_URL;
 
 const el = id => document.getElementById(id);
@@ -3417,6 +3524,7 @@ async function loadStory() {
 function show(screenName) {
     screen = screenName;
     el('introScreen').classList.toggle('active', screenName === 'intro');
+    el('selectionScreen').classList.toggle('active', screenName === 'selection');
     el('practiceScreen').classList.toggle('active', screenName === 'practice');
 }
 function mountKeyboard() {
@@ -3548,8 +3656,8 @@ function renderPracticeHint() {
 
     if (!hasCompletedCurrent) {
         hint.textContent = input.length === charList.length
-            ? 'Enter를 눌러 이 구절을 완료하세요.'
-            : '가상 키보드와 손가락 가이드의 파란색 표시를 따라 입력하세요.';
+            ? 'Enter를 눌러 입력을 완성하세요.'
+            : '파란색으로 안내된 키를 눌러보세요. 잘못 입력하면 Backspace로 고칠 수 있습니다.';
         return;
     }
 
@@ -3557,7 +3665,7 @@ function renderPracticeHint() {
     const word = note?.keyword;
 
     if (!word) {
-        hint.textContent = '한 구절을 완성했습니다. 다음 구절로 넘어가거나 공유 카드를 만들어 보세요.';
+        hint.textContent = '완성했습니다. 기념 카드를 만들거나 다른 표현에도 도전해 보세요.';
         return;
     }
 
@@ -3567,9 +3675,7 @@ function renderPracticeHint() {
     persian.dir = 'rtl';
     persian.textContent = word.fa;
 
-    const doneText = currentIndex === story.length - 1
-        ? '전체 연습 완료! 오늘의 단어 · '
-        : '완성! 오늘의 단어 · ';
+    const doneText = '완성! 오늘의 단어 · ';
 
     hint.replaceChildren(
         document.createTextNode(doneText),
@@ -3600,8 +3706,115 @@ function renderInput() {
     } else if (mode === 'practice') {
         updateStats();
         renderPracticeHint();
+        renderPronunciation();
     }
 }
+
+// ============================================================================
+// V4 · 소리 안내는 화면 전용입니다. 원래 typingKey()/kbLayout에 전혀 개입하지 않습니다.
+// 입문 단어는 글자 단위, 긴 구절은 단어 단위 대응표를 사용합니다.
+// 표기되지 않는 단모음도 '실제 단어 발음'에 포함되지만 문자 자체의 소리로 오인하지 않도록 안내합니다.
+// ============================================================================
+const PRONUNCIATION_MAP = {
+    'intro-greeting-word': ['do','r','u','d'],
+    'intro-thanks-word': ['se','p','ā','s'],
+    'intro-friend-word': ['d','u','s','t']
+};
+const LETTER_HINTS = {
+    'intro-greeting-word': [
+      'د는 /d/ 소리입니다. 이 단어의 짧은 모음 o는 보통 적지 않습니다.',
+      'ر는 /r/ 소리입니다.',
+      'و는 이 단어에서 긴 /u/ 소리를 나타냅니다.',
+      '마지막 د는 /d/ 소리입니다.'
+    ],
+    'intro-thanks-word': [
+      'س는 /s/ 소리입니다. 이 단어의 짧은 모음 e는 보통 적지 않습니다.',
+      'پ는 /p/ 소리입니다.',
+      'ا는 이 단어에서 긴 /ā/ 소리를 나타냅니다.',
+      '마지막 س는 /s/ 소리입니다.'
+    ],
+    'intro-friend-word': [
+      'د는 /d/ 소리입니다.',
+      'و는 이 단어에서 긴 /u/ 소리를 나타냅니다.',
+      'س는 /s/ 소리입니다.',
+      'ت는 /t/ 소리입니다.'
+    ]
+};
+// 원문과 구어체의 단어 경계에 대응시킨 '쉬운 로마자 발음'입니다.
+// e/o/a 같은 비표기 단모음, 에자페(-e) 등은 실제 읽는 방식에 맞춰 포함합니다.
+const ROMAN_WORDS = {
+    'intro-greeting-phrase':['dorud-e','Fereydun'],
+    'intro-greeting-line':['dorud-e','Fereydun-e','farrokh','daham'],
+    'intro-thanks-phrase':['be','bakhshesh','sepās'],
+    'intro-thanks-line':['ze','Bahrām','dāram','be','bakhshesh','sepās'],
+    'intro-friend-phrase':['mehrabān','dust'],
+    'intro-friend-line':['be','shahr-am','yeki','mehrabān','dust','bud'],
+    'rs-174':['khanjar-e','Rostam','barq','zad'],
+    'rs-175':['Rostam','be','pahlu-ye','Sohrab','khanjar','zad'],
+    'rs-185':['age','pedaram','befahme,','to','ro','zende','nemi','zāre!'],
+    'rs-187':['kasi','ham','bord','su-ye','Rostam','neshan'],
+    'rs-188':['cho','beshnid','Rostam','sarash','khire','gasht'],
+    'rs-194':['Rostam','manam!'],
+    'rs-195':['Sohrab','goft,','pedar','toyi?'],
+    'rs-199':['be','bazum','bar','mohre-ye','khod','negar'],
+    'rs-201':['Rostam','faryad','zad,','Sohrabam!','ba','dast-e','khodam','koshtamet!'],
+    'rs-214':['Rostam','peykar-e','Sohrab','ra','dar','aghush','gereft']
+};
+function correctPrefixLength(){
+    let n=0;
+    while(n<input.length && n<charList.length && normalizeChar(input[n])===normalizeChar(charList[n]))n++;
+    return n;
+}
+function renderPronunciation(){
+    const target=el('practiceRomanization');
+    const info=el('pronunciationNote');
+    if(!target||!info)return;
+    const item=story[currentIndex];
+    if(!item){target.textContent='';info.textContent='';return;}
+    const prefix=correctPrefixLength();
+    const pieces=PRONUNCIATION_MAP[item.id];
+    target.replaceChildren();
+    if(pieces){
+        // Only three introductory words have curated letter-by-letter alignment.
+        const roman=pieces.join('');
+        const completed=pieces.slice(0,prefix).join('');
+        const pending=pieces.slice(prefix).join('');
+        const done=document.createElement('span');done.className='roman-done';done.textContent=completed;
+        const rest=document.createElement('span');rest.className='roman-pending';rest.textContent=pending;
+        target.append(done,rest);
+        target.setAttribute('aria-label', '전체 발음 '+roman+', 입력 완료 '+completed);
+        const hints=LETTER_HINTS[item.id];
+        info.textContent=prefix ? hints[Math.min(prefix-1,hints.length-1)] : '먼저 첫 글자를 입력하세요. 단모음은 글자로 표시되지 않을 수 있습니다.';
+        if(hasCompletedCurrent)info.textContent='단어가 완성되었습니다! 표시된 로마자는 이 단어의 실제 읽는 법입니다.';
+        return;
+    }
+    const words=item.p.trim().split(/\s+/u);
+    const phonetics=ROMAN_WORDS[item.id];
+    if(!phonetics || words.length!==phonetics.length){
+        // Never guess alignment from roman text length; show safe whole-expression fallback.
+        const entire=LESSON_NOTES[item.id]?.roman||'';
+        target.textContent=entire;
+        info.textContent='전체 문장의 읽는 법입니다.';
+        return;
+    }
+    let position=0;
+    for(let i=0;i<words.length;i++){
+        const end=position+Array.from(words[i]).length;
+        const span=document.createElement('span');
+        span.textContent=phonetics[i];
+        if(prefix>=end)span.className='roman-done';
+        else if(prefix>position)span.className='roman-current';
+        else span.className='roman-pending';
+        target.append(span);
+        if(i<words.length-1){const space=document.createElement('span');space.className='roman-space';space.textContent=' ';target.append(space);}
+        position=end+1; // The curated source uses one space between these words.
+    }
+    target.setAttribute('aria-label', '전체 발음 '+phonetics.join(' '));
+    info.textContent=hasCompletedCurrent
+        ? '문장이 완성되었습니다. 단어마다 강조되는 발음을 확인해 보세요.'
+        : '글자를 입력하면 현재 단어의 발음이 강조됩니다. 페르시아어는 짧은 모음을 대개 적지 않습니다.';
+}
+
 function startTutorial() {
     document.activeElement?.blur?.();
     mode = 'tutorial';
@@ -3612,60 +3825,55 @@ function startTutorial() {
     moveKeyboard('tutorialKeyboardMount');
     renderInput();
 }
-// 원래 keyboard layout/typingKey는 변경하지 않는다. 탐색 중에만 별도 keydown을 사용한다.
+// V4: 체험 모드만 선택. 물리 키 입력 판정은 기존 typingKey()를 그대로 재사용합니다.
 function startWordLesson(lessonId){
-    const item = INTRO_LESSONS[lessonId]; if(!item) return;
-    if(explorationOpen)toggleExploration();
+    const item = INTRO_LESSONS[lessonId]; if(!item)return;
     currentLesson = lessonId;
+    selectedStoryIndex = null;
     story = item.entries;
     el('storyName').textContent = `『샤나메』 속 일상 표현 · ${item.label}`;
     beginPractice();
 }
 function startOriginalStory(){
-    if(explorationOpen)toggleExploration();
     currentLesson = null;
-    story = STORY_DATA;
-    el('storyName').textContent = '『샤나메』 · 로스탐과 소흐랍';
-    beginPractice();
-}
-function toggleExploration(){
-    explorationOpen = !explorationOpen;
-    el('explorePanel').hidden = !explorationOpen;
-    el('explorePanel').closest('.free-play').classList.toggle('expanded',explorationOpen);
-    el('exploreToggle').textContent = explorationOpen ? '자유 탐색 닫기' : '자유 탐색 시작';
-    el('exploreToggle').setAttribute('aria-expanded', String(explorationOpen));
-    if(explorationOpen){moveKeyboard('introKeyboardMount');renderExploration();}
+    selectedStoryIndex = null;
+    renderStorySelection();
+    show('selection');
     document.activeElement?.blur?.();
 }
-function renderExploration(){
-    const out=el('exploreOutput');
-    out.textContent = explorationChars.join('') || ' ';  // 오른쪽에서 왼쪽으로 조판
+function renderStorySelection(){
+    const grid=el('storySelectionGrid');
+    grid.replaceChildren();
+    STORY_DATA.forEach((passage,idx)=>{
+        const button=document.createElement('button');
+        button.className='story-pick';
+        button.type='button';
+        button.dataset.storyIndex=String(idx);
+        const heading=document.createElement('div');heading.className='story-pick-top';
+        const num=document.createElement('span');num.textContent=String(idx+1).padStart(2,'0')+' · 이야기 속 구절';
+        const action=document.createElement('span');action.textContent='선택하여 쓰기';
+        heading.append(num,action);
+        const fa=document.createElement('div');fa.className='story-pick-fa';fa.lang='fa';fa.dir='rtl';fa.textContent=passage.p;
+        const ko=document.createElement('div');ko.className='story-pick-ko';ko.textContent=passage.k;
+        button.append(heading,fa,ko);
+        const scene=LESSON_NOTES[passage.id]?.scene;
+        if(scene){const context=document.createElement('div');context.className='story-pick-note';context.textContent=scene;button.append(context);}
+        button.addEventListener('click',()=>selectStoryPassage(idx));
+        grid.append(button);
+    });
 }
-function explorationInput(code,shift=false){
-    if(code==='Backspace'){ explorationChars.pop();renderExploration();return; }
-    if(code==='Space'){ if(explorationChars.length<60) explorationChars.push(' ');renderExploration();return; }
-    const key=kbLayout.flat().find(k=>k.id===code);
-    if(!key||key.z==='special'||!key.p)return;
-    if(explorationChars.length>=60)return;
-    explorationChars.push(shift&&key.s?key.s:key.p);
-    const keyEl=el('key-'+code);
-    if(keyEl){keyEl.classList.add('pressed');setTimeout(()=>keyEl.classList.remove('pressed'),130);}
-    renderExploration();
-}
-function explorationKeydown(e){
-    if(screen!=='intro'||!explorationOpen)return;
-    if(e.key==='Escape'){e.preventDefault();toggleExploration();return;}
-    if(e.ctrlKey||e.altKey||e.metaKey)return;
-    if(e.target instanceof HTMLElement&&e.target.closest('button,a,input,textarea,select'))return;
-    if(e.code==='Backspace'||e.code==='Space'||kbLayout.flat().some(k=>k.id===e.code)){
-       if(e.code.startsWith('Shift'))return;
-       e.preventDefault();explorationInput(e.code,e.shiftKey);
-    }
+function selectStoryPassage(idx){
+    if(!Number.isInteger(idx)||idx<0||idx>=STORY_DATA.length)return;
+    selectedStoryIndex=idx;
+    currentLesson=null;
+    story=[STORY_DATA[idx]];
+    el('storyName').textContent='『샤나메』 · 로스탐과 소흐랍 이야기';
+    beginPractice();
 }
 function beginPractice() {
     document.activeElement?.blur?.();
     if (!story.length) {
-        alert('구절 데이터가 아직 준비되지 않았습니다. CSV 로딩 상태를 확인하세요.');
+        alert('체험할 구절 데이터가 준비되지 않았습니다.');
         return;
     }
     mode = 'practice';
@@ -3748,15 +3956,15 @@ function loadPassage() {
     context.classList.toggle('hidden', !note?.scene);
 
     el('practiceTranslation').textContent = p.k || '한국어 번역이 제공되지 않았습니다.';
-    el('passageLabel').textContent = currentLesson ? `체험 단계 · ${['단어','짧은 구절','원문 한 행'][currentIndex]} · ${currentIndex + 1} / ${story.length}` : `현재 구절 · ${currentIndex + 1} / ${story.length}`;
+    el('passageLabel').textContent = currentLesson ? `직접 써보기 · ${['일상 단어','짧은 구절','『샤나메』 원문 한 행'][currentIndex]}` : '내가 선택한 이야기 구절';
     el('completionBanner').classList.add('hidden');
     el('nextBtn').disabled = true;
-    el('nextBtn').textContent = '다음 구절';
+    el('nextBtn').textContent = selectedStoryIndex !== null ? '다른 구절 고르기' : '다음 단계';
     renderInput();
     updateStats();
 
     // 상황 설명이 지정된 1·3·6·9번째 구절에만 팝업 표시
-    if (note?.scene) {
+    if (note?.scene && selectedStoryIndex === null && currentLesson === null) {
         openSceneModal(note.scene, currentIndex + 1);
     }
 }
@@ -3801,13 +4009,8 @@ function totalStats(includePartial = true) {
     };
 }
 function updateStats() {
-    const s = totalStats();
-    el('progressLabel').textContent = `${completed.length} / ${story.length} 구절 완료`;
-    el('progressFill').style.width = `${story.length ? (completed.length / story.length) * 100 : 0}%`;
-    el('sCount').textContent = completed.length;
-    el('sCpm').textContent = s.cpm;
-    el('sAcc').textContent = s.acc + '%';
-    el('sTime').textContent = fmtMs(s.ms);
+    // V4: 타자 연습 통계는 관람객 화면에 표시하지 않습니다.
+    // 완료 여부만 기존 카드 생성 버튼에 사용합니다.
     el('openShareBtn').disabled = completed.length === 0;
 }
 function completePassage() {
@@ -3825,9 +4028,12 @@ function completePassage() {
     const banner = el('completionBanner');
     banner.classList.remove('hidden');
     banner.classList.toggle('warn', false);
-    banner.textContent = last ? '모든 구절을 완성했습니다! 마지막 기록을 공유할 수 있습니다.' : '한 구절을 완성했습니다. 완성된 문장을 확인하고 다음 구절로 넘어가세요.';
-    el('nextBtn').disabled = last;
-    el('nextBtn').textContent = last ? '전체 연습 완료' : '다음 구절';
+    banner.textContent = selectedStoryIndex !== null
+        ? '선택한 문장을 완성했습니다. 기념 카드를 만들거나 다른 구절을 골라보세요.'
+        : last ? '완성했습니다! 지금까지 쓴 표현으로 기념 카드를 만들 수 있습니다.'
+               : '완성했습니다! 기념 카드를 만들거나 다음 단계에도 도전해 보세요.';
+    el('nextBtn').disabled = last && selectedStoryIndex === null;
+    el('nextBtn').textContent = selectedStoryIndex !== null ? '다른 구절 고르기' : last ? '체험 완료' : '다음 단계';
     renderInput();
 }
 function showFinalState() {
@@ -3837,7 +4043,14 @@ function showFinalState() {
     updateStats();
 }
 function nextPassage() {
-    if (!hasCompletedCurrent || currentIndex >= story.length - 1) return;
+    if(!hasCompletedCurrent)return;
+    if(selectedStoryIndex !== null){
+        pauseTimer();
+        renderStorySelection();
+        show('selection');
+        return;
+    }
+    if(currentIndex >= story.length - 1)return;
     currentIndex++;
     loadPassage();
 }
@@ -3928,14 +4141,14 @@ function typingKey(e) {
     renderInput();
 }
 function goIntro() {
-    if (mode === 'practice' && completed.length) {
-        if (!confirm('처음 화면으로 돌아가면 현재 연습 기록이 초기화됩니다. 계속할까요?')) return;
+    if (screen === 'practice' && mode === 'practice' && completed.length) {
+        if (!confirm('처음 화면으로 돌아가면 현재 체험 결과가 초기화됩니다. 계속할까요?')) return;
     }
     pauseTimer();
     mode = 'intro';
     show('intro');
     clearGuides();
-    if(explorationOpen)moveKeyboard('introKeyboardMount');
+
 }
 function prepareSnapshot() {
     if (!completed.length) throw Error('한 구절 이상 완성해야 공유할 수 있습니다.');
@@ -4007,7 +4220,7 @@ const CARD_LITERARY = {
         page:'https://ganjoor.net/ferdousi/shahname/fereydoon/sh2/'
     },
     thanks: {
-        word:'سپاس', meaning:'감사', roman:'세파스',
+        word:'سپاس', meaning:'감사', roman:'세퍼스',
         line:'ز بهرام دارم به بخشش سپاس',
         translation:'바흐람의 은혜에 감사드립니다.',
         source:'페르도우시 『샤나메』 · 바흐람 구르 이야기',
@@ -4033,7 +4246,7 @@ function cardInformation(s) {
             lineTranslation: '서로를 알아보지 못한 아버지와 아들의 비극',
             source: '『샤나메』 「로스탐과 소흐랍」 기반',
             discovery: '낯선 글자로 영웅들의 이야기를 직접 써보았습니다.',
-            note: '이 체험에는 현대 페르시아어 재구성 문장이 포함되어 있습니다.'
+            note: ''
         };
     }
     const [,lesson,stage] = match;
@@ -4049,7 +4262,7 @@ function cardInformation(s) {
         word:literary.word, wordMeaning:literary.meaning, roman:literary.roman,
         level, line:literary.line, lineTranslation:literary.translation,
         source:literary.source, discovery,
-        note:'고전 원문은 간주르(Ganjoor) 전사본 기준입니다.'
+        note:''
     };
 }
 function drawShareCard(canvas, snapshot) {
@@ -4213,14 +4426,7 @@ async function shareFile() {
 function initEvents() {
     el('skipBtn').onclick = startOriginalStory;
     document.querySelectorAll('[data-lesson]').forEach(node=>node.onclick=()=>startWordLesson(node.dataset.lesson));
-    el('exploreToggle').onclick = toggleExploration;
-    el('exploreClear').onclick = ()=>{explorationChars=[];renderExploration();};
-    el('introKeyboardMount').addEventListener('click',e=>{
-       if(!explorationOpen||screen!=='intro')return;
-       const key=e.target.closest('.key');if(!key)return;
-       const code=key.id.replace(/^key-/,'');
-       explorationInput(code,false);
-    });
+    el('selectionBackBtn').onclick = goIntro;
     el('nextBtn').onclick = nextPassage;
     el('openShareBtn').onclick = openShare;
     el('shareCloseBtn').onclick = closeShare;
@@ -4228,11 +4434,10 @@ function initEvents() {
     el('nativeShareBtn').onclick = shareFile;
     el('homeBtn').onclick = goIntro;
     el('resetBtn').onclick = () => {
-        if (confirm('현재 기록을 지우고 첫 단계부터 다시 시작할까요?')) beginPractice();
+        if (confirm('이 표현을 처음부터 다시 입력할까요?')) beginPractice();
     };
     el('sceneStartBtn').onclick = closeSceneModal;
     window.addEventListener('keydown', handleSceneModalKeydown, true);
-    window.addEventListener('keydown', explorationKeydown);
     window.addEventListener('keydown', typingKey);
     window.addEventListener('keyup', e => {
         if (e.key === 'Shift') setShift(false);
@@ -4240,9 +4445,6 @@ function initEvents() {
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) pauseTimer(); else resumeTimer();
     });
-    setInterval(() => {
-        if (screen === 'practice') updateStats();
-    }, 500);
     el('shareModal').addEventListener('click', e => {
         if (e.target === el('shareModal')) closeShare();
     });
@@ -4252,7 +4454,7 @@ async function boot() {
     mountKeyboard();
     try {
         story = await loadStory();
-        el('dataStatus').textContent = `일상 단어 세 가지 또는 ${story.length}개의 로스탐·소흐랍 본문 구절을 선택할 수 있습니다.`;
+        el('dataStatus').textContent = ''; // 오류가 없으면 상태 문구를 숨겨 첫 화면을 간결하게 유지
     } catch (e) {
         el('dataStatus').className = 'error';
         el('dataStatus').textContent = '구절 데이터 로딩 실패: '+e.message;
