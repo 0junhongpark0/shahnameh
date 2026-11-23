@@ -1,2 +1,2 @@
-# syntax
-syntax
+# shahnameh
+shahnameh typing program for ACC
