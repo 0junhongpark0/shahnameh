@@ -1472,45 +1472,125 @@ html.share-mode .modal-cover {
   #practiceScreen .btn-row{margin-top:6px}
   #practiceScreen .hands-container{height:67px}
 }
+/* ===== V5: 전시 관람객 경험 개선 (기존 키보드 CSS는 변경하지 않음) ===== */
+#practiceScreen .text-top{margin-bottom:0}
+#practiceScreen .pronunciation-panel{background:transparent;border:0;border-radius:0;padding:0;margin:0 0 6px}
+#practiceScreen .romanization{text-align:right;direction:ltr;unicode-bidi:isolate;margin:0}
+#practiceScreen .pronunciation-note{text-align:right;direction:ltr;margin-top:2px}
+#practiceScreen .instruction.ready-to-confirm{background:#e9f4ee;border:1px solid #b7d8c6;border-radius:8px;color:#205b42;font-weight:800;padding:6px 12px;line-height:1.35}
+.story-group-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.story-group-tab{border:1px solid #c9d9e6;border-radius:9px;background:#f1f5f9;color:var(--navy);padding:10px 8px;font-weight:700;font-size:15px;line-height:1.4}
+.story-group-tab[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.story-group-context{color:#476980;font-size:15px;margin:8px 0 12px;line-height:1.55;word-break:keep-all}
+#selectionScreen .story-pick{min-height:120px;padding:12px 15px}
+#selectionScreen .story-pick .story-pick-fa{font-size:clamp(24px,2.2vw,30px);line-height:1.5}
+#selectionScreen .story-pick .story-pick-ko{font-size:clamp(17px,1.45vw,20px);line-height:1.5;color:#233346}
+#selectionScreen .story-pick .story-pick-top{font-size:13px;gap:8px;line-height:1.4;margin-bottom:4px}
+.story-source{color:#526a80;font-weight:700;white-space:normal}
+.story-source.verified{color:#216848}
+#selectionScreen .selection-accuracy{font-size:13px}
+.v5-dialog{width:min(660px,100%);max-height:calc(100dvh - 32px);overflow-y:auto}
+.v5-discovery-word{font:700 clamp(42px,5vw,64px)/1.5 Sahel,Vazirmatn,Tahoma,'Segoe UI',sans-serif;color:var(--navy);margin:4px 0}
+.v5-discovery-meaning{font-size:22px;font-weight:800;color:var(--navy);margin:0 0 16px}
+.v5-discovery-line{font:clamp(26px,3vw,38px)/1.6 Sahel,Vazirmatn,Tahoma,'Segoe UI',sans-serif;color:var(--navy);margin:8px 0;overflow-wrap:anywhere}
+.v5-discovery-line mark{background:#fff0c3;color:#624311;border-radius:4px;animation:v5-discover .65s ease-out}
+@keyframes v5-discover{from{background:#f9e4ab;color:#624311}to{background:#fff0c3;color:#624311}}
+@media(prefers-reduced-motion:reduce){.v5-discovery-line mark{animation:none}}
+.v5-discovery-translation{font-size:17px;line-height:1.6;color:#304b61;margin:8px 0;word-break:keep-all}
+.v5-dialog .btn-row{justify-content:center;gap:8px;margin-top:18px}
+.v5-dialog .btn-row .btn{width:auto;max-width:none}
+#idleModal{z-index:12000}
+@media (min-width:851px) and (max-height:750px){
+ #selectionScreen .story-pick{min-height:104px;padding:8px 12px}
+ #selectionScreen .story-pick .story-pick-fa{font-size:25px;line-height:1.35}
+ #selectionScreen .story-pick .story-pick-ko{font-size:17px;line-height:1.35}
+ #selectionScreen .selection-accuracy{margin:4px 0}
+ .story-group-tabs{margin:6px 0}.story-group-tab{padding:7px 8px}
+ .story-group-context{margin:5px 0 8px}
+}
+@media(max-width:850px){.story-group-tab{font-size:13px}}
 
-
-/* ============================================================
-   V4 발음 표시 UI 개선
-   - 불필요한 패널 장식 제거
-   - 페르시아어 원문 바로 아래에 배치
-   - 발음과 설명 모두 오른쪽 정렬
-   ============================================================ */
-
-/* 원문과 발음 사이의 불필요한 간격 제거 */
-#practiceScreen .text-top {
-    margin-bottom: 0;
+/* ===== V5.1: 첫 화면·구절 선택 화면 확대 (타이핑/키보드 CSS 유지) ===== */
+#introScreen #dataStatus:empty{display:none}
+@media(min-width:851px){
+  #introScreen.active,#selectionScreen.active{
+    display:flex;flex-direction:column;
+    min-height:min(900px,calc(100dvh - 102px));
+    padding:clamp(19px,3.6vh,38px) clamp(22px,3vw,36px);
+  }
+  #introScreen .eyebrow,#selectionScreen .eyebrow{font-size:14px}
+  #introScreen .intro-title{font-size:clamp(36px,6.1vh,58px);margin:10px 0 14px}
+  #introScreen>.subtext{font-size:clamp(16px,2.45vh,22px);line-height:1.65;margin:0 0 14px!important}
+  #introScreen .choice-heading{font-size:clamp(20px,3.1vh,27px);margin:clamp(12px,2.6vh,28px) 0 13px}
+  #introScreen .lesson-choices{flex:1;gap:clamp(12px,1.5vw,22px)}
+  #introScreen .lesson-choice{min-height:clamp(175px,28vh,290px);padding:clamp(15px,2.6vh,28px) clamp(16px,2vw,26px);gap:8px;justify-content:space-between}
+  #introScreen .lesson-choice .mini-label{font-size:clamp(13px,1.95vh,17px)}
+  #introScreen .lesson-choice .word-ko{font-size:clamp(28px,4.5vh,44px)}
+  #introScreen .lesson-choice .word-fa{font-size:clamp(43px,7.7vh,74px);line-height:1.25}
+  #introScreen .lesson-choice .word-roman{font-size:clamp(15px,2.2vh,20px)}
+  #introScreen .story-cta{min-height:clamp(100px,16vh,160px);padding:clamp(16px,3vh,30px) clamp(18px,2.4vw,30px);margin-top:clamp(17px,3.2vh,32px)}
+  #introScreen .story-cta h3{font-size:clamp(22px,3.25vh,30px);margin-bottom:9px}
+  #introScreen .story-cta p{font-size:clamp(15px,2.25vh,20px);line-height:1.55}
+  #introScreen .story-cta .btn,#selectionScreen .selection-actions .btn{font-size:clamp(16px,2.4vh,21px);padding:14px 23px}
+  #selectionScreen .section-title{font-size:clamp(25px,4.5vh,39px);margin:10px 0 8px}
+  #selectionScreen .selection-lead{font-size:clamp(16px,2.4vh,21px);line-height:1.55;margin:4px 0 10px}
+  #selectionScreen .story-group-tabs{margin:9px 0;gap:12px}
+  #selectionScreen .story-group-tab{font-size:clamp(16px,2.6vh,23px);padding:clamp(10px,1.9vh,18px) 12px}
+  #selectionScreen .story-group-context{font-size:clamp(16px,2.4vh,21px);line-height:1.55;margin:6px 0 13px}
+  #selectionScreen .story-selection-grid{flex:1;grid-auto-rows:1fr;gap:clamp(12px,1.7vh,18px)}
+  #selectionScreen .story-pick{display:flex;flex-direction:column;justify-content:center;min-height:clamp(125px,20vh,205px);padding:clamp(12px,2vh,21px) clamp(15px,1.6vw,23px)}
+  #selectionScreen .story-pick .story-pick-top{font-size:clamp(13px,1.9vh,17px);margin-bottom:6px;width:100%}
+  #selectionScreen .story-pick .story-pick-fa{font-size:clamp(27px,4.4vh,42px);line-height:1.45;width:100%}
+  #selectionScreen .story-pick .story-pick-ko{font-size:clamp(18px,2.65vh,25px);line-height:1.45;margin-top:6px}
+  #selectionScreen .selection-actions{margin-top:clamp(13px,2.4vh,24px)}
+}
+/* 주소창 등이 있는 낮은 노트북 화면에서는 여백을 우선 줄입니다. */
+@media(min-width:851px) and (max-height:720px){
+  #introScreen.active,#selectionScreen.active{padding-top:18px;padding-bottom:18px}
+  #selectionScreen .section-title{margin:6px 0}
+  #selectionScreen .selection-lead{margin:3px 0 5px}
+  #selectionScreen .story-group-tabs{margin:5px 0}
+  #selectionScreen .story-group-context{margin:4px 0 8px}
+  #selectionScreen .story-pick{min-height:clamp(105px,19vh,137px);padding:10px 15px}
+  #selectionScreen .story-pick .story-pick-fa{line-height:1.3}
+  #selectionScreen .story-pick .story-pick-ko{line-height:1.35;margin-top:4px}
+  #selectionScreen .selection-actions{margin-top:12px}
+  #selectionScreen .selection-actions .btn{padding:10px 18px}
 }
 
-/* 발음 패널을 원문 아래에 자연스럽게 연결 */
-#practiceScreen .pronunciation-panel {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0 0 8px;
+/* 세 구절 장면은 가로 3열로 넓게 배치하여 긴 구절도 한 화면에서 읽을 수 있게 합니다. */
+@media(min-width:851px){
+  #selectionScreen .story-selection-grid:has(> .story-pick:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(min-content,1fr)}
+  #selectionScreen .story-selection-grid:has(> .story-pick:nth-child(3):last-child) .story-pick{justify-content:center}
+  #selectionScreen .story-selection-grid:has(> .story-pick:nth-child(3):last-child) .story-pick-fa{font-size:clamp(26px,3.9vh,38px)}
+  #selectionScreen .story-selection-grid:has(> .story-pick:nth-child(3):last-child) .story-pick-ko{font-size:clamp(17px,2.55vh,23px)}
 }
-
-/* 로마자 발음을 오른쪽 정렬 */
-#practiceScreen .romanization {
-    text-align: right;
-    direction: ltr;
-    unicode-bidi: isolate;
-    margin: 0;
-    font-size: clamp(20px, 2vw, 27px);
-    line-height: 1.5;
+/* ===== V5.2: 첫 화면과 구절 선택 화면의 높이만 소폭 축소 ===== */
+@media(min-width:851px){
+  #introScreen.active{min-height:min(820px,calc(100dvh - 140px));padding:clamp(17px,2.9vh,30px) clamp(22px,3vw,36px)}
+  #introScreen .lesson-choice{min-height:clamp(155px,25vh,250px);padding:clamp(13px,2.2vh,24px) clamp(16px,2vw,26px)}
+  #introScreen .story-cta{min-height:clamp(88px,14vh,140px);padding:clamp(14px,2.3vh,25px) clamp(18px,2.4vw,30px);margin-top:clamp(14px,2.6vh,26px)}
+  /* 삭제된 하단 버튼의 자리까지 흰 패널을 늘리지 않습니다. */
+  #selectionScreen.active{min-height:0;padding:clamp(16px,2.6vh,28px) clamp(22px,3vw,36px)}
+  #selectionScreen .section-title{font-size:clamp(25px,4vh,36px);margin:7px 0 6px}
+  #selectionScreen .selection-lead{font-size:clamp(16px,2.2vh,20px);margin:3px 0 7px;line-height:1.45}
+  #selectionScreen .story-group-tabs{margin:6px 0;gap:10px}
+  #selectionScreen .story-group-tab{font-size:clamp(16px,2.35vh,21px);padding:clamp(9px,1.5vh,15px) 12px}
+  #selectionScreen .story-group-context{font-size:clamp(16px,2.2vh,20px);line-height:1.45;margin:4px 0 10px}
+  #selectionScreen .story-selection-grid{flex:none;grid-auto-rows:1fr;gap:clamp(9px,1.4vh,15px)}
+  #selectionScreen .story-pick{min-height:clamp(112px,18vh,185px);padding:clamp(10px,1.5vh,16px) clamp(14px,1.5vw,21px)}
+  #selectionScreen .story-pick .story-pick-top{font-size:clamp(13px,1.7vh,16px);margin-bottom:4px}
+  #selectionScreen .story-pick .story-pick-fa{font-size:clamp(26px,3.9vh,39px);line-height:1.32}
+  #selectionScreen .story-pick .story-pick-ko{font-size:clamp(17px,2.4vh,23px);line-height:1.38;margin-top:4px}
+  #selectionScreen .story-selection-grid:has(> .story-pick:nth-child(3):last-child) .story-pick{min-height:clamp(170px,30vh,300px)}
+  #selectionScreen .story-selection-grid:has(> .story-pick:nth-child(3):last-child) .story-pick-fa{font-size:clamp(26px,3.6vh,36px)}
+  #selectionScreen .story-selection-grid:has(> .story-pick:nth-child(3):last-child) .story-pick-ko{font-size:clamp(17px,2.3vh,22px)}
 }
-
-/* 발음 설명도 오른쪽 정렬 */
-#practiceScreen .pronunciation-note {
-    text-align: right;
-    direction: ltr;
-    margin-top: 2px;
-    line-height: 1.45;
+@media(min-width:621px) and (max-height:720px){
+  #selectionScreen.active{padding-top:12px;padding-bottom:12px}
+  #selectionScreen .story-pick{min-height:105px;padding:8px 12px}
+  #selectionScreen .story-pick .story-pick-fa{font-size:clamp(23px,3.7vh,30px);line-height:1.28}
+  #selectionScreen .story-pick .story-pick-ko{font-size:clamp(16px,2.35vh,19px);line-height:1.32}
 }
 </style>
     </head>
@@ -1551,9 +1631,9 @@ html.share-mode .modal-cover {
                     <div class="eyebrow">ROSTAM & SOHRAB · STORY EXPERIENCE</div>
                     <h2 id="selectionHeading" class="section-title">어떤 문장을 써보고 싶나요?</h2>
                     <p class="selection-lead">아버지 로스탐과 아들 소흐랍의 이야기를 읽고, 마음에 드는 문장을 하나 골라보세요. 문장을 누르면 타이핑을 시작합니다.</p>
-                    <p class="selection-accuracy">아래 문장에는 『샤나메』의 구절과, 이야기를 현대 페르시아어로 재구성한 표현이 함께 포함되어 있습니다.</p>
+                    <div id="storyGroupTabs" class="story-group-tabs" role="group" aria-label="이야기 장면 선택"></div>
+                    <p id="storyGroupContext" class="story-group-context"></p>
                     <div id="storySelectionGrid" class="story-selection-grid" aria-label="로스탐과 소흐랍 이야기 구절 선택"></div>
-                    <div class="selection-actions"><button class="btn outline" id="selectionBackBtn" type="button">첫 화면으로 돌아가기</button></div>
                 </section>
                 <section id="practiceScreen" class="screen">
                     <div class="story-caption" id="storyName">『샤나메』 · 로스탐과 소흐랍</div>
@@ -1563,17 +1643,18 @@ html.share-mode .modal-cover {
                             <div id="practiceContext" class="scene-note hidden"></div>
                         </div>
                         <div class="text-top" id="practiceOriginal" lang="fa" dir="rtl"></div>
-<div class="pronunciation-panel" aria-live="polite" aria-atomic="true">
-    <div id="practiceRomanization" class="romanization" dir="ltr" lang="en"></div>
-    <div id="pronunciationNote" class="pronunciation-note">글자를 누르면 대응하는 발음이 강조됩니다. 음성은 재생되지 않습니다.</div>
-</div>
+                        <div class="pronunciation-panel" aria-live="polite" aria-atomic="true">
+                            
+                            <div id="practiceRomanization" class="romanization" dir="ltr" lang="en"></div>
+                            <div id="pronunciationNote" class="pronunciation-note">글자를 누르면 대응하는 발음이 강조됩니다. 음성은 재생되지 않습니다.</div>
+                        </div>
                         <div class="text-bottom" id="practiceInput" lang="fa" dir="rtl"></div>
                         <p class="translation" id="practiceTranslation"></p>
                     </div>
                     <p class="instruction" id="practiceHint">파란색으로 표시된 키를 누르세요.</p>
                     <div id="practiceKeyboardMount"></div>
                     <div id="completionBanner" class="status-banner hidden"></div>
-                    <div class="btn-row"><button class="btn gold" id="openShareBtn" disabled>기념 카드 만들기</button><button class="btn" id="nextBtn" disabled>다음 단계</button><button class="btn outline" id="resetBtn">다시 시작하기</button></div><p class="info-note">결과 카드는 마지막으로 완성한 표현과 문학적 발견을 담습니다. 현재 입력 중인 표현은 포함되지 않습니다.</p>
+                    <div class="btn-row"><button class="btn gold" id="openShareBtn" disabled>기념 카드 만들기</button><button class="btn" id="nextBtn" disabled>다음 단계</button><button class="btn outline" id="resetBtn">다시 시작하기</button><button class="btn outline hidden" id="reselectBtn" type="button">다른 구절 고르기</button></div><p class="info-note">결과 카드는 마지막으로 완성한 표현과 문학적 발견을 담습니다. 현재 입력 중인 표현은 포함되지 않습니다.</p>
                 </section>
             </main>
         </div>
@@ -1596,6 +1677,27 @@ html.share-mode .modal-cover {
             </div>
         </div>
 
+        <!-- V5: 완료 후 문학적 발견 (키보드 엔진과 독립적인 화면) -->
+        <div id="discoveryModal" class="scene-modal hidden" role="dialog" aria-modal="true" aria-labelledby="discoveryTitle">
+            <div class="scene-dialog v5-dialog">
+                <p class="scene-count">나의 첫 페르시아어</p>
+                <h2 id="discoveryTitle">나의 첫 페르시아어 단어 완성!</h2>
+                <div id="discoveryWord" class="v5-discovery-word" lang="fa" dir="rtl"></div>
+                <p id="discoveryMeaning" class="v5-discovery-meaning"></p>
+                <p class="scene-description" style="margin-bottom:8px;font-size:16px">방금 쓴 단어가 천 년 전의 『샤나메』에도 등장합니다.</p>
+                <div id="discoveryLine" class="v5-discovery-line" lang="fa" dir="rtl"></div>
+                <p id="discoveryTranslation" class="v5-discovery-translation"></p>
+                <p id="discoverySource" class="info-note"></p>
+                <div class="btn-row"><button class="btn gold" id="discoveryShareBtn" type="button">기념 카드 만들기</button><button class="btn" id="discoveryNextBtn" type="button">짧은 구절 써보기</button><button class="btn outline" id="discoveryCloseBtn" type="button">닫기</button></div>
+            </div>
+        </div>
+        <div id="idleModal" class="scene-modal hidden" role="dialog" aria-modal="true" aria-labelledby="idleTitle" aria-describedby="idleText">
+            <div class="scene-dialog">
+                <h2 id="idleTitle">체험을 계속하시겠어요?</h2>
+                <p id="idleText" class="scene-description">잠시 후 첫 화면으로 돌아갑니다.</p>
+                <div class="btn-row"><button class="btn" id="idleContinueBtn" type="button">계속 체험하기</button><button class="btn outline" id="idleHomeBtn" type="button">처음으로</button></div>
+            </div>
+        </div>
         <div class="modal-cover" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
             <div class="modal-inner">
                 <div class="modal-header">
@@ -2978,7 +3080,7 @@ const LESSON_NOTES = {
         scene: '로스탐과 소흐랍은 사실 아버지와 아들입니다. 그러나 서로를 알아보지 못한 채 전장에서 적으로 마주합니다.'
     },
     'rs-175': {
-        roman: 'Rostam be pahlu-ye Sohrab khanjar zad',
+        roman: 'Rostam be pahlu-ye Sohrāb khanjar zad',
         keyword: {
             fa: 'پهلوی',
             roman: 'pahlu-ye',
@@ -2986,7 +3088,7 @@ const LESSON_NOTES = {
         }
     },
     'rs-185': {
-        roman: 'age pedaram befahme, to ro zende nemizare!',
+        roman: 'age pedaram befahme, to ro zende nemizāre!',
         keyword: {
             fa: 'پدرم',
             roman: 'pedaram',
@@ -2995,10 +3097,10 @@ const LESSON_NOTES = {
         scene: '치명상을 입은 소흐랍이, 자신을 찌른 전사에게 아버지의 복수를 경고합니다.'
     },
     'rs-187': {
-        roman: 'kasi ham bord su-ye Rostam neshan',
+        roman: 'kasi ham bord su-ye Rostam neshān',
         keyword: {
             fa: 'نشان',
-            roman: 'neshan',
+            roman: 'neshān',
             meaning: '징표, 소식'
         }
     },
@@ -3020,7 +3122,7 @@ const LESSON_NOTES = {
         scene: '아버지의 이름을 들은 로스탐이 충격에 빠지고, 마침내 자신의 정체를 밝힙니다.'
     },
     'rs-195': {
-        roman: 'Sohrab goft, pedar toyi?',
+        roman: 'Sohrāb goft, pedar toyi?',
         keyword: {
             fa: 'پدر',
             roman: 'pedar',
@@ -3028,7 +3130,7 @@ const LESSON_NOTES = {
         }
     },
     'rs-199': {
-        roman: 'be bazum bar mohre-ye khod negar',
+        roman: 'be bāzum bar mohre-ye khod negar',
         keyword: {
             fa: 'مهره',
             roman: 'mohre',
@@ -3036,19 +3138,19 @@ const LESSON_NOTES = {
         }
     },
     'rs-201': {
-        roman: 'Rostam faryad zad, Sohrabam! ba dast-e khodam koshtamet!',
+        roman: 'Rostam faryād zad, Sohrābam! bā dast-e khodam koshtamet!',
         keyword: {
             fa: 'فریاد',
-            roman: 'faryad',
+            roman: 'faryād',
             meaning: '외침, 고함'
         },
         scene: '팔의 징표로 진실을 깨달은 로스탐. 자신의 손으로 아들을 찔렀다는 사실에 절규합니다.'
     },
     'rs-214': {
-        roman: 'Rostam peykar-e Sohrab ra dar aghush gereft',
+        roman: 'Rostam peykar-e Sohrāb rā dar āghush gereft',
         keyword: {
             fa: 'آغوش',
-            roman: 'aghush',
+            roman: 'āghush',
             meaning: '품, 포옹'
         }
     }
@@ -3523,6 +3625,7 @@ async function loadStory() {
 }
 function show(screenName) {
     screen = screenName;
+    idleLastActivity=Date.now();
     el('introScreen').classList.toggle('active', screenName === 'intro');
     el('selectionScreen').classList.toggle('active', screenName === 'selection');
     el('practiceScreen').classList.toggle('active', screenName === 'practice');
@@ -3654,9 +3757,11 @@ function renderPracticeHint() {
     hint.classList.toggle('done', hasCompletedCurrent);
     hint.classList.toggle('lesson-complete', hasCompletedCurrent);
 
+    const ready = !hasCompletedCurrent && charList.length > 0 && correctPrefixLength() === charList.length;
+    hint.classList.toggle('ready-to-confirm', ready);
     if (!hasCompletedCurrent) {
-        hint.textContent = input.length === charList.length
-            ? 'Enter를 눌러 입력을 완성하세요.'
+        hint.textContent = ready
+            ? '모든 글자를 입력했습니다! Enter ↵ 를 눌러 완성하세요.'
             : '파란색으로 안내된 키를 눌러보세요. 잘못 입력하면 Backspace로 고칠 수 있습니다.';
         return;
     }
@@ -3750,15 +3855,15 @@ const ROMAN_WORDS = {
     'intro-friend-phrase':['mehrabān','dust'],
     'intro-friend-line':['be','shahr-am','yeki','mehrabān','dust','bud'],
     'rs-174':['khanjar-e','Rostam','barq','zad'],
-    'rs-175':['Rostam','be','pahlu-ye','Sohrab','khanjar','zad'],
+    'rs-175':['Rostam','be','pahlu-ye','Sohrāb','khanjar','zad'],
     'rs-185':['age','pedaram','befahme,','to','ro','zende','nemi','zāre!'],
-    'rs-187':['kasi','ham','bord','su-ye','Rostam','neshan'],
+    'rs-187':['kasi','ham','bord','su-ye','Rostam','neshān'],
     'rs-188':['cho','beshnid','Rostam','sarash','khire','gasht'],
     'rs-194':['Rostam','manam!'],
-    'rs-195':['Sohrab','goft,','pedar','toyi?'],
-    'rs-199':['be','bazum','bar','mohre-ye','khod','negar'],
-    'rs-201':['Rostam','faryad','zad,','Sohrabam!','ba','dast-e','khodam','koshtamet!'],
-    'rs-214':['Rostam','peykar-e','Sohrab','ra','dar','aghush','gereft']
+    'rs-195':['Sohrāb','goft,','pedar','toyi?'],
+    'rs-199':['be','bāzum','bar','mohre-ye','khod','negar'],
+    'rs-201':['Rostam','faryād','zad,','Sohrābam!','bā','dast-e','khodam','koshtamet!'],
+    'rs-214':['Rostam','peykar-e','Sohrāb','rā','dar','āghush','gereft']
 };
 function correctPrefixLength(){
     let n=0;
@@ -3834,7 +3939,22 @@ function startWordLesson(lessonId){
     el('storyName').textContent = `『샤나메』 속 일상 표현 · ${item.label}`;
     beginPractice();
 }
+// V5: 장면별 선택 UI. 배열 인덱스/입력 문자열은 원본 그대로 유지.
+const STORY_GROUPS = [
+    {title:'엇갈린 운명',indices:[0,1,2],context:'서로의 정체를 모른 채 맞선 두 영웅. 소흐랍은 자신을 공격한 전사에게 아버지를 언급합니다.'},
+    {title:'밝혀지는 진실',indices:[3,4,5,6],context:'소흐랍의 말을 듣고 충격에 빠진 로스탐. 두 사람은 마침내 서로의 정체를 알게 됩니다.'},
+    {title:'아버지와 아들의 비극',indices:[7,8,9],context:'아버지가 남긴 징표로 드러난 진실. 로스탐은 뒤늦게 아들을 알아보고 슬퍼합니다.'}
+];
+// 간주르 소흐랍 18절 본문과 일치: rs-187, rs-188.
+// https://ganjoor.net/ferdousi/shahname/sohrab/sh18/
+// rs-199는 해당 전사본 본문과 일치하지 않아 다른 판본 대조 전까지 미확정.
+const VERIFIED_STORY_IDS = new Set(['rs-187','rs-188']);
+function storySourceLabel(id){
+    return VERIFIED_STORY_IDS.has(id) ? '고전 원문' : id==='rs-199' ? '판본 대조 미확정' : '이야기 재구성';
+}
+let storyGroupIndex=0;
 function startOriginalStory(){
+    storyGroupIndex=0;
     currentLesson = null;
     selectedStoryIndex = null;
     renderStorySelection();
@@ -3844,20 +3964,27 @@ function startOriginalStory(){
 function renderStorySelection(){
     const grid=el('storySelectionGrid');
     grid.replaceChildren();
-    STORY_DATA.forEach((passage,idx)=>{
+    const tabs=el('storyGroupTabs');tabs.replaceChildren();
+    STORY_GROUPS.forEach((group,i)=>{
+        const tab=document.createElement('button');tab.type='button';tab.className='story-group-tab';
+        tab.setAttribute('aria-pressed',String(i===storyGroupIndex));
+        tab.textContent=`${i+1}. ${group.title}`;
+        tab.onclick=()=>{storyGroupIndex=i;renderStorySelection();};tabs.append(tab);
+    });
+    const group=STORY_GROUPS[storyGroupIndex];
+    el('storyGroupContext').textContent=group.context;
+    group.indices.forEach(idx=>{
+        const passage=STORY_DATA[idx];
         const button=document.createElement('button');
         button.className='story-pick';
         button.type='button';
         button.dataset.storyIndex=String(idx);
         const heading=document.createElement('div');heading.className='story-pick-top';
         const num=document.createElement('span');num.textContent=String(idx+1).padStart(2,'0')+' · 이야기 속 구절';
-        const action=document.createElement('span');action.textContent='선택하여 쓰기';
-        heading.append(num,action);
+        heading.append(num);
         const fa=document.createElement('div');fa.className='story-pick-fa';fa.lang='fa';fa.dir='rtl';fa.textContent=passage.p;
         const ko=document.createElement('div');ko.className='story-pick-ko';ko.textContent=passage.k;
         button.append(heading,fa,ko);
-        const scene=LESSON_NOTES[passage.id]?.scene;
-        if(scene){const context=document.createElement('div');context.className='story-pick-note';context.textContent=scene;button.append(context);}
         button.addEventListener('click',()=>selectStoryPassage(idx));
         grid.append(button);
     });
@@ -3957,8 +4084,10 @@ function loadPassage() {
 
     el('practiceTranslation').textContent = p.k || '한국어 번역이 제공되지 않았습니다.';
     el('passageLabel').textContent = currentLesson ? `직접 써보기 · ${['일상 단어','짧은 구절','『샤나메』 원문 한 행'][currentIndex]}` : '내가 선택한 이야기 구절';
+    el('reselectBtn').classList.toggle('hidden', selectedStoryIndex === null);
     el('completionBanner').classList.add('hidden');
     el('nextBtn').disabled = true;
+    el('nextBtn').classList.toggle('hidden',selectedStoryIndex !== null);
     el('nextBtn').textContent = selectedStoryIndex !== null ? '다른 구절 고르기' : '다음 단계';
     renderInput();
     updateStats();
@@ -4033,8 +4162,11 @@ function completePassage() {
         : last ? '완성했습니다! 지금까지 쓴 표현으로 기념 카드를 만들 수 있습니다.'
                : '완성했습니다! 기념 카드를 만들거나 다음 단계에도 도전해 보세요.';
     el('nextBtn').disabled = last && selectedStoryIndex === null;
+    el('nextBtn').classList.remove('hidden');
     el('nextBtn').textContent = selectedStoryIndex !== null ? '다른 구절 고르기' : last ? '체험 완료' : '다음 단계';
+    if(selectedStoryIndex !== null)el('reselectBtn').classList.add('hidden');
     renderInput();
+    if(currentLesson && currentIndex===0)openDiscovery();
 }
 function showFinalState() {
     hasCompletedCurrent = true;
@@ -4246,7 +4378,7 @@ function cardInformation(s) {
             lineTranslation: '서로를 알아보지 못한 아버지와 아들의 비극',
             source: '『샤나메』 「로스탐과 소흐랍」 기반',
             discovery: '낯선 글자로 영웅들의 이야기를 직접 써보았습니다.',
-            note: ''
+            note: '이 체험에는 현대 페르시아어 재구성 문장이 포함되어 있습니다.'
         };
     }
     const [,lesson,stage] = match;
@@ -4262,7 +4394,7 @@ function cardInformation(s) {
         word:literary.word, wordMeaning:literary.meaning, roman:literary.roman,
         level, line:literary.line, lineTranslation:literary.translation,
         source:literary.source, discovery,
-        note:''
+        note:'고전 원문은 간주르(Ganjoor) 전사본 기준입니다.'
     };
 }
 function drawShareCard(canvas, snapshot) {
@@ -4326,7 +4458,7 @@ function drawShareCard(canvas, snapshot) {
     drawWrapped(data.line,{y:840,width:890,maxLines:2,size:data.isIntro?48:56,minSize:31,lineHeight:1.44,color:'#173b4a',bold:true,persian:true});
     drawWrapped(data.lineTranslation,{y:928,width:880,maxLines:2,size:28,minSize:22,lineHeight:1.35,color:'#435d74'});
     drawWrapped(data.source,{y:983,width:910,maxLines:1,size:21,minSize:18,color:muted});
-    drawWrapped(data.note,{y:1016,width:910,maxLines:1,size:17,minSize:15,color:'#71879a'});
+    // V5.2: 판본 안내는 내부 데이터에만 보존하고 카드의 이 위치는 빈칸으로 둡니다.
 
     g.fillStyle='#e9f1f7';g.fillRect(92,1040,896,176);
     g.fillStyle=blue;g.font=setFont(25,true);g.textAlign='center';
@@ -4423,10 +4555,102 @@ async function shareFile() {
         if (e.name !== 'AbortError') alert('공유를 열 수 없습니다. 이미지 저장 버튼을 이용하세요.');
     }
 }
+// ===== V5: 전시 운영 / 완료 화면 보조 기능 =====
+// 3분 / 90초에는 마지막 10초 안내가 포함됩니다. 실제 입력이 있으면 시간이 초기화됩니다.
+const IDLE_TYPING_MS=180000, IDLE_RESULT_MS=90000, IDLE_WARNING_MS=10000;
+let idleLastActivity=Date.now(), idleWarningOpen=false, idleDeadline=0, idlePreviousFocus=null;
+function openDiscovery(){
+    const data=CARD_LITERARY[currentLesson];if(!data)return;
+    el('discoveryWord').textContent=data.word;
+    el('discoveryMeaning').textContent=data.meaning+' · '+data.roman;
+    const line=el('discoveryLine');line.replaceChildren();
+    const at=data.line.indexOf(data.word);
+    if(at>=0){
+        const mark=document.createElement('mark');mark.textContent=data.word;
+        line.append(document.createTextNode(data.line.slice(0,at)),mark,document.createTextNode(data.line.slice(at+data.word.length)));
+    }else line.textContent=data.line;
+    el('discoveryTranslation').textContent=data.translation;
+    el('discoverySource').textContent=data.source+' · 간주르 전사본';
+    el('discoveryModal').classList.remove('hidden');
+    el('discoveryNextBtn').focus();idleLastActivity=Date.now();
+}
+function closeDiscovery(){
+    el('discoveryModal').classList.add('hidden');document.activeElement?.blur?.();idleLastActivity=Date.now();
+}
+function reselectStory(){
+    if(selectedStoryIndex===null)return;
+    if(!hasCompletedCurrent && input.length && !confirm('현재 입력한 글자를 지우고 다른 구절을 고를까요?'))return;
+    pauseTimer();renderStorySelection();show('selection');document.activeElement?.blur?.();
+}
+function closeIdleWarning(restoreFocus=true){
+    idleWarningOpen=false;idleDeadline=0;el('idleModal').classList.add('hidden');
+    if(restoreFocus && idlePreviousFocus instanceof HTMLElement && idlePreviousFocus.isConnected && idlePreviousFocus!==document.body)idlePreviousFocus.focus();
+    else document.activeElement?.blur?.();
+    idlePreviousFocus=null;idleLastActivity=Date.now();
+}
+function resetForNextVisitor(){
+    closeIdleWarning(false);
+    closeDiscovery();el('sceneModal').classList.add('hidden');el('shareModal').classList.remove('open');
+    pauseTimer();mode='intro';currentLesson=null;selectedStoryIndex=null;story=STORY_DATA;
+    input=[];charList=[];completed=[];currentIndex=0;hasCompletedCurrent=false;
+    elapsedMs=0;activeStartedAt=null;everStarted=false;currentAttempts=0;currentCorrect=0;
+    shareSnapshot=null;shareBlob=null;
+    if(shareImageUrl)URL.revokeObjectURL(shareImageUrl);shareImageUrl=null;
+    el('sharePreview').removeAttribute('src');el('qrSquare').replaceChildren();el('qrInfo').textContent='';
+    el('downloadBtn').disabled=true;el('nativeShareBtn').hidden=true;
+    setShift(false);clearGuides();show('intro');moveKeyboard('introKeyboardMount');
+    document.activeElement?.blur?.();window.scrollTo(0,0);idleLastActivity=Date.now();
+}
+function trackIdleActivity(){if(!idleWarningOpen)idleLastActivity=Date.now();}
+function checkIdle(){
+    if(screen==='intro' || isRendering)return;
+    const now=Date.now();
+    if(idleWarningOpen){
+        const remaining=Math.max(0,Math.ceil((idleDeadline-now)/1000));
+        el('idleText').textContent=`${remaining}초 후 첫 화면으로 돌아갑니다. 계속 체험하려면 아래 버튼을 누르세요.`;
+        if(now>=idleDeadline)resetForNextVisitor();return;
+    }
+    const result=hasCompletedCurrent && screen==='practice' || el('shareModal').classList.contains('open') || !el('discoveryModal').classList.contains('hidden');
+    const limit=result?IDLE_RESULT_MS:IDLE_TYPING_MS;
+    if(now-idleLastActivity>=limit-IDLE_WARNING_MS){
+        // 장시간 절전/탭 전환 뒤에도 실제 10초 안내를 제공.
+        idleWarningOpen=true;idleDeadline=now+IDLE_WARNING_MS;idlePreviousFocus=document.activeElement;
+        el('idleText').textContent='10초 후 첫 화면으로 돌아갑니다. 계속 체험하려면 아래 버튼을 누르세요.';
+        el('idleModal').classList.remove('hidden');el('idleContinueBtn').focus();
+    }
+}
+// 모달 열림 중 물리키가 기존 입력 엔진에 전달되지 않도록 별도 캡처.
+function guardV5Modal(e){
+    const modal=idleWarningOpen?el('idleModal'):!el('discoveryModal').classList.contains('hidden')?el('discoveryModal'):null;
+    if(!modal)return;
+    if(e.key==='Tab'){
+        const buttons=Array.from(modal.querySelectorAll('button'));const i=buttons.indexOf(document.activeElement);
+        e.preventDefault();buttons[(i+(e.shiftKey?-1:1)+buttons.length)%buttons.length].focus();
+    }else if(e.key==='Escape'){
+        e.preventDefault();if(idleWarningOpen)closeIdleWarning();else closeDiscovery();
+    }else if(!e.repeat && (e.key==='Enter'||e.key===' ') && modal.contains(document.activeElement) && document.activeElement.tagName==='BUTTON'){
+        e.preventDefault();document.activeElement.click();
+    }else if(idleWarningOpen && !e.ctrlKey&&!e.altKey&&!e.metaKey){
+        // 경고에서 누른 키는 입력에 반영하지 않고 계속 체험만 수행.
+        e.preventDefault();closeIdleWarning();
+    }else if(!e.ctrlKey&&!e.altKey&&!e.metaKey)e.preventDefault();
+    e.stopImmediatePropagation();
+}
+function initV5Events(){
+    el('reselectBtn').onclick=reselectStory;
+    el('discoveryCloseBtn').onclick=closeDiscovery;
+    el('discoveryNextBtn').onclick=()=>{closeDiscovery();nextPassage();};
+    el('discoveryShareBtn').onclick=()=>{closeDiscovery();openShare();};
+    el('idleContinueBtn').onclick=()=>closeIdleWarning();
+    el('idleHomeBtn').onclick=resetForNextVisitor;
+    // capture listener precedes the original scene/typing listeners.
+    window.addEventListener('keydown',guardV5Modal,true);
+    ['keydown','pointerdown','pointermove','touchstart','wheel'].forEach(type=>window.addEventListener(type,trackIdleActivity,{capture:true,passive:true}));
+    setInterval(checkIdle,500);
+}
 function initEvents() {
     el('skipBtn').onclick = startOriginalStory;
     document.querySelectorAll('[data-lesson]').forEach(node=>node.onclick=()=>startWordLesson(node.dataset.lesson));
-    el('selectionBackBtn').onclick = goIntro;
     el('nextBtn').onclick = nextPassage;
     el('openShareBtn').onclick = openShare;
     el('shareCloseBtn').onclick = closeShare;
@@ -4450,6 +4674,7 @@ function initEvents() {
     });
 }
 async function boot() {
+    initV5Events();
     initEvents();
     mountKeyboard();
     try {
