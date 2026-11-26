@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>나의 첫 페르시아어 · 결과 카드</title>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>낯선 글자, 익숙한 말 · 기념 카드</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:'Malgun Gothic','Apple SD Gothic Neo',system-ui,sans-serif;background:#eef3f7;color:#0b2a4a}main{max-width:530px;margin:0 auto;padding:18px 18px 40px}.header{background:#0b2a4a;color:#fff;border-radius:13px;padding:18px 20px;margin-bottom:15px}.header h1{font-size:21px;margin:5px 0}.eyebrow{font-size:12px;letter-spacing:.08em;color:#c8dbe9}p{line-height:1.7}#preview{width:100%;border:1px solid #d6e0e9;box-shadow:0 6px 24px #132f4522;border-radius:6px;display:none}#status{font-size:15px}button{font:inherit;width:100%;padding:14px 12px;margin-top:10px;border:0;border-radius:9px;background:#0b2a4a;color:white;font-weight:700;cursor:pointer}.secondary{background:#e2eaf0;color:#0b2a4a}small{display:block;color:#597286;line-height:1.7;margin-top:14px}#shareFile{display:none}
-</style></head><body><main><div class="header"><div class="eyebrow">SHAHNAMEH · PERSIAN TYPING</div><h1>나의 첫 페르시아어</h1><div>체험 결과 카드</div></div><p id="status" role="status">이미지를 준비하는 중입니다.</p><img id="preview" alt="완성한 내가 직접 쓴 페르시아어와 샤나메 속 발견을 담은 기념 카드"><button id="download" hidden>PNG 이미지 다운로드 · 1080×1350</button><button id="shareFile">사진 앱에 저장 / 공유</button><small>iPhone에서는 공유 메뉴의 '이미지 저장'을 이용할 수 있습니다. 지원하지 않는 경우 이미지를 길게 눌러 저장하거나 다운로드 버튼을 이용하세요. QR은 체험 결과를 재현하는 정보만 전달합니다. 결과 이미지는 스마트폰에서 생성되며, 서버에 별도로 저장되지 않습니다.</small></main>
+</style></head><body><main><div class="header"><div class="eyebrow">FERDOWSI · SHAHNAMEH</div><h1>낯선 글자, 익숙한 말</h1><div>기념 카드</div></div><p id="status" role="status">이미지를 준비하는 중입니다.</p><img id="preview" alt="직접 쓴 페르시아어와 『샤나메』의 구절을 담은 기념 카드"><button id="download" hidden>이미지 저장</button><button id="shareFile">사진 앱에 저장 / 공유</button><small>iPhone에서는 공유 메뉴의 '이미지 저장'을 이용할 수 있습니다. 지원하지 않는 경우 이미지를 길게 눌러 저장하거나 다운로드 버튼을 이용하세요.</small></main>
 <script>
 'use strict';
 const STORY_DATA = [
@@ -71,7 +71,7 @@ const STORY_DATA = [
 
 
 // 신규 입문 문구: 기존 STORY_DATA와 입력 로직은 유지하고 문구 목록만 전환합니다.
-// 입문 문구의 마지막 한 행은 간주르 『샤나메』 전사본과 대조했습니다.
+// 입문 문구의 마지막 한 행은 『샤나메』 본문과 대조했습니다.
 // 로스탐과 소흐랍 STORY_DATA에는 원문과 현대 페르시아어 재구성 문장이 혼재합니다.
 const INTRO_LESSONS = {
     greeting: {label:'안녕 · درود', entries:[
@@ -128,32 +128,17 @@ function cardInformation(s) {
     const item = ALL_CARD_DATA.find(p => p.id === s.id);
     if (!item) throw Error('공유 데이터에 해당하는 문구가 없습니다.');
     const match = /^intro-(greeting|thanks|friend)-(word|phrase|line)$/.exec(s.id);
-    if (!match) {
-        return {
-            isIntro: false, written: item.p, translation: item.k,
-            level: '로스탐과 소흐랍 이야기',
-            line: 'رستم و سهراب',
-            lineTranslation: '서로를 알아보지 못한 아버지와 아들의 비극',
-            source: '『샤나메』 「로스탐과 소흐랍」 기반',
-            discovery: '낯선 글자로 영웅들의 이야기를 직접 써보았습니다.',
-            note: '이 체험에는 현대 페르시아어 재구성 문장이 포함되어 있습니다.'
-        };
-    }
+    if (!match) return {
+        isIntro:false, written:item.p, translation:item.k,
+        line:'رستم و سهراب', lineTranslation:'서로를 알아보지 못한 아버지와 아들의 비극',
+        source:'페르도우시 『샤나메』 · 로스탐과 소흐랍'
+    };
     const [,lesson,stage] = match;
     const literary = CARD_LITERARY[lesson];
-    const level = {word:'단어를 완성했어요',phrase:'짧은 구절을 완성했어요',line:'원문 한 행을 완성했어요'}[stage];
-    const discovery = {
-        word:'처음 써본 페르시아어 단어가 『샤나메』에도 등장합니다.',
-        phrase:'내가 쓴 표현이 천 년 전 문학의 한 구절과 연결됩니다.',
-        line:'고전 시구의 한 행을 처음부터 끝까지 직접 써보았습니다.'
-    }[stage];
-    return {
-        isIntro: true, written:item.p, translation:item.k,
-        word:literary.word, wordMeaning:literary.meaning, roman:literary.roman,
-        level, line:literary.line, lineTranslation:literary.translation,
-        source:literary.source, discovery,
-        note:'고전 원문은 간주르(Ganjoor) 전사본 기준입니다.'
-    };
+    const romanLatin = {greeting:'dorud',thanks:'sepās',friend:'dust'}[lesson];
+    return {isIntro:true,stage,written:item.p,translation:item.k,
+        word:literary.word,wordMeaning:literary.meaning,roman:romanLatin+' · '+literary.roman,
+        line:literary.line,lineTranslation:literary.translation,source:literary.source};
 }
 function drawShareCard(canvas, snapshot) {
     sanitizeSnapshot(snapshot);
@@ -194,44 +179,45 @@ function drawShareCard(canvas, snapshot) {
         g.direction='ltr';
         return sz;
     }
-    g.fillStyle='#f8fafc';g.fillRect(0,0,1080,1350);
-    g.lineWidth=3;g.strokeStyle=border;g.strokeRect(35,35,1010,1280);
-    g.lineWidth=1;g.strokeStyle='#e1eaf1';g.strokeRect(49,49,982,1252);
-    g.textAlign='center';g.fillStyle=muted;g.font=setFont(22,true);
-    g.fillText('SHAHNAMEH · PERSIAN EXPERIENCE',540,126);
-    g.fillStyle=navy;g.font=setFont(51,true);
-    g.fillText(data.isIntro?'나의 첫 페르시아어':'로스탐과 소흐랍',540,208);
-    g.fillStyle=blue;g.fillRect(463,248,154,4);
-    g.fillStyle=muted;g.font=setFont(23,true);
-    g.fillText(data.level,540,285);
+    // 문학 엽서: 불필요한 축하·평가 문구 없이 실제로 쓴 표현과 작품을 중심으로 배치합니다.
+    g.fillStyle='#fcfbf8';g.fillRect(0,0,1080,1350);
+    g.lineWidth=2;g.strokeStyle='#c9b38d';g.strokeRect(36,36,1008,1278);
+    g.textAlign='center';g.fillStyle='#92764c';g.font=setFont(25,true);
+    g.fillText('SHAHNAMEH',540,120);
+    g.fillStyle=navy;g.font=setFont(43,true);
+    g.fillText('낯선 글자, 익숙한 말',540,194);
+    g.fillStyle='#b99558';g.fillRect(492,232,96,3);
 
-    g.fillStyle=blue;g.font=setFont(25,true);
-    g.fillText('내가 직접 쓴 페르시아어',540,344);
-    drawWrapped(data.written,{y:462,width:885,maxLines:3,size:80,minSize:39,lineHeight:1.23,color:navy,bold:true,persian:true});
-    drawWrapped(data.translation,{y:631,width:870,maxLines:2,size:37,minSize:25,lineHeight:1.32,color:'#344c61'});
+    if(data.isIntro && data.stage==='word'){
+        drawWrapped(data.written,{y:390,width:880,maxLines:1,size:142,minSize:80,lineHeight:1.2,color:navy,bold:true,persian:true});
+        drawWrapped(data.roman,{y:490,width:860,maxLines:1,size:32,minSize:24,color:muted});
+        drawWrapped(data.wordMeaning,{y:557,width:860,maxLines:1,size:43,minSize:30,color:navy,bold:true});
+    }else{
+        const long=Array.from(data.written).length>30;
+        drawWrapped(data.written,{y:402,width:890,maxLines:3,size:long?75:94,minSize:39,lineHeight:1.36,color:navy,bold:true,persian:true});
+        drawWrapped(data.translation,{y:576,width:865,maxLines:3,size:36,minSize:24,lineHeight:1.4,color:'#344c61'});
+    }
+    g.fillStyle='#d8ccba';g.fillRect(132,666,816,2);
 
-    g.fillStyle=border;g.fillRect(94,708,892,2);
-    g.fillStyle=blue;g.font=setFont(25,true);
-    g.fillText(data.isIntro?'『샤나메』에서 발견한 같은 단어':'『샤나메』 속 이야기',540,763);
-    drawWrapped(data.line,{y:840,width:890,maxLines:2,size:data.isIntro?48:56,minSize:31,lineHeight:1.44,color:'#173b4a',bold:true,persian:true});
-    drawWrapped(data.lineTranslation,{y:928,width:880,maxLines:2,size:28,minSize:22,lineHeight:1.35,color:'#435d74'});
-    drawWrapped(data.source,{y:983,width:910,maxLines:1,size:21,minSize:18,color:muted});
-    // V5.2: 판본 안내는 내부 데이터에만 보존하고 카드의 이 위치는 빈칸으로 둡니다.
-
-    g.fillStyle='#e9f1f7';g.fillRect(92,1040,896,176);
-    g.fillStyle=blue;g.font=setFont(25,true);g.textAlign='center';
-    g.fillText('나의 발견',540,1090);
-    drawWrapped(data.discovery,{y:1145,width:823,maxLines:2,size:28,minSize:22,lineHeight:1.34,color:navy,bold:true});
-    g.fillStyle=border;g.fillRect(96,1242,888,2);
-    g.fillStyle=muted;g.font=setFont(20,true);
-    g.fillText('낯선 글자, 익숙한 말 · 샤나메 타이핑 체험',540,1279);
-    // 날짜는 스마트폰과 PC 모두 QR에 담긴 작성일로 표시합니다.
-    g.font=setFont(17);
-    g.fillText(new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(snapshot.at)),540,1303);
+    if(data.isIntro && data.stage==='line'){
+        // 원문 반행을 이미 위에서 썼으므로 두 번 인쇄하지 않습니다.
+        drawWrapped(data.word,{y:819,width:860,maxLines:1,size:94,minSize:55,color:navy,bold:true,persian:true});
+        drawWrapped(data.roman,{y:910,width:860,maxLines:1,size:30,minSize:24,color:muted});
+        drawWrapped(data.wordMeaning,{y:975,width:860,maxLines:1,size:36,minSize:24,color:'#344c61'});
+    }else{
+        drawWrapped(data.line,{y:825,width:890,maxLines:2,size:data.isIntro?56:72,minSize:35,lineHeight:1.42,color:'#173b4a',bold:true,persian:true});
+        drawWrapped(data.lineTranslation,{y:965,width:865,maxLines:3,size:32,minSize:23,lineHeight:1.4,color:'#435d74'});
+    }
+    drawWrapped(data.source,{y:1085,width:910,maxLines:2,size:24,minSize:20,lineHeight:1.4,color:muted});
+    g.fillStyle='#d8ccba';g.fillRect(132,1161,816,2);
+    g.fillStyle=muted;g.font=setFont(22,true);g.textAlign='center';
+    g.fillText('페르시아어 체험 기념',540,1214);
+    g.font=setFont(21);
+    g.fillText(new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(snapshot.at)),540,1257);
 }
 
 let blob=null,url=null;
 function download(){if(!url)return;const a=document.createElement('a');a.href=url;a.download='나의 첫 페르시아어.png';document.body.appendChild(a);a.click();a.remove();}
-async function openNative(){if(!blob)return;try{const file=new File([blob],'나의 첫 페르시아어.png',{type:'image/png'});if(navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'나의 첫 페르시아어'});else download();}catch(e){if(e.name!=='AbortError')document.getElementById('status').textContent='공유 메뉴를 열지 못했습니다. 다운로드 버튼을 이용하세요.';}}
+async function openNative(){if(!blob)return;try{const file=new File([blob],'나의 첫 페르시아어.png',{type:'image/png'});if(navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'낯선 글자, 익숙한 말'});else download();}catch(e){if(e.name!=='AbortError')document.getElementById('status').textContent='공유 메뉴를 열지 못했습니다. 다운로드 버튼을 이용하세요.';}}
 (async function(){try{if(!location.hash.startsWith('#share='))throw Error('결과 데이터가 없습니다. QR을 다시 스캔하세요.');const token=location.hash.slice(7);if(token.length>1800)throw Error('결과 데이터가 너무 깁니다.');const s=sanitizeSnapshot(b64urlDecode(token));if(!ALL_CARD_DATA.some(p=>p.id===s.id))throw Error('지원하지 않는 구절입니다.');const canvas=document.createElement('canvas');drawShareCard(canvas,s);blob=await new Promise(r=>canvas.toBlob(r,'image/png'));if(!blob)throw Error('이미지 생성 실패');url=URL.createObjectURL(blob);document.getElementById('preview').src=url;document.getElementById('preview').style.display='block';document.getElementById('download').hidden=false;document.getElementById('download').onclick=download;document.getElementById('shareFile').onclick=openNative;const file=new File([blob],'나의 첫 페르시아어.png',{type:'image/png'});if(navigator.canShare?.({files:[file]}))document.getElementById('shareFile').style.display='block';document.getElementById('status').textContent='완성한 이미지를 휴대폰에 저장할 수 있습니다.';}catch(e){document.getElementById('status').textContent='결과 페이지 오류: '+e.message;}})();
 </script></body></html>

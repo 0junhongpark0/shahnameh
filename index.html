@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>샤나메 타이핑 체험 | 낯선 글자, 익숙한 말</title>
+        <title>『샤나메』, 글자로 만나다 | 낯선 글자, 익숙한 말</title>
         <!-- ★★★★★ 관리자 QR 주소 설정은 바로 아래 1줄만 수정 ★★★★★ -->
         <script>
 // ============================================================================
@@ -1602,6 +1602,13 @@ html.share-mode .modal-cover {
     color: #8793a0;
     text-align: center;
 }
+
+/* 전시 제목 및 발견 팝업: 기존 배경·카드·키보드 디자인은 유지 */
+#introScreen .intro-heading-row{display:flex;align-items:center;justify-content:space-between;gap:18px}
+#introScreen .intro-heading-row>div{min-width:0}
+#introScreen .intro-shahnameh{flex:none;color:var(--gold);font:700 clamp(44px,5vw,70px)/1.15 Sahel,Vazirmatn,Tahoma,'Segoe UI',sans-serif;white-space:nowrap;padding:0 12px 3px}
+#discoveryModal .discovery-heading{color:var(--navy);font-size:clamp(23px,2.6vw,29px);margin:0 0 5px}
+@media(max-width:850px){#introScreen .intro-shahnameh{font-size:clamp(30px,5.5vw,48px);padding-right:0}}
 </style>
     </head>
     <body>
@@ -1611,19 +1618,24 @@ html.share-mode .modal-cover {
         <div class="app-shell" id="appShell">
             <header class="masthead">
                 <div>
-                    <h1>샤나메 타이핑 체험</h1>
+                    <h1>『샤나메』, 글자로 만나다</h1>
                 </div>
                 <div class="mast-actions"><button id="homeBtn" type="button">처음으로</button></div></header>
             <main>
                 <section id="introScreen" class="screen active">
-                    <div class="eyebrow">SHAHNAMEH · PERSIAN LETTERS</div>
-                    <h2 class="intro-title">낯선 글자, 익숙한 말</h2>
-                    <p class="subtext" style="margin:6px 0">페르시아어 글자를 입력하고, 그 단어가 등장하는 『샤나메』의 시구에도 도전해 보세요.</p>
+                    <div class="intro-heading-row">
+                        <div>
+                            <div class="eyebrow">FERDOWSI · SHAHNAMEH</div>
+                            <h2 class="intro-title">낯선 글자, 익숙한 말</h2>
+                        </div>
+                        <span class="intro-shahnameh" lang="fa" dir="rtl">شاهنامه</span>
+                    </div>
+                    <p class="subtext" style="margin:6px 0">페르시아어를 직접 쓰고, 그 단어가 담긴 『샤나메』의 시구를 만나보세요.</p>
                     <h3 class="choice-heading">어떤 말을 써볼까요?</h3>
                     <div class="lesson-choices">
                         <button class="lesson-choice" data-lesson="greeting" type="button"><span class="mini-label">01 · 인사할 때</span><span class="word-ko">안녕</span><span class="word-fa" lang="fa" dir="rtl">درود</span><span class="word-roman">도루드 · 인사와 축원</span></button>
                         <button class="lesson-choice" data-lesson="thanks" type="button"><span class="mini-label">02 · 감사할 때</span><span class="word-ko">고마워</span><span class="word-fa" lang="fa" dir="rtl">سپاس</span><span class="word-roman">세퍼스 · 감사</span></button>
-                        <button class="lesson-choice" data-lesson="friend" type="button"><span class="mini-label">03 · 소중한 사람</span><span class="word-ko">친구</span><span class="word-fa" lang="fa" dir="rtl">دوست</span><span class="word-roman">두스트 · 친구</span></button>
+                        <button class="lesson-choice" data-lesson="friend" type="button"><span class="mini-label">03 · 좋은 사람</span><span class="word-ko">친구</span><span class="word-fa" lang="fa" dir="rtl">دوست</span><span class="word-roman">두스트 · 친구</span></button>
                     </div>
                     <!-- 키보드 생성은 원본 index의 mountKeyboard()를 그대로 사용합니다.
                          입력용 키보드는 체험 시작 시 practiceKeyboardMount로 이동합니다. -->
@@ -1631,7 +1643,7 @@ html.share-mode .modal-cover {
                     <div class="story-cta">
                         <div>
                             <h3>로스탐과 소흐랍 이야기 체험</h3>
-                            <p>열 개의 이야기 구절과 뜻을 살펴보고, 마음에 드는 한 문장을 직접 골라 써보세요.</p>
+                            <p>이야기 속 열 개의 문장을 읽고, 마음에 드는 구절을 써보세요.</p>
                         </div>
                         <button class="btn" id="skipBtn" type="button">이야기 구절 고르기</button>
                     </div>
@@ -1640,7 +1652,7 @@ html.share-mode .modal-cover {
                 <section id="selectionScreen" class="screen" aria-labelledby="selectionHeading">
                     <div class="eyebrow">ROSTAM & SOHRAB · STORY EXPERIENCE</div>
                     <h2 id="selectionHeading" class="section-title">어떤 문장을 써보고 싶나요?</h2>
-                    <p class="selection-lead">아버지 로스탐과 아들 소흐랍의 이야기를 읽고, 마음에 드는 문장을 하나 골라보세요. 문장을 누르면 타이핑을 시작합니다.</p>
+                    <p class="selection-lead">아버지 로스탐과 아들 소흐랍의 이야기를 따라, 마음에 드는 구절을 골라보세요.</p>
                     <div id="storyGroupTabs" class="story-group-tabs" role="group" aria-label="이야기 장면 선택"></div>
                     <p id="storyGroupContext" class="story-group-context"></p>
                     <div id="storySelectionGrid" class="story-selection-grid" aria-label="로스탐과 소흐랍 이야기 구절 선택"></div>
@@ -1660,7 +1672,7 @@ html.share-mode .modal-cover {
                         <div class="pronunciation-panel" aria-live="polite" aria-atomic="true">
                             
                             <div id="practiceRomanization" class="romanization" dir="ltr" lang="en"></div>
-                            <div id="pronunciationNote" class="pronunciation-note">글자를 누르면 대응하는 발음이 강조됩니다. 음성은 재생되지 않습니다.</div>
+                            <div id="pronunciationNote" class="pronunciation-note">입력한 글자에 따라 발음이 표시됩니다.</div>
                         </div>
                         <div class="text-bottom" id="practiceInput" lang="fa" dir="rtl"></div>
                         <p class="translation" id="practiceTranslation"></p>
@@ -1668,7 +1680,7 @@ html.share-mode .modal-cover {
                     <p class="instruction" id="practiceHint">파란색으로 표시된 키를 누르세요.</p>
                     <div id="practiceKeyboardMount"></div>
                     <div id="completionBanner" class="status-banner hidden"></div>
-                    <div class="btn-row"><button class="btn gold" id="openShareBtn" disabled>기념 카드 만들기</button><button class="btn" id="nextBtn" disabled>다음 단계</button><button class="btn outline" id="resetBtn">다시 시작하기</button><button class="btn outline hidden" id="reselectBtn" type="button">다른 구절 고르기</button></div><p class="info-note">결과 카드는 마지막으로 완성한 표현과 문학적 발견을 담습니다. 현재 입력 중인 표현은 포함되지 않습니다.</p>
+                    <div class="btn-row"><button class="btn gold" id="openShareBtn" disabled>기념 카드 만들기</button><button class="btn" id="nextBtn" disabled>다음 단계</button><button class="btn outline" id="resetBtn">다시 시작하기</button><button class="btn outline hidden" id="reselectBtn" type="button">다른 구절 고르기</button></div><p class="info-note">완성한 표현을 기념 카드로 간직할 수 있습니다.</p>
                 </section>
             </main>
         </div>
@@ -1686,7 +1698,7 @@ html.share-mode .modal-cover {
                 <h2 id="sceneModalTitle">이야기의 흐름</h2>
                 <p class="scene-description" id="sceneModalText"></p>
                 <button class="btn" id="sceneStartBtn" type="button">
-                    이야기 읽고 타이핑 시작하기
+                    구절 써보기
                 </button>
             </div>
         </div>
@@ -1694,15 +1706,14 @@ html.share-mode .modal-cover {
         <!-- V5: 완료 후 문학적 발견 (키보드 엔진과 독립적인 화면) -->
         <div id="discoveryModal" class="scene-modal hidden" role="dialog" aria-modal="true" aria-labelledby="discoveryTitle">
             <div class="scene-dialog v5-dialog">
-                <p class="scene-count">나의 첫 페르시아어</p>
-                <h2 id="discoveryTitle">나의 첫 페르시아어 단어 완성!</h2>
+                <h2 id="discoveryTitle" class="discovery-heading">천 년을 이어온 말</h2>
                 <div id="discoveryWord" class="v5-discovery-word" lang="fa" dir="rtl"></div>
                 <p id="discoveryMeaning" class="v5-discovery-meaning"></p>
-                <p class="scene-description" style="margin-bottom:8px;font-size:16px">방금 쓴 단어가 천 년 전의 『샤나메』에도 등장합니다.</p>
+                <p class="scene-description" style="margin-bottom:8px;font-size:16px">방금 쓴 단어는 페르도우시의 『샤나메』에도 등장합니다.</p>
                 <div id="discoveryLine" class="v5-discovery-line" lang="fa" dir="rtl"></div>
                 <p id="discoveryTranslation" class="v5-discovery-translation"></p>
                 <p id="discoverySource" class="info-note"></p>
-                <div class="btn-row"><button class="btn gold" id="discoveryShareBtn" type="button">기념 카드 만들기</button><button class="btn" id="discoveryNextBtn" type="button">짧은 구절 써보기</button><button class="btn outline" id="discoveryCloseBtn" type="button">닫기</button></div>
+                <div class="btn-row"><button class="btn gold" id="discoveryShareBtn" type="button">기념 카드 만들기</button><button class="btn" id="discoveryNextBtn" type="button">시구 이어 쓰기</button><button class="btn outline" id="discoveryCloseBtn" type="button">닫기</button></div>
             </div>
         </div>
         <div id="idleModal" class="scene-modal hidden" role="dialog" aria-modal="true" aria-labelledby="idleTitle" aria-describedby="idleText">
@@ -1715,10 +1726,10 @@ html.share-mode .modal-cover {
         <div class="modal-cover" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
             <div class="modal-inner">
                 <div class="modal-header">
-                    <h2 id="shareModalTitle">나의 첫 페르시아어 · 기념 카드</h2><button class="btn secondary" id="shareCloseBtn">닫기</button></div><div class="share-layout">
+                    <h2 id="shareModalTitle">기념 카드</h2><button class="btn secondary" id="shareCloseBtn">닫기</button></div><div class="share-layout">
                     <div><img class="preview-img" id="sharePreview" alt="내가 쓴 페르시아어와 작품의 한 구절을 담은 기념 카드" /><p class="info-note" id="shareMessage">이미지를 만드는 중...</p>
                     </div>
-                    <div class="share-side"><button class="btn block" id="downloadBtn" disabled>PNG 저장 (1080 × 1350)</button><button class="btn secondary block" id="nativeShareBtn" hidden>이미지 공유</button><div><strong>휴대폰으로 가져가기</strong><p class="info-note">PC는 인터넷 연결 없이 QR을 생성합니다. 스마트폰은 인터넷을 사용해 결과 이미지를 저장합니다.</p>
+                    <div class="share-side"><button class="btn block" id="downloadBtn" disabled>이미지 저장</button><button class="btn secondary block" id="nativeShareBtn" hidden>이미지 공유</button><div><strong>휴대폰으로 가져가기</strong><p class="info-note">휴대폰 카메라로 QR코드를 스캔해 기념 카드를 저장하세요.</p>
                         </div>
                         <div class="qr-square" id="qrSquare"><span class="info-note">QR 생성 대기 중...</span></div><p id="qrInfo" class="info-note"></p></div>
                 </div>
@@ -3047,7 +3058,7 @@ const STORY_DATA = [
 
 
 // 신규 입문 문구: 기존 STORY_DATA와 입력 로직은 유지하고 문구 목록만 전환합니다.
-// 입문 문구의 마지막 한 행은 간주르 『샤나메』 전사본과 대조했습니다.
+// 입문 문구의 마지막 한 행은 『샤나메』 본문과 대조했습니다.
 // 로스탐과 소흐랍 STORY_DATA에는 원문과 현대 페르시아어 재구성 문장이 혼재합니다.
 const INTRO_LESSONS = {
     greeting: {label:'안녕 · درود', entries:[
@@ -3775,7 +3786,7 @@ function renderPracticeHint() {
     hint.classList.toggle('ready-to-confirm', ready);
     if (!hasCompletedCurrent) {
         hint.textContent = ready
-            ? '모든 글자를 입력했습니다! Enter ↵ 를 눌러 완성하세요.'
+            ? '입력을 마쳤습니다. Enter ↵를 눌러주세요.'
             : '파란색으로 안내된 키를 눌러보세요. 잘못 입력하면 Backspace로 고칠 수 있습니다.';
         return;
     }
@@ -3784,7 +3795,7 @@ function renderPracticeHint() {
     const word = note?.keyword;
 
     if (!word) {
-        hint.textContent = '완성했습니다. 기념 카드를 만들거나 다른 표현에도 도전해 보세요.';
+        hint.textContent = '입력 완료. 기념 카드를 만들 수 있습니다.';
         return;
     }
 
@@ -3794,7 +3805,7 @@ function renderPracticeHint() {
     persian.dir = 'rtl';
     persian.textContent = word.fa;
 
-    const doneText = '완성! 오늘의 단어 · ';
+    const doneText = '구절 속 단어 · ';
 
     hint.replaceChildren(
         document.createTextNode(doneText),
@@ -3903,8 +3914,8 @@ function renderPronunciation(){
         target.append(done,rest);
         target.setAttribute('aria-label', '전체 발음 '+roman+', 입력 완료 '+completed);
         const hints=LETTER_HINTS[item.id];
-        info.textContent=prefix ? hints[Math.min(prefix-1,hints.length-1)] : '먼저 첫 글자를 입력하세요. 단모음은 글자로 표시되지 않을 수 있습니다.';
-        if(hasCompletedCurrent)info.textContent='단어가 완성되었습니다! 표시된 로마자는 이 단어의 실제 읽는 법입니다.';
+        info.textContent=prefix ? hints[Math.min(prefix-1,hints.length-1)] : '첫 글자를 입력해 보세요. 짧은 모음은 표기에 생략되기도 합니다.';
+        if(hasCompletedCurrent)info.textContent='단어의 발음입니다.';
         return;
     }
     const words=item.p.trim().split(/\s+/u);
@@ -3913,7 +3924,7 @@ function renderPronunciation(){
         // Never guess alignment from roman text length; show safe whole-expression fallback.
         const entire=LESSON_NOTES[item.id]?.roman||'';
         target.textContent=entire;
-        info.textContent='전체 문장의 읽는 법입니다.';
+        info.textContent='문장 전체의 발음입니다.';
         return;
     }
     let position=0;
@@ -3930,8 +3941,8 @@ function renderPronunciation(){
     }
     target.setAttribute('aria-label', '전체 발음 '+phonetics.join(' '));
     info.textContent=hasCompletedCurrent
-        ? '문장이 완성되었습니다. 단어마다 강조되는 발음을 확인해 보세요.'
-        : '글자를 입력하면 현재 단어의 발음이 강조됩니다. 페르시아어는 짧은 모음을 대개 적지 않습니다.';
+        ? '문장 전체의 발음입니다.'
+        : '입력한 글자에 따라 발음이 표시됩니다.';
 }
 
 function startTutorial() {
@@ -3959,9 +3970,9 @@ const STORY_GROUPS = [
     {title:'밝혀지는 진실',indices:[3,4,5,6],context:'소흐랍의 말을 듣고 충격에 빠진 로스탐. 두 사람은 마침내 서로의 정체를 알게 됩니다.'},
     {title:'아버지와 아들의 비극',indices:[7,8,9],context:'아버지가 남긴 징표로 드러난 진실. 로스탐은 뒤늦게 아들을 알아보고 슬퍼합니다.'}
 ];
-// 간주르 소흐랍 18절 본문과 일치: rs-187, rs-188.
+// 소흐랍 18절 본문과 일치: rs-187, rs-188.
 // https://ganjoor.net/ferdousi/shahname/sohrab/sh18/
-// rs-199는 해당 전사본 본문과 일치하지 않아 다른 판본 대조 전까지 미확정.
+// rs-199는 해당 본문과 일치하지 않아 다른 판본 대조 전까지 미확정.
 const VERIFIED_STORY_IDS = new Set(['rs-187','rs-188']);
 function storySourceLabel(id){
     return VERIFIED_STORY_IDS.has(id) ? '고전 원문' : id==='rs-199' ? '판본 대조 미확정' : '이야기 재구성';
@@ -4097,7 +4108,7 @@ function loadPassage() {
     context.classList.toggle('hidden', !note?.scene);
 
     el('practiceTranslation').textContent = p.k || '한국어 번역이 제공되지 않았습니다.';
-    el('passageLabel').textContent = currentLesson ? `직접 써보기 · ${['일상 단어','짧은 구절','『샤나메』 원문 한 행'][currentIndex]}` : '내가 선택한 이야기 구절';
+    el('passageLabel').textContent = currentLesson ? ['일상 속 페르시아어','짧은 구절','『샤나메』 원문 한 행'][currentIndex] : '선택한 구절';
     el('reselectBtn').classList.toggle('hidden', selectedStoryIndex === null);
     el('completionBanner').classList.add('hidden');
     el('nextBtn').disabled = true;
@@ -4172,9 +4183,9 @@ function completePassage() {
     banner.classList.remove('hidden');
     banner.classList.toggle('warn', false);
     banner.textContent = selectedStoryIndex !== null
-        ? '선택한 문장을 완성했습니다. 기념 카드를 만들거나 다른 구절을 골라보세요.'
-        : last ? '완성했습니다! 지금까지 쓴 표현으로 기념 카드를 만들 수 있습니다.'
-               : '완성했습니다! 기념 카드를 만들거나 다음 단계에도 도전해 보세요.';
+        ? '기념 카드를 만들거나 다른 구절을 골라보세요.'
+        : last ? '완성한 시구를 기념 카드로 간직해 보세요.'
+               : '기념 카드를 만들거나 다음 구절을 써보세요.';
     el('nextBtn').disabled = last && selectedStoryIndex === null;
     el('nextBtn').classList.remove('hidden');
     el('nextBtn').textContent = selectedStoryIndex !== null ? '다른 구절 고르기' : last ? '체험 완료' : '다음 단계';
@@ -4185,7 +4196,7 @@ function completePassage() {
 function showFinalState() {
     hasCompletedCurrent = true;
     el('nextBtn').disabled = true;
-    el('practiceHint').textContent = '전체 연습 완료';
+    el('practiceHint').textContent = '체험 완료';
     updateStats();
 }
 function nextPassage() {
@@ -4384,32 +4395,17 @@ function cardInformation(s) {
     const item = ALL_CARD_DATA.find(p => p.id === s.id);
     if (!item) throw Error('공유 데이터에 해당하는 문구가 없습니다.');
     const match = /^intro-(greeting|thanks|friend)-(word|phrase|line)$/.exec(s.id);
-    if (!match) {
-        return {
-            isIntro: false, written: item.p, translation: item.k,
-            level: '로스탐과 소흐랍 이야기',
-            line: 'رستم و سهراب',
-            lineTranslation: '서로를 알아보지 못한 아버지와 아들의 비극',
-            source: '『샤나메』 「로스탐과 소흐랍」 기반',
-            discovery: '낯선 글자로 영웅들의 이야기를 직접 써보았습니다.',
-            note: '이 체험에는 현대 페르시아어 재구성 문장이 포함되어 있습니다.'
-        };
-    }
+    if (!match) return {
+        isIntro:false, written:item.p, translation:item.k,
+        line:'رستم و سهراب', lineTranslation:'서로를 알아보지 못한 아버지와 아들의 비극',
+        source:'페르도우시 『샤나메』 · 로스탐과 소흐랍'
+    };
     const [,lesson,stage] = match;
     const literary = CARD_LITERARY[lesson];
-    const level = {word:'단어를 완성했어요',phrase:'짧은 구절을 완성했어요',line:'원문 한 행을 완성했어요'}[stage];
-    const discovery = {
-        word:'처음 써본 페르시아어 단어가 『샤나메』에도 등장합니다.',
-        phrase:'내가 쓴 표현이 천 년 전 문학의 한 구절과 연결됩니다.',
-        line:'고전 시구의 한 행을 처음부터 끝까지 직접 써보았습니다.'
-    }[stage];
-    return {
-        isIntro: true, written:item.p, translation:item.k,
-        word:literary.word, wordMeaning:literary.meaning, roman:literary.roman,
-        level, line:literary.line, lineTranslation:literary.translation,
-        source:literary.source, discovery,
-        note:'고전 원문은 간주르(Ganjoor) 전사본 기준입니다.'
-    };
+    const romanLatin = {greeting:'dorud',thanks:'sepās',friend:'dust'}[lesson];
+    return {isIntro:true,stage,written:item.p,translation:item.k,
+        word:literary.word,wordMeaning:literary.meaning,roman:romanLatin+' · '+literary.roman,
+        line:literary.line,lineTranslation:literary.translation,source:literary.source};
 }
 function drawShareCard(canvas, snapshot) {
     sanitizeSnapshot(snapshot);
@@ -4450,40 +4446,41 @@ function drawShareCard(canvas, snapshot) {
         g.direction='ltr';
         return sz;
     }
-    g.fillStyle='#f8fafc';g.fillRect(0,0,1080,1350);
-    g.lineWidth=3;g.strokeStyle=border;g.strokeRect(35,35,1010,1280);
-    g.lineWidth=1;g.strokeStyle='#e1eaf1';g.strokeRect(49,49,982,1252);
-    g.textAlign='center';g.fillStyle=muted;g.font=setFont(22,true);
-    g.fillText('SHAHNAMEH · PERSIAN EXPERIENCE',540,126);
-    g.fillStyle=navy;g.font=setFont(51,true);
-    g.fillText(data.isIntro?'나의 첫 페르시아어':'로스탐과 소흐랍',540,208);
-    g.fillStyle=blue;g.fillRect(463,248,154,4);
-    g.fillStyle=muted;g.font=setFont(23,true);
-    g.fillText(data.level,540,285);
+    // 문학 엽서: 불필요한 축하·평가 문구 없이 실제로 쓴 표현과 작품을 중심으로 배치합니다.
+    g.fillStyle='#fcfbf8';g.fillRect(0,0,1080,1350);
+    g.lineWidth=2;g.strokeStyle='#c9b38d';g.strokeRect(36,36,1008,1278);
+    g.textAlign='center';g.fillStyle='#92764c';g.font=setFont(25,true);
+    g.fillText('SHAHNAMEH',540,120);
+    g.fillStyle=navy;g.font=setFont(43,true);
+    g.fillText('낯선 글자, 익숙한 말',540,194);
+    g.fillStyle='#b99558';g.fillRect(492,232,96,3);
 
-    g.fillStyle=blue;g.font=setFont(25,true);
-    g.fillText('내가 직접 쓴 페르시아어',540,344);
-    drawWrapped(data.written,{y:462,width:885,maxLines:3,size:80,minSize:39,lineHeight:1.23,color:navy,bold:true,persian:true});
-    drawWrapped(data.translation,{y:631,width:870,maxLines:2,size:37,minSize:25,lineHeight:1.32,color:'#344c61'});
+    if(data.isIntro && data.stage==='word'){
+        drawWrapped(data.written,{y:390,width:880,maxLines:1,size:142,minSize:80,lineHeight:1.2,color:navy,bold:true,persian:true});
+        drawWrapped(data.roman,{y:490,width:860,maxLines:1,size:32,minSize:24,color:muted});
+        drawWrapped(data.wordMeaning,{y:557,width:860,maxLines:1,size:43,minSize:30,color:navy,bold:true});
+    }else{
+        const long=Array.from(data.written).length>30;
+        drawWrapped(data.written,{y:402,width:890,maxLines:3,size:long?75:94,minSize:39,lineHeight:1.36,color:navy,bold:true,persian:true});
+        drawWrapped(data.translation,{y:576,width:865,maxLines:3,size:36,minSize:24,lineHeight:1.4,color:'#344c61'});
+    }
+    g.fillStyle='#d8ccba';g.fillRect(132,666,816,2);
 
-    g.fillStyle=border;g.fillRect(94,708,892,2);
-    g.fillStyle=blue;g.font=setFont(25,true);
-    g.fillText(data.isIntro?'『샤나메』에서 발견한 같은 단어':'『샤나메』 속 이야기',540,763);
-    drawWrapped(data.line,{y:840,width:890,maxLines:2,size:data.isIntro?48:56,minSize:31,lineHeight:1.44,color:'#173b4a',bold:true,persian:true});
-    drawWrapped(data.lineTranslation,{y:928,width:880,maxLines:2,size:28,minSize:22,lineHeight:1.35,color:'#435d74'});
-    drawWrapped(data.source,{y:983,width:910,maxLines:1,size:21,minSize:18,color:muted});
-    // V5.2: 판본 안내는 내부 데이터에만 보존하고 카드의 이 위치는 빈칸으로 둡니다.
-
-    g.fillStyle='#e9f1f7';g.fillRect(92,1040,896,176);
-    g.fillStyle=blue;g.font=setFont(25,true);g.textAlign='center';
-    g.fillText('나의 발견',540,1090);
-    drawWrapped(data.discovery,{y:1145,width:823,maxLines:2,size:28,minSize:22,lineHeight:1.34,color:navy,bold:true});
-    g.fillStyle=border;g.fillRect(96,1242,888,2);
-    g.fillStyle=muted;g.font=setFont(20,true);
-    g.fillText('낯선 글자, 익숙한 말 · 샤나메 타이핑 체험',540,1279);
-    // 날짜는 스마트폰과 PC 모두 QR에 담긴 작성일로 표시합니다.
-    g.font=setFont(17);
-    g.fillText(new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(snapshot.at)),540,1303);
+    if(data.isIntro && data.stage==='line'){
+        // 원문 반행을 이미 위에서 썼으므로 두 번 인쇄하지 않습니다.
+        drawWrapped(data.word,{y:819,width:860,maxLines:1,size:94,minSize:55,color:navy,bold:true,persian:true});
+        drawWrapped(data.roman,{y:910,width:860,maxLines:1,size:30,minSize:24,color:muted});
+        drawWrapped(data.wordMeaning,{y:975,width:860,maxLines:1,size:36,minSize:24,color:'#344c61'});
+    }else{
+        drawWrapped(data.line,{y:825,width:890,maxLines:2,size:data.isIntro?56:72,minSize:35,lineHeight:1.42,color:'#173b4a',bold:true,persian:true});
+        drawWrapped(data.lineTranslation,{y:965,width:865,maxLines:3,size:32,minSize:23,lineHeight:1.4,color:'#435d74'});
+    }
+    drawWrapped(data.source,{y:1085,width:910,maxLines:2,size:24,minSize:20,lineHeight:1.4,color:muted});
+    g.fillStyle='#d8ccba';g.fillRect(132,1161,816,2);
+    g.fillStyle=muted;g.font=setFont(22,true);g.textAlign='center';
+    g.fillText('페르시아어 체험 기념',540,1214);
+    g.font=setFont(21);
+    g.fillText(new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(snapshot.at)),540,1257);
 }
 
 async function renderShareCard(s) {
@@ -4516,7 +4513,7 @@ function updateQR(s){
        const canvas=document.createElement('canvas');canvas.width=canvas.height=(n+2*border)*scale;
        const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#000';
        for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(qr.isDark(r,c))ctx.fillRect((c+border)*scale,(r+border)*scale,scale,scale);
-       q.appendChild(canvas);el('qrInfo').textContent='스마트폰 카메라로 스캔하세요. 관람객 스마트폰의 인터넷 연결이 필요합니다.';
+       q.appendChild(canvas);el('qrInfo').textContent='';
     }catch(e){q.textContent='QR 생성 실패';el('qrInfo').textContent=e.message;}
 }
 function setShareStatus(msg) {
@@ -4537,7 +4534,7 @@ async function openShare() {
         el('downloadBtn').disabled = false;
         el('nativeShareBtn').hidden = !(navigator.canShare && navigator.canShare({ files: [new File([shareBlob], '나의 첫 페르시아어.png', { type: 'image/png' })] }));
         updateQR(shareSnapshot);
-        setShareStatus('오늘 완성한 페르시아어 표현을 기념 카드로 만들었습니다. 현재 입력 중인 문장은 제외됩니다.');
+        setShareStatus('기념 카드를 저장할 수 있습니다.');
     } catch (e) {
         setShareStatus('이미지 생성 오류: ' + e.message);
         el('qrSquare').textContent = '미리보기를 만들지 못했습니다.';
@@ -4564,14 +4561,14 @@ async function shareFile() {
     if (!shareBlob) return;
     try {
         const file = new File([shareBlob], '나의 첫 페르시아어.png', { type: 'image/png' });
-        if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: '나의 첫 페르시아어' }); else downloadImage();
+        if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: '낯선 글자, 익숙한 말' }); else downloadImage();
     } catch (e) {
         if (e.name !== 'AbortError') alert('공유를 열 수 없습니다. 이미지 저장 버튼을 이용하세요.');
     }
 }
 // ===== V5: 전시 운영 / 완료 화면 보조 기능 =====
-// 3분 / 90초에는 마지막 10초 안내가 포함됩니다. 실제 입력이 있으면 시간이 초기화됩니다.
-const IDLE_TYPING_MS=180000, IDLE_RESULT_MS=90000, IDLE_WARNING_MS=10000;
+// 2분 / 60초에는 마지막 10초 안내가 포함됩니다. 실제 입력이 있으면 시간이 초기화됩니다.
+const IDLE_TYPING_MS=120000, IDLE_RESULT_MS=60000, IDLE_WARNING_MS=10000;
 let idleLastActivity=Date.now(), idleWarningOpen=false, idleDeadline=0, idlePreviousFocus=null;
 function openDiscovery(){
     const data=CARD_LITERARY[currentLesson];if(!data)return;
@@ -4584,7 +4581,7 @@ function openDiscovery(){
         line.append(document.createTextNode(data.line.slice(0,at)),mark,document.createTextNode(data.line.slice(at+data.word.length)));
     }else line.textContent=data.line;
     el('discoveryTranslation').textContent=data.translation;
-    el('discoverySource').textContent=data.source+' · 간주르 전사본';
+    el('discoverySource').textContent=data.source;
     el('discoveryModal').classList.remove('hidden');
     el('discoveryNextBtn').focus();idleLastActivity=Date.now();
 }
